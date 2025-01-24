@@ -20,6 +20,8 @@ public class playerScript : MonoBehaviour
 
         playState = playerStates.distracted;
 
+        //testing if karken/hub are compatible!
+
     }
 
     // Update is called once per frame
