@@ -30,6 +30,9 @@ public class playerScript : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
+        if (playState == playerStates.distracted) playerSpeed = 9;
+        else playerSpeed = 4;
+
         rb.velocity = new Vector2(xInput * playerSpeed, yInput * playerSpeed);
     }
 }
