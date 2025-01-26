@@ -13,7 +13,7 @@ public class techieScript : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.forward * 4);
+        transform.Rotate(Vector3.back * 1.3f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,12 +21,12 @@ public class techieScript : MonoBehaviour
         if (collision.gameObject.tag == "mouse")
         {
             print("hit!");
-            transform.localScale = new Vector3(1f, 1f);
+            transform.localScale = new Vector3(0.2f, 0.2f);
            // highlight = new Color()
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.71f, 0.71f);
+        if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.13f, 0.13f);
     }
 }
