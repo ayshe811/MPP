@@ -5,28 +5,38 @@ using UnityEngine;
 public class techieScript : MonoBehaviour
 {
     GameObject cursor;
-    Color highlight; 
+    Color highlight;
+
+    AudioSource src;
     void Start()
     {
         cursor = GameObject.Find("cursor");
+        src = GetComponent<AudioSource>();
     }
+
 
     void Update()
     {
         transform.Rotate(Vector3.back * 1.3f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "mouse")
-        {
-            print("hit!");
-            transform.localScale = new Vector3(0.2f, 0.2f);
-           // highlight = new Color()
-        }
+        if (collision.gameObject.tag == "Player") src.PlayOneShot(src.clip);
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.13f, 0.13f);
-    }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "mouse")
+    //    {
+    //        print("hit!");
+    //        transform.localScale = new Vector3(0.2f, 0.2f);
+    //       // highlight = new Color()
+    //    }
+
+    //    if (collision.gameObject.tag == "Player") src.PlayOneShot(src.clip);
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.13f, 0.13f);
 }
