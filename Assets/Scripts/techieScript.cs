@@ -10,12 +10,18 @@ public class techieScript : MonoBehaviour
     AudioSource src;
     ParticleSystem parSystem;
     SpriteRenderer sr;
+    PolygonCollider2D poly2d;
+
+  //  public bool isHit;
     void Start()
     {
         cursor = GameObject.Find("cursor");
         src = GetComponent<AudioSource>();
         parSystem = GetComponent<ParticleSystem>();
         sr = GetComponent<SpriteRenderer>();
+        poly2d = GetComponent<PolygonCollider2D>();
+
+       // isHit = false;
     }
 
 
@@ -30,9 +36,10 @@ public class techieScript : MonoBehaviour
         {
             src.PlayOneShot(src.clip);
             parSystem.Play();
+            poly2d.enabled = false;
             sr.enabled = false;
-            Destroy(gameObject, 0.5f);
 
+            Destroy(gameObject, 0.5f);
         }
 
         //private void OnTriggerEnter2D(Collider2D collision)
