@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - mouse
+  - Red
+  - Yellow
+  - Blue
+  - Green
+  - Pink
   layers:
   - Default
   - TransparentFX
