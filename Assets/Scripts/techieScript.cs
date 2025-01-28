@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class techieScript : MonoBehaviour
 {
-    public GameObject ParticleManager;
     public string color;
     GameObject cursor;
     Color highlight;
@@ -13,9 +12,11 @@ public class techieScript : MonoBehaviour
     SpriteRenderer sr;
     PolygonCollider2D poly2d;
 
+    particleManager parScript;
+
     Rigidbody2D rb;
 
-    public bool isHit;
+    // bool isHit;
     void Start()
     {
         cursor = GameObject.Find("cursor");
@@ -24,48 +25,26 @@ public class techieScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         poly2d = GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-
-        ParticleManager = GameObject.Find("Particle Manager");
-
-        isHit = false;
+        parScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
     }
 
 
     void Update()
     {
       transform.Rotate(Vector3.back * .7f);
-
-
-        //if (color == "Red") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[0],
-        //    transform.position, Quaternion.identity);
-        //if (color == "Yellow") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[1],
-        //   transform.position, Quaternion.identity);
-        //if (color == "Pink") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[2],
-        //   transform.position, Quaternion.identity);
-        //if (color == "Purple") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[3],
-        //   transform.position, Quaternion.identity);
-        //if (color == "Green") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[4],
-        //   transform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (color == "Red") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[0],
-               transform.position, Quaternion.identity);
-            if (color == "Yellow") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[1],
-               transform.position, Quaternion.identity);
-            if (color == "Pink") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[2],
-               transform.position, Quaternion.identity);
-            if (color == "Purple") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[3],
-               transform.position, Quaternion.identity);
-            if (color == "Green") Instantiate(ParticleManager.GetComponent<particleManager>().particlePrefab[4],
-               transform.position, Quaternion.identity);
+            if (color == "Red") Instantiate(parScript.particlePrefab[0], transform.position, Quaternion.identity);
+            if (color == "Yellow") Instantiate(parScript.particlePrefab[1], transform.position, Quaternion.identity);
+            if (color == "Pink") Instantiate(parScript.particlePrefab[2], transform.position, Quaternion.identity);
+            if (color == "Purple") Instantiate(parScript.particlePrefab[3], transform.position, Quaternion.identity);
+            if (color == "Green") Instantiate(parScript.particlePrefab[4], transform.position, Quaternion.identity);
 
-            isHit = true;
             src.PlayOneShot(src.clip);
-            //parSystem.Play();
             poly2d.enabled = false;
             sr.enabled = false;
             Destroy(gameObject, 0.5f);
