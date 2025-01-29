@@ -19,6 +19,8 @@ public class techieScript : MonoBehaviour
     // bool isHit;
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         cursor = GameObject.Find("cursor");
         src = GetComponent<AudioSource>();
         parSystem = GetComponent<ParticleSystem>();
@@ -31,7 +33,7 @@ public class techieScript : MonoBehaviour
 
     void Update()
     {
-      transform.Rotate(Vector3.back * .7f);
+        transform.Rotate(Vector3.back * .7f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
