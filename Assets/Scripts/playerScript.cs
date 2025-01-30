@@ -6,7 +6,7 @@ public class playerScript : MonoBehaviour
 {
     Rigidbody2D rb;
     float xInput, yInput, scale;
-    public float playerSpeed, sizeX, sizeY,sizeDecRate,speedIncRate;
+    public float playerSpeed, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints,level;
     public bool isHit;
     gameManager gameManager;
@@ -32,7 +32,6 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness) isHit = false;
@@ -53,7 +52,7 @@ public class playerScript : MonoBehaviour
     }
 
 
-    public void IncreaseSize()
+    public void IncreaseSize() // maybe? maybe not? (i don't fully understand whats happening here)
     {
         sizePoints++;
     
@@ -61,10 +60,9 @@ public class playerScript : MonoBehaviour
             transform.localScale += new Vector3(0.01f, 0.01f);
             sizeX += 0.01f;
             sizeY += 0.01f;
-            playerSpeed -= 0.1f;
-        
+            playerSpeed -= 0.1f;        
     }
-    void FixedUpdate()
+    void FixedUpdate() // player movement
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");

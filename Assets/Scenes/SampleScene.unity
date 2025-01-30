@@ -1214,7 +1214,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.49371064, g: 0.12963782, b: 0.12963782, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1253,7 +1253,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 7
-  playState: 0
+  sizeX: 0
+  sizeY: 0
+  sizeDecRate: 0
+  speedIncRate: 0
+  isHit: 0
+  playState: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

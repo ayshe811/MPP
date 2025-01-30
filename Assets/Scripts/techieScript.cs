@@ -32,7 +32,7 @@ public class techieScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") // add selective collisions!!  
         {
 
             player = collision.gameObject.GetComponent<playerScript>();
