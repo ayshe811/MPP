@@ -245,9 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ea7275cf2f63144991a65b6308cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleManager: {fileID: 0}
   color: Yellow
-  isHit: 0
+  cursor: {fileID: 4224958039493560046}
+  highlight: {r: 0, g: 0, b: 0, a: 0}
+  src: {fileID: 6135860789760032098}
+  sr: {fileID: 4392900700250624047}
+  poly2d: {fileID: 8384487893633037549}
+  rb: {fileID: 3629862775982833360}
 --- !u!82 &6135860789760032098
 AudioSource:
   m_ObjectHideFlags: 0

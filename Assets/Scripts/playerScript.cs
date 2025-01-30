@@ -5,22 +5,24 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    float xInput, yInput, sizeX, sizeY;
-    public float playerSpeed;
-
+    float xInput, yInput;
+    public float playerSpeed, sizeX, sizeY,sizeDecRate,speedIncRate;
+    int weightPoints,level;
     public bool isHit;
     gameManager gameManager;
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
+    int sizePoints; 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         playState = playerStates.distracted;
-
+        sizeDecRate = 0.005f;
+        speedIncRate = 0.01f;
         if (playState == playerStates.distracted) playerSpeed = 9;
         else playerSpeed = 4;
 
@@ -30,16 +32,38 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
+        else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness) isHit = false;
         if (!isHit && playState == playerStates.mindfulness)
         {
             transform.localScale -= new Vector3(0.01f, 0.01f);
-            sizeX -= 0.01f; sizeY -= 0.01f;
-            playerSpeed += 0.02f;
+            sizeX -= sizeDecRate; sizeY -= sizeDecRate;
+            playerSpeed += speedIncRate;
 
-            if (sizeX <= 1 && sizeY <= 1) transform.localScale = Vector3.one;
-            if (playerSpeed >= 9) playerSpeed = 9;
+            if (sizeX <= 1.1f && sizeY <= 1.1f)
+            {
+                transform.localScale = Vector3.one;
+                sizeX = 1; sizeY = 1;
+
+                playerSpeed = 9;
+            }
+         //   if (playerSpeed >= 9) playerSpeed = 9;
         }
+    }
+
+
+    public void IncreaseSize()
+    {
+        sizePoints++;
+    
+            sizePoints = 0;
+            transform.localScale += new Vector3(0.01f, 0.01f);
+            sizeX += 0.01f;
+            sizeY += 0.01f;
+            playerSpeed -= 0.1f;
+        
     }
     void FixedUpdate()
     {

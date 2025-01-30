@@ -5,30 +5,25 @@ using UnityEngine;
 public class techieScript : MonoBehaviour
 {
     public string color;
-    GameObject cursor;
-    GameObject player;
-    Color highlight;
-    AudioSource src;
-    ParticleSystem parSystem;
-    SpriteRenderer sr;
-    PolygonCollider2D poly2d;
+    public GameObject cursor;
+    playerScript player;
+    public Color highlight;
+    public AudioSource src;
 
-    particleManager parScript;
+    public SpriteRenderer sr;
+    public PolygonCollider2D poly2d;
 
-    Rigidbody2D rb;
+     particleManager parScript;
+
+    public Rigidbody2D rb;
 
    // [SerializeField] bool isHit;
     void Start()
     {
         Application.targetFrameRate = 60;
 
-        cursor = GameObject.Find("cursor");
-        player = GameObject.Find("player");
-        src = GetComponent<AudioSource>();
-        parSystem = GetComponent<ParticleSystem>();
-        sr = GetComponent<SpriteRenderer>();
-        poly2d = GetComponent<PolygonCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        
+
         parScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
     }
 
@@ -42,7 +37,9 @@ public class techieScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<playerScript>().isHit = true;
+
+            player = collision.gameObject.GetComponent<playerScript>();
+            player.isHit = true;
 
             if (color == "Red") Instantiate(parScript.particlePrefab[0], transform.position, Quaternion.identity);
             if (color == "Yellow") Instantiate(parScript.particlePrefab[1], transform.position, Quaternion.identity);
@@ -54,9 +51,9 @@ public class techieScript : MonoBehaviour
             poly2d.enabled = false;
             sr.enabled = false;
             Destroy(gameObject, 0.5f);
+            player.IncreaseSize();
 
-            player.transform.localScale += new Vector3(0.01f, 0.01f);
-            player.GetComponent<playerScript>().playerSpeed -= 0.2f ;
+      
         }
 
         //private void OnTriggerEnter2D(Collider2D collision)
