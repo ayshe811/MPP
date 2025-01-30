@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    float xInput, yInput;
+    float xInput, yInput, scale;
     public float playerSpeed, sizeX, sizeY,sizeDecRate,speedIncRate;
     int weightPoints,level;
     public bool isHit;
@@ -38,7 +38,7 @@ public class playerScript : MonoBehaviour
         if (playState == playerStates.mindfulness) isHit = false;
         if (!isHit && playState == playerStates.mindfulness)
         {
-            transform.localScale -= new Vector3(0.01f, 0.01f);
+            transform.localScale -= new Vector3(0.005f, 0.005f);
             sizeX -= sizeDecRate; sizeY -= sizeDecRate;
             playerSpeed += speedIncRate;
 
@@ -49,7 +49,6 @@ public class playerScript : MonoBehaviour
 
                 playerSpeed = 9;
             }
-         //   if (playerSpeed >= 9) playerSpeed = 9;
         }
     }
 
