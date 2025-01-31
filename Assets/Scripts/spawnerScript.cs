@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class spawnerScript : MonoBehaviour
@@ -8,10 +9,26 @@ public class spawnerScript : MonoBehaviour
     [SerializeField] float secondSpawm = 0.5f;
     [SerializeField] float minTras, maxTras;
 
+    public bool hasRun; 
+
+    playerScript playScript;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(techSpawn());
+        playScript = GameObject.Find("player").GetComponent<playerScript>();
+    }
+    private void Update()
+    {
+        if (playScript.playState == playerScript.playerStates.distracted && !hasRun)
+        {
+            StartCoroutine(techSpawn());
+            hasRun = true;
+        }
+        else if (playScript.playState == playerScript.playerStates.mindfulness && hasRun)
+        {
+            StopAllCoroutines();
+            hasRun = false;
+        }
     }
 
     IEnumerator techSpawn()
