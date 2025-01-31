@@ -24,7 +24,6 @@ public class playerScript : MonoBehaviour
         sizeDecRate = 0.005f;
         speedIncRate = 0.01f;
         if (playState == playerStates.distracted) playerSpeed = 9;
-        else playerSpeed = 4;
 
         sizeX = 1; sizeY = 1;
     }

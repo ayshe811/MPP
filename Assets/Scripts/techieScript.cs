@@ -13,7 +13,12 @@ public class techieScript : MonoBehaviour
     public SpriteRenderer sr;
     public PolygonCollider2D poly2d;
 
-     particleManager parScript;
+    particleManager parScript;
+    spawnerScript spaScript;
+    playerScript playScript;
+
+   // public Sprite[] replacements;
+   // public TextMesh[] numbers;
 
     public Rigidbody2D rb;
 
@@ -22,19 +27,27 @@ public class techieScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         parScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
+        spaScript = GameObject.Find("spawner1").GetComponent<spawnerScript>();
+        playScript = GameObject.Find("player").GetComponent<playerScript>();
     }
-
-
     void Update()
     {
-        transform.Rotate(Vector3.back * .7f);
+       transform.Rotate(Vector3.back * .7f);
+       if (!spaScript.hasRun) Destroy(gameObject);
+       if (playScript.playState == playerScript.playerStates.mindfulness) // the code below was a complete failure
+       {
+            //if (color == "Red") Instantiate(parScript.numbers[0], transform.position, Quaternion.identity);
+            //if (color == "Yellow") Instantiate(parScript.numbers[1], transform.position, Quaternion.identity);
+            //if (color == "Pink") Instantiate(parScript.numbers[2], transform.position, Quaternion.identity);
+            //if (color == "Purple") Instantiate(parScript.numbers[3], transform.position, Quaternion.identity);
+            //if (color == "Green") Instantiate(parScript.numbers[4], transform.position, Quaternion.identity);
+       }       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player") // add selective collisions!!  
         {
-
             player = collision.gameObject.GetComponent<playerScript>();
             player.isHit = true;
 

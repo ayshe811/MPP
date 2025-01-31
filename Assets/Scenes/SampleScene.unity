@@ -883,6 +883,12 @@ MonoBehaviour:
   - {fileID: 2407110850689349698, guid: 2479edfe058080141b508a441951ed54, type: 3}
   - {fileID: 5378995962157024180, guid: 26da16b2aba32ff48b685e4509992c92, type: 3}
   - {fileID: 9065463896814524969, guid: 4bf0bcb8079eb2244830b60819088e2e, type: 3}
+  numbers:
+  - {fileID: 2687098238451864739, guid: 9e6384b7a17a32940a5a0506df0827f3, type: 3}
+  - {fileID: 2778305557189062157, guid: 3c3760b85beac1044b2389e2e7c78ecc, type: 3}
+  - {fileID: 1727221843037595853, guid: 9824769036ece86438e0e4683bb42b8c, type: 3}
+  - {fileID: 1988115984525005821, guid: db1accf0d00822a46bda4ef0c4597026, type: 3}
+  - {fileID: 738629338177029878, guid: 2ef14e7d24095314c91b6de2cff612dc, type: 3}
 --- !u!4 &1629496123
 Transform:
   m_ObjectHideFlags: 0
@@ -951,6 +957,7 @@ MonoBehaviour:
   secondSpawm: 0.5
   minTras: -5
   maxTras: 5
+  hasRun: 0
 --- !u!1 &1868554422
 GameObject:
   m_ObjectHideFlags: 0

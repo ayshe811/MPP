@@ -251,6 +251,7 @@ MonoBehaviour:
   src: {fileID: 6135860789760032098}
   sr: {fileID: 4392900700250624047}
   poly2d: {fileID: 8384487893633037549}
+  sqaure: {fileID: 7482667652216324306, guid: 7af1f4e97956c0f499bf9ff4005fe0ac, type: 3}
   rb: {fileID: 3629862775982833360}
 --- !u!82 &6135860789760032098
 AudioSource:

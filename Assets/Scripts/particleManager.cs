@@ -5,7 +5,7 @@ using UnityEngine;
 public class particleManager : MonoBehaviour
 {
 
-    public GameObject[] particlePrefab;
+    public GameObject[] particlePrefab, numbers;
     // Start is called before the first frame update
     void Start()
     {

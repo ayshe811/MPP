@@ -15,6 +15,7 @@ public class spawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       // StartCoroutine(techSpawn());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
     }
     private void Update()
