@@ -57,12 +57,13 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collisionManager.queue.Count > 0)
+        if (collisionManager.queue.Count > 0)
         {
             GameObject expectedObject = collisionManager.queue.Peek();
+            Debug.Log(expectedObject);
             if (collision.gameObject == expectedObject)
-            {
-                Debug.Log("Correct Collision!");
+            { 
+                Debug.Log("Correct Collision!"); // WHY IS IT NOT REGISTRING?
 
                 collisionManager.queue.Dequeue();
                 collisionManager.currentIndex++;
