@@ -36,11 +36,7 @@ public class techieScript : MonoBehaviour
        if (!spaScript.hasRun) Destroy(gameObject);
        if (playScript.playState == playerScript.playerStates.mindfulness) // the code below was a complete failure
        {
-            //if (color == "Red") Instantiate(parScript.numbers[0], transform.position, Quaternion.identity);
-            //if (color == "Yellow") Instantiate(parScript.numbers[1], transform.position, Quaternion.identity);
-            //if (color == "Pink") Instantiate(parScript.numbers[2], transform.position, Quaternion.identity);
-            //if (color == "Purple") Instantiate(parScript.numbers[3], transform.position, Quaternion.identity);
-            //if (color == "Green") Instantiate(parScript.numbers[4], transform.position, Quaternion.identity);
+
        }       
     }
 
@@ -61,7 +57,7 @@ public class techieScript : MonoBehaviour
             poly2d.enabled = false;
             sr.enabled = false;
             Destroy(gameObject, 0.5f);
-            player.IncreaseSize();      
+            player.IncreaseSize();
         }
 
         //private void OnTriggerEnter2D(Collider2D collision)
@@ -79,9 +75,4 @@ public class techieScript : MonoBehaviour
         //{
         //    if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.13f, 0.13f);
     }
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player") isHit = true;
-    //}
 }

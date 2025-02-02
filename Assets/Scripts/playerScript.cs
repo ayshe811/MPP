@@ -48,6 +48,8 @@ public class playerScript : MonoBehaviour
                 playerSpeed = 9;
             }
         }
+        //player is in a state of mindfulness for a short period of time, prompting the player to focus before heading back to a state of distraction
+        if (transform.localScale == Vector3.one && playerSpeed == 9) playState = playerStates.distracted;
     }
 
 
