@@ -10,6 +10,8 @@ public class playerScript : MonoBehaviour
     int weightPoints,level;
     public bool isHit;
     gameManager gameManager;
+    collisionManager collisionManager;
+
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
@@ -20,6 +22,7 @@ public class playerScript : MonoBehaviour
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
+        collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         playState = playerStates.distracted;
         sizeDecRate = 0.005f;
         speedIncRate = 0.01f;
@@ -50,6 +53,22 @@ public class playerScript : MonoBehaviour
         }
         //player is in a state of mindfulness for a short period of time, prompting the player to focus before heading back to a state of distraction
         if (transform.localScale == Vector3.one && playerSpeed == 9) playState = playerStates.distracted;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collisionManager.queue.Count > 0)
+        {
+            GameObject expectedObject = collisionManager.queue.Peek();
+            if (collision.gameObject == expectedObject)
+            {
+                Debug.Log("Correct Collision!");
+
+                collisionManager.queue.Dequeue();
+                collisionManager.currentIndex++;
+            }
+            else Debug.LogWarning("Incorrect Collision!");
+        }
     }
 
 

@@ -17,12 +17,12 @@ public class techieScript : MonoBehaviour
     spawnerScript spaScript;
     playerScript playScript;
 
-   // public Sprite[] replacements;
-   // public TextMesh[] numbers;
+    // public Sprite[] replacements;
+    // public TextMesh[] numbers;
 
     public Rigidbody2D rb;
 
-   // [SerializeField] bool isHit;
+    // [SerializeField] bool isHit;
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -32,12 +32,12 @@ public class techieScript : MonoBehaviour
     }
     void Update()
     {
-       transform.Rotate(Vector3.back * .7f);
-       if (!spaScript.hasRun) Destroy(gameObject);
-       if (playScript.playState == playerScript.playerStates.mindfulness) // the code below was a complete failure
-       {
+        transform.Rotate(Vector3.back * .7f);
+        if (!spaScript.hasRun) Destroy(gameObject);
+        if (playScript.playState == playerScript.playerStates.mindfulness) // the code below was a complete failure
+        {
 
-       }       
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,3 +76,4 @@ public class techieScript : MonoBehaviour
         //    if (collision.gameObject.tag == "mouse") transform.localScale = new Vector3(0.13f, 0.13f);
     }
 }
+

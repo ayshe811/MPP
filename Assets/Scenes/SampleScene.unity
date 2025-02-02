@@ -883,7 +883,7 @@ MonoBehaviour:
   - {fileID: 421913154961755303, guid: bcb45c85ec37fc647b916e9f9b2e67e4, type: 3}
   - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
   - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
-  hasShuffled: 0
+  currentIndex: 0
 --- !u!4 &1411003562
 Transform:
   m_ObjectHideFlags: 0
