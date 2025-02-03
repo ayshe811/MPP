@@ -30,8 +30,10 @@ public class collisionManager : MonoBehaviour
             StartCoroutine(shuffle());
             hasShuffled = true;
         }
-        else if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
+        if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
         {
+            Debug.Log(playScript.expectedObject);
+
             StopCoroutine(shuffle());
             hasShuffled = false;
         }

@@ -11,6 +11,7 @@ public class playerScript : MonoBehaviour
     public bool isHit;
     gameManager gameManager;
     collisionManager collisionManager;
+    public GameObject expectedObject;
 
 
     public enum playerStates { mindfulness, distracted }
@@ -34,6 +35,7 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        expectedObject = collisionManager.queue.Peek();
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness) isHit = false;
@@ -59,8 +61,6 @@ public class playerScript : MonoBehaviour
     {
         if (collisionManager.queue.Count > 0)
         {
-            GameObject expectedObject = collisionManager.queue.Peek();
-            Debug.Log(expectedObject);
             if (collision.gameObject == expectedObject)
             { 
                 Debug.Log("Correct Collision!"); // WHY IS IT NOT REGISTRING?
