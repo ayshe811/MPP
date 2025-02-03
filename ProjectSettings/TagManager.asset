@@ -10,6 +10,7 @@ TagManager:
   - Blue
   - Green
   - Pink
+  - Gem
   layers:
   - Default
   - TransparentFX

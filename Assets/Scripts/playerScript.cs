@@ -61,7 +61,10 @@ public class playerScript : MonoBehaviour
     {
         if (collisionManager.queue.Count > 0)
         {
-            if (collision.gameObject == expectedObject)
+            Debug.Log($"Collision Object ID: {collision.gameObject.GetInstanceID()}");
+            //Debug.Log($"Expected Object ID: {expectedObject.GetInstanceID()}");
+
+            if (collision.gameObject.GetInstanceID() == expectedObject.GetInstanceID())
             { 
                 Debug.Log("Correct Collision!"); // WHY IS IT NOT REGISTRING?
 

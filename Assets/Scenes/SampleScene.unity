@@ -1316,6 +1316,7 @@ MonoBehaviour:
   sizeDecRate: 0
   speedIncRate: 0
   isHit: 0
+  expectedObject: {fileID: 0}
   playState: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
