@@ -42,7 +42,7 @@ public class techieScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player") // add selective collisions!!  
+        if (collision.gameObject.tag == "Player") 
         {
             player = collision.gameObject.GetComponent<playerScript>();
             player.isHit = true;

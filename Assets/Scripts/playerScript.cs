@@ -11,8 +11,6 @@ public class playerScript : MonoBehaviour
     public bool isHit;
     gameManager gameManager;
     collisionManager collisionManager;
-    public GameObject expectedObject;
-
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
@@ -35,7 +33,6 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        expectedObject = collisionManager.queue.Peek();
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness) isHit = false;
@@ -44,6 +41,7 @@ public class playerScript : MonoBehaviour
             transform.localScale -= new Vector3(0.005f, 0.005f);
             sizeX -= sizeDecRate; sizeY -= sizeDecRate;
             playerSpeed += speedIncRate;
+            collisionManager.currentIndex = 0;
 
             if (sizeX <= 1.1f && sizeY <= 1.1f)
             {
@@ -61,12 +59,10 @@ public class playerScript : MonoBehaviour
     {
         if (collisionManager.queue.Count > 0)
         {
-            Debug.Log($"Collision Object ID: {collision.gameObject.GetInstanceID()}");
-            //Debug.Log($"Expected Object ID: {expectedObject.GetInstanceID()}");
-
-            if (collision.gameObject.GetInstanceID() == expectedObject.GetInstanceID())
+            if (collision.gameObject.GetComponent<techieScript>().color == 
+                collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
             { 
-                Debug.Log("Correct Collision!"); // WHY IS IT NOT REGISTRING?
+                Debug.Log("Correct Collision!");
 
                 collisionManager.queue.Dequeue();
                 collisionManager.currentIndex++;

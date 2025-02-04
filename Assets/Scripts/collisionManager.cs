@@ -16,10 +16,6 @@ public class collisionManager : MonoBehaviour
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         hasShuffled = false;
-      //  StartCoroutine(shuffle());
-
-        // shufflee();
-        //  queue = new Queue<GameObject>(objectsInSequence);
     }
 
     private void Update()
@@ -32,8 +28,6 @@ public class collisionManager : MonoBehaviour
         }
         if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
         {
-            Debug.Log(playScript.expectedObject);
-
             StopCoroutine(shuffle());
             hasShuffled = false;
         }
