@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    float xInput, yInput, scale;
+    float xInput, yInput, scale, timer;
     public float playerSpeed, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints,level;
     public bool isHit;
     public GameObject canvas;
     gameManager gameManager;
     collisionManager collisionManager;
+    Color color;
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
@@ -23,6 +25,7 @@ public class playerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
+        color = GetComponent<SpriteRenderer>().color;
         playState = playerStates.distracted;
         sizeDecRate = 0.005f;
         speedIncRate = 0.01f;
@@ -38,10 +41,18 @@ public class playerScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness)
         {
+           // color.a = 0.25f;
             isHit = false;
             canvas.SetActive(true);
+
+            timer += Time.deltaTime;
+            if (timer >= 3)
+            {
+                playState = playerStates.distracted;
+                timer = 0;
+            }
         }
-        else canvas.SetActive(false);
+        else { canvas.SetActive(false); /*color.a = 1;*/ }
         if (!isHit && playState == playerStates.mindfulness)
         {
             transform.localScale -= new Vector3(0.005f, 0.005f);
@@ -57,8 +68,6 @@ public class playerScript : MonoBehaviour
                 playerSpeed = 9;
             }
         }
-        //player is in a state of mindfulness for a short period of time, prompting the player to focus before heading back to a state of distraction
-        if (transform.localScale == Vector3.one && playerSpeed == 9) playState = playerStates.distracted;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

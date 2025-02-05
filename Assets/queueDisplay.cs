@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class QueueDisplay : MonoBehaviour
 {
-    public Transform queueDisplayPanel;  // UI Panel where the prefabs will be displayed
-    public collisionManager collisionManager; // Reference to the collision manager
+    public Transform queueDisplayPanel;
+    public collisionManager collisionManager; 
     public playerScript playerScript;
-    public Vector3 prefabScale = new Vector3(7, 7, 7); // Scale of the displayed prefabs
-    public float spacing = 100; // Spacing between prefabs in the panel
+    public float spacing = 50; 
 
     public void UpdateQueueDisplay()
     {
@@ -19,8 +18,8 @@ public class QueueDisplay : MonoBehaviour
             RectTransform rt = displayedPrefab.GetComponent<RectTransform>();
             if (rt != null)
             {
-                rt.anchoredPosition = new Vector2(index * spacing, 0); // Position in the horizontal layout
-                rt.localScale = /*prefabScale*/ /* Scale to fit the UI*/ new Vector3(5, 5, 5);
+                rt.anchoredPosition = new Vector2(index * spacing, 0); 
+                rt.localScale = new Vector3(5, 5, 5);
             }
             else
             {

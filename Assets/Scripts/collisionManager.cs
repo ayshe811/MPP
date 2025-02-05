@@ -45,15 +45,4 @@ public class collisionManager : MonoBehaviour
             yield return temp;
         }
     }
-
-    //public void shufflee()
-    //{
-    //    for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
-    //    {
-    //        int randomIndex = Random.Range(i, objectsInSequence.Count);
-    //        GameObject temp = objectsInSequence[i];
-    //        objectsInSequence[i] = objectsInSequence[randomIndex];
-    //        objectsInSequence[randomIndex] = temp;
-    //    }
-    //}
 }
