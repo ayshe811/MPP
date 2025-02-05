@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,10 +15,11 @@ public class playerScript : MonoBehaviour
     gameManager gameManager;
     collisionManager collisionManager;
     Color color;
+    public TMP_Text scoreText;
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
-    int sizePoints; 
+    int sizePoints, score; 
     // Start is called before the first frame update
     void Start()
     {       
@@ -37,6 +39,7 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        scoreText.text = "Gems Collected: " + score;
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness)
@@ -53,20 +56,21 @@ public class playerScript : MonoBehaviour
             }
         }
         else { canvas.SetActive(false); /*color.a = 1;*/ }
-        if (!isHit && playState == playerStates.mindfulness)
+        if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
+    }
+
+    public void DecreaseSize()
+    {
+        transform.localScale -= new Vector3(0.005f, 0.005f);
+        sizeX -= sizeDecRate; sizeY -= sizeDecRate;
+        playerSpeed += speedIncRate;
+        collisionManager.currentIndex = 0;
+        if (sizeX <= 1.1f && sizeY <= 1.1f)
         {
-            transform.localScale -= new Vector3(0.005f, 0.005f);
-            sizeX -= sizeDecRate; sizeY -= sizeDecRate;
-            playerSpeed += speedIncRate;
-            collisionManager.currentIndex = 0;
+            transform.localScale = Vector3.one;
+            sizeX = 1; sizeY = 1;
 
-            if (sizeX <= 1.1f && sizeY <= 1.1f)
-            {
-                transform.localScale = Vector3.one;
-                sizeX = 1; sizeY = 1;
-
-                playerSpeed = 9;
-            }
+            playerSpeed = 9;
         }
     }
 
@@ -74,15 +78,20 @@ public class playerScript : MonoBehaviour
     {
         if (collisionManager.queue.Count > 0)
         {
-            if (collision.gameObject.GetComponent<techieScript>().color == 
+            score++;
+            if (collision.gameObject.GetComponent<techieScript>().color ==
                 collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
-            { 
+            {
                 Debug.Log("Correct Collision!");
 
                 collisionManager.queue.Dequeue();
                 collisionManager.currentIndex++;
             }
-            else Debug.LogWarning("Incorrect Collision!");
+            else
+            {
+                Debug.LogWarning("Incorrect Collision!");
+                collisionManager.currentIndex = 0;
+            }
         }
     }
 
