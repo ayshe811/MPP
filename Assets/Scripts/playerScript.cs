@@ -9,6 +9,7 @@ public class playerScript : MonoBehaviour
     public float playerSpeed, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints,level;
     public bool isHit;
+    public GameObject canvas;
     gameManager gameManager;
     collisionManager collisionManager;
 
@@ -35,7 +36,12 @@ public class playerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
-        if (playState == playerStates.mindfulness) isHit = false;
+        if (playState == playerStates.mindfulness)
+        {
+            isHit = false;
+            canvas.SetActive(true);
+        }
+        else canvas.SetActive(false);
         if (!isHit && playState == playerStates.mindfulness)
         {
             transform.localScale -= new Vector3(0.005f, 0.005f);
