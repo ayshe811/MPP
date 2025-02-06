@@ -33,6 +33,12 @@ public class collisionManager : MonoBehaviour
             StopCoroutine(shuffle());
             hasShuffled = false;
         }
+
+        if(currentIndex >= 3)
+        {
+            currentIndex = 0;
+            playScript.playState = playerScript.playerStates.mindfulness;
+        }
     }
 
     IEnumerator shuffle()
