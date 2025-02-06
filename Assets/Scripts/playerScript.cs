@@ -76,21 +76,24 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collisionManager.queue.Count > 0)
+        if (collision.gameObject.CompareTag("Gem"))
         {
-            score++;
-            if (collision.gameObject.GetComponent<techieScript>().color ==
-                collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
+            if (collisionManager.queue.Count > 0)
             {
-                Debug.Log("Correct Collision!");
+                score++;
+                if (collision.gameObject.GetComponent<techieScript>().color ==
+                    collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
+                {
+                    Debug.Log("Correct Collision!");
 
-                collisionManager.queue.Dequeue();
-                collisionManager.currentIndex++;
-            }
-            else
-            {
-                Debug.LogWarning("Incorrect Collision!");
-                collisionManager.currentIndex = 0;
+                    collisionManager.queue.Dequeue();
+                    collisionManager.currentIndex++;
+                }
+                else
+                {
+                    Debug.LogWarning("Incorrect Collision!");
+                    collisionManager.currentIndex = 0;
+                }
             }
         }
     }
