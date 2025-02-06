@@ -29,8 +29,6 @@ public class playerScript : MonoBehaviour
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         color = GetComponent<SpriteRenderer>().color;
         playState = playerStates.distracted;
-        sizeDecRate = 0.005f;
-        speedIncRate = 0.01f;
         if (playState == playerStates.distracted) playerSpeed = 9;
 
         sizeX = 1; sizeY = 1;

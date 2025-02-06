@@ -37,13 +37,13 @@ public class spawnerScript : MonoBehaviour
             hasRun = false;
         }
 
-        if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 15)
+        if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 10)
         {
-            currentTechLevel += 1;
+            currentTechLevel ++;
             lastTimeTechLevelIncrease = gameManager.gameTimer;
         }
 
-        if(currentTechLevel == 3)
+        if (currentTechLevel == 3)
         {
             currentTechLevel = 3;
         }
