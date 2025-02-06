@@ -19,7 +19,8 @@ public class playerScript : MonoBehaviour
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
-    int sizePoints, score; 
+    int sizePoints, score;
+    public bool tabShowed;
     // Start is called before the first frame update
     void Start()
     {       
@@ -42,10 +43,10 @@ public class playerScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness)
         {
-           // color.a = 0.25f;
             isHit = false;
             canvas.SetActive(true);
-
+            gameManager.tabTimer = 0;
+            tabShowed = true;
             timer += Time.deltaTime;
             if (timer >= 3)
             {

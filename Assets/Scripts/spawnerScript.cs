@@ -6,7 +6,7 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
-    [SerializeField] float secondSpawm = 0.5f;
+    [SerializeField] float secondSpawm = 1f;
     [SerializeField] float minTras, maxTras;
 
     public gameManager gameManager;
@@ -22,7 +22,6 @@ public class spawnerScript : MonoBehaviour
     {
        // StartCoroutine(techSpawn());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
-        secondSpawm = 1f;
     }
     private void Update()
     {
@@ -37,16 +36,13 @@ public class spawnerScript : MonoBehaviour
             hasRun = false;
         }
 
-        if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 10)
+        if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 7)
         {
             currentTechLevel ++;
             lastTimeTechLevelIncrease = gameManager.gameTimer;
         }
 
-        if (currentTechLevel == 3)
-        {
-            currentTechLevel = 3;
-        }
+        if (currentTechLevel > 3) currentTechLevel = 3;
     }
 
     IEnumerator techSpawn()
