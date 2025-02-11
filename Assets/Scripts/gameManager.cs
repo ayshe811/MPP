@@ -23,13 +23,13 @@ public class gameManager : MonoBehaviour
     {
         gameTimer += Time.deltaTime; // game timer
 
-        tabTimer += Time.deltaTime;
-        if (tabTimer > 15 && !playScript.tabShowed) tab.SetActive(true);
-        else if (playScript.tabShowed)
-        {
-            tabTimer = 0;
-            tab.SetActive(false);
-        }
+        //tabTimer += Time.deltaTime;
+        //if (tabTimer > 15 && !playScript.tabShowed) tab.SetActive(true);
+        //else if (playScript.tabShowed)
+        //{
+        //    tabTimer = 0;
+        //    tab.SetActive(false);
+        //}
 
     }
 }
