@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QueueDisplay : MonoBehaviour
 {
     public Transform queueDisplayPanel;
     public collisionManager collisionManager; 
     public playerScript playerScript;
-    public float spacing = 50; 
+    public float spacing = 50;
+    public Sprite sprite1, sprite2, sprite3;
 
     public void UpdateQueueDisplay()
     {
@@ -46,7 +48,7 @@ public class QueueDisplay : MonoBehaviour
     }
     private void Update()
     {
-        if (playerScript.playState == playerScript.playerStates.mindfulness) UpdateQueueDisplay();
+       /* if (playerScript.playState == playerScript.playerStates.mindfulness)*/ UpdateQueueDisplay();
     }
 
     public void DequeueAndUpdate()

@@ -38,13 +38,13 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        scoreText.text = "Gems Collected: " + score;
+        scoreText.text = "" + score;
         if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
         else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
         if (playState == playerStates.mindfulness)
         {
             isHit = false;
-            canvas.SetActive(true);
+         //   canvas.SetActive(true);
             gameManager.tabTimer = 0;
             tabShowed = true;
             timer += Time.deltaTime;
@@ -54,7 +54,7 @@ public class playerScript : MonoBehaviour
                 timer = 0;
             }
         }
-        else { canvas.SetActive(false); /*color.a = 1;*/ }
+    //    else { canvas.SetActive(false); /*color.a = 1;*/ }
         if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
 
         // is everything good?
