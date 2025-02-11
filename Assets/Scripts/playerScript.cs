@@ -56,6 +56,8 @@ public class playerScript : MonoBehaviour
         }
         else { canvas.SetActive(false); /*color.a = 1;*/ }
         if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
+
+        // is everything good?
     }
 
     public void DecreaseSize()
