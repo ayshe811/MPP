@@ -21,7 +21,7 @@ public class QueueDisplay : MonoBehaviour
             if (rt != null)
             {
                 rt.anchoredPosition = new Vector2(index * spacing, 0); 
-                rt.localScale = new Vector3(5, 5, 5);
+                rt.localScale = new Vector3(9, 9);
             }
             else
             {
