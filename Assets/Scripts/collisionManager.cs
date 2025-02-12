@@ -10,7 +10,6 @@ public class collisionManager : MonoBehaviour
     public Queue<GameObject> queue;
     public int currentIndex;
     bool hasShuffled;
-
     playerScript playScript;
     // private int currentIndex = 0;
 
@@ -20,7 +19,6 @@ public class collisionManager : MonoBehaviour
         hasShuffled = false;
 
         StartCoroutine(shuffle());
-
     }
 
     private void Update()
@@ -41,19 +39,33 @@ public class collisionManager : MonoBehaviour
         {
             currentIndex = 0;
             StartCoroutine(shuffle());
-           // playScript.playState = playerScript.playerStates.mindfulness;
+            playScript.correctCollision++;
         }
     }
 
     IEnumerator shuffle()
     {
-        for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
+        List<GameObject> previousOrder = new List<GameObject>(objectsInSequence);
+
+        do
         {
-            int randomIndex = Random.Range(i, objectsInSequence.Count);
-            GameObject temp = objectsInSequence[i];
-            objectsInSequence[i] = objectsInSequence[randomIndex];
-            objectsInSequence[randomIndex] = temp;
-            yield return temp;
+            for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
+            {
+                int randomIndex = Random.Range(i, objectsInSequence.Count);
+                GameObject temp = objectsInSequence[i];
+                objectsInSequence[i] = objectsInSequence[randomIndex];
+                objectsInSequence[randomIndex] = temp;
+                yield return temp;
+            }
         }
+        while (IsSameOrder(objectsInSequence, previousOrder)) ; 
+    }
+    private bool IsSameOrder(List<GameObject> list1, List<GameObject> list2)
+    {
+        for (int i = 0; i < list1.Count; i++)
+        {
+            if (list1[i] != list2[i]) return false;
+        }
+        return true;
     }
 }

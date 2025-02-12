@@ -16,6 +16,8 @@ public class playerScript : MonoBehaviour
     collisionManager collisionManager;
     Color color;
     public TMP_Text scoreText;
+    public int correctCollision = 0;
+    [SerializeField] bool metCollisionTarget = false;
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
