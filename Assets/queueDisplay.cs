@@ -23,11 +23,6 @@ public class QueueDisplay : MonoBehaviour
                 rt.anchoredPosition = new Vector2(index * spacing, 0); 
                 rt.localScale = new Vector3(9, 9);
             }
-            else
-            {
-                displayedPrefab.transform.localPosition = new Vector3(index * spacing, 0, 0);
-                displayedPrefab.transform.localScale = new Vector3(5, 5, 5);
-            }
             DisableGameplayScripts(displayedPrefab);
             index++;
         }

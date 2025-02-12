@@ -24,16 +24,6 @@ public class collisionManager : MonoBehaviour
     private void Update()
     {
         queue = new Queue<GameObject>(objectsInSequence);
-        //if (playScript.playState == playerScript.playerStates.mindfulness && !hasShuffled)
-        //{
-        //    StartCoroutine(shuffle());
-        //    hasShuffled = true;
-        //}
-        //if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
-        //{
-        //    StopCoroutine(shuffle());
-        //    hasShuffled = false;
-        //}
 
         if (currentIndex >= 3)
         {
@@ -47,15 +37,15 @@ public class collisionManager : MonoBehaviour
     {
         List<GameObject> previousOrder = new List<GameObject>(objectsInSequence);
 
-        do
+        do // do/while loop exencutes a block of code once before checking its condition; will then continue to execute as long as the condition is met.
         {
             for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
             {
                 int randomIndex = Random.Range(i, objectsInSequence.Count);
                 GameObject temp = objectsInSequence[i];
-                objectsInSequence[i] = objectsInSequence[randomIndex];
-                objectsInSequence[randomIndex] = temp;
-                yield return temp;
+                objectsInSequence[i] = objectsInSequence[randomIndex]; // randomises the count 
+                objectsInSequence[randomIndex] = temp; // returns it to temp
+                yield return temp; // temp is returned to the function
             }
         }
         while (IsSameOrder(objectsInSequence, previousOrder)) ; 
