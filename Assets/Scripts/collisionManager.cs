@@ -18,26 +18,30 @@ public class collisionManager : MonoBehaviour
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         hasShuffled = false;
+
+        StartCoroutine(shuffle());
+
     }
 
     private void Update()
     {
         queue = new Queue<GameObject>(objectsInSequence);
-        if (playScript.playState == playerScript.playerStates.mindfulness && !hasShuffled)
-        {
-            StartCoroutine(shuffle());
-            hasShuffled = true;
-        }
-        if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
-        {
-            StopCoroutine(shuffle());
-            hasShuffled = false;
-        }
+        //if (playScript.playState == playerScript.playerStates.mindfulness && !hasShuffled)
+        //{
+        //    StartCoroutine(shuffle());
+        //    hasShuffled = true;
+        //}
+        //if (playScript.playState == playerScript.playerStates.distracted && hasShuffled)
+        //{
+        //    StopCoroutine(shuffle());
+        //    hasShuffled = false;
+        //}
 
-        if(currentIndex >= 3)
+        if (currentIndex >= 3)
         {
             currentIndex = 0;
-            playScript.playState = playerScript.playerStates.mindfulness;
+            StartCoroutine(shuffle());
+           // playScript.playState = playerScript.playerStates.mindfulness;
         }
     }
 

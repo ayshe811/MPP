@@ -30,11 +30,7 @@ public class spawnerScript : MonoBehaviour
             StartCoroutine(techSpawn());
             hasRun = true;
         }
-        else if (playScript.playState == playerScript.playerStates.mindfulness && hasRun)
-        {
-            StopAllCoroutines();
-            hasRun = false;
-        }
+
 
         if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 7)
         {
