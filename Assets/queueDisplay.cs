@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class QueueDisplay : MonoBehaviour
 {
     public Transform queueDisplayPanel;
     public collisionManager collisionManager; 
     public playerScript playerScript;
     public float spacing = 50;
-    public Sprite sprite1, sprite2, sprite3;
+    public Color outlineColor;
+    //[SerializeField] Vector2 outlineEffectDistance = new Vector2(20, -20f); // Thickness of outline
+
 
     public void UpdateQueueDisplay()
     {
@@ -22,12 +23,28 @@ public class QueueDisplay : MonoBehaviour
             {
                 rt.anchoredPosition = new Vector2(index * spacing, 0); 
                 rt.localScale = new Vector3(9, 9);
+
+                if (index == 0)
+                {
+                    Debug.Log("Animating first object: " + displayedPrefab.name);
+                    AnimateFirstObject(displayedPrefab);
+                }
+                
             }
             DisableGameplayScripts(displayedPrefab);
             index++;
         }
     }
 
+    private void AnimateFirstObject(GameObject obj)
+    {
+        float scaleFactor = 1.2f; // How much bigger it gets
+        float beatSpeed = 0.5f; // Speed of each beat
+
+        LeanTween.scale(obj, obj.transform.localScale * scaleFactor, beatSpeed)
+            .setEase(LeanTweenType.easeInOutSine) // Smooth in and out
+            .setLoopPingPong(); // Makes it go back and forth (up & down)
+    }
     private void DisableGameplayScripts(GameObject obj)
     {
         Collider2D collider = obj.GetComponent<Collider2D>();
@@ -36,14 +53,9 @@ public class QueueDisplay : MonoBehaviour
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
     }
-
-    void Start()
-    {
-        UpdateQueueDisplay();
-    }
     private void Update()
     {
-       /* if (playerScript.playState == playerScript.playerStates.mindfulness)*/ UpdateQueueDisplay();
+       /* if (playerScript.playState == playerScript.playerStates.mindfulness)*/ UpdateQueueDisplay(); 
     }
 
     public void DequeueAndUpdate()
