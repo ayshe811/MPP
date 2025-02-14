@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +9,23 @@ public class QueueDisplay : MonoBehaviour
     public playerScript playerScript;
     public float spacing = 50;
     public Color outlineColor;
-    //[SerializeField] Vector2 outlineEffectDistance = new Vector2(20, -20f); // Thickness of outline
 
+    private void AnimateFirstObject(GameObject obj)
+    {
+        RectTransform rt = obj.GetComponent<RectTransform>();
+
+        float sizeUp = 1.2f;
+        float beatSpeed = 0.5f;
+
+        if (rt != null)
+        {
+            Debug.Log("UI Scaling: " + obj.name);
+            LeanTween.scale(rt, rt.localScale * sizeUp, beatSpeed)
+                .setEase(LeanTweenType.easeInOutSine)
+                .setLoopPingPong();
+        }
+        else Debug.LogError("Missing RectTransform on " + obj.name);
+    }
 
     public void UpdateQueueDisplay()
     {
@@ -27,23 +43,17 @@ public class QueueDisplay : MonoBehaviour
                 if (index == 0)
                 {
                     Debug.Log("Animating first object: " + displayedPrefab.name);
-                    AnimateFirstObject(displayedPrefab);
-                }
-                
+                    AnimateFirstObject(displayedPrefab);                
+                }                
             }
             DisableGameplayScripts(displayedPrefab);
             index++;
         }
     }
-
-    private void AnimateFirstObject(GameObject obj)
+    private IEnumerator SpawnAndAnimateObjectsCoroutine()
     {
-        float scaleFactor = 1.2f; // How much bigger it gets
-        float beatSpeed = 0.5f; // Speed of each beat
-
-        LeanTween.scale(obj, obj.transform.localScale * scaleFactor, beatSpeed)
-            .setEase(LeanTweenType.easeInOutSine) // Smooth in and out
-            .setLoopPingPong(); // Makes it go back and forth (up & down)
+        UpdateQueueDisplay(); // Calls your existing function
+        yield return null; // Prevents Unity from complaining
     }
     private void DisableGameplayScripts(GameObject obj)
     {
@@ -52,10 +62,13 @@ public class QueueDisplay : MonoBehaviour
 
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
+
+        Animation anim = obj.GetComponent<Animation>();
+        if (anim != null) anim.enabled = false;
     }
     private void Update()
     {
-       /* if (playerScript.playState == playerScript.playerStates.mindfulness)*/ UpdateQueueDisplay(); 
+        StartCoroutine(SpawnAndAnimateObjectsCoroutine());
     }
 
     public void DequeueAndUpdate()
@@ -63,7 +76,7 @@ public class QueueDisplay : MonoBehaviour
         if (collisionManager.queue.Count > 0)
         {
             collisionManager.queue.Dequeue(); 
-            UpdateQueueDisplay(); 
+            StartCoroutine(SpawnAndAnimateObjectsCoroutine());
         }
     }
 }
