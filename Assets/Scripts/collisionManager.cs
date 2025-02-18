@@ -48,7 +48,6 @@ public class collisionManager : MonoBehaviour
                 GameObject temp = objectsInSequence[i];
                 objectsInSequence[i] = objectsInSequence[randomIndex]; // randomises the count 
                 objectsInSequence[randomIndex] = temp; // returns it to temp
-                //yield return temp; // temp is returned to the function
             }
         }
         while (IsSameOrder(objectsInSequence, previousOrder)) ;
@@ -61,5 +60,12 @@ public class collisionManager : MonoBehaviour
             if (list1[i] != list2[i]) return false;
         }
         return true;
+    }
+
+    public void OnCorrectCollision()
+    {
+        queue.Dequeue();
+        currentIndex++;
+        queueScript.AnimateGemAtIndex(currentIndex);
     }
 }

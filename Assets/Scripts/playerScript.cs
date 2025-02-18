@@ -88,9 +88,7 @@ public class playerScript : MonoBehaviour
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
                 {
                     Debug.Log("Correct Collision!");
-
-                    collisionManager.queue.Dequeue();
-                    collisionManager.currentIndex++;
+                    collisionManager.OnCorrectCollision();
                 }
                 else
                 {

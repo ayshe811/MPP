@@ -10,17 +10,16 @@ public class QueueDisplay : MonoBehaviour
     public float spacing = 50;
     public Color outlineColor;
 
-    private void AnimateFirstObject(GameObject obj)
+    public void AnimateObject(GameObject obj)
     {
         RectTransform rt = obj.GetComponent<RectTransform>();
 
-        float sizeUp = 1.2f;
+        float sizeUp = 1.7f;
         float beatSpeed = 0.5f;
 
         if (rt != null)
         {
-            Debug.Log("UI Scaling: " + obj.name);
-            LeanTween.scale(rt, rt.localScale * sizeUp, beatSpeed)
+           LeanTween.scale(rt, rt.localScale * sizeUp, beatSpeed)
                 .setEase(LeanTweenType.easeInOutSine)
                 .setLoopPingPong();
         }
@@ -39,16 +38,11 @@ public class QueueDisplay : MonoBehaviour
             {
                 rt.anchoredPosition = new Vector2(index * spacing, 0); 
                 rt.localScale = new Vector3(9, 9);
-
-                if (index == 0)
-                {
-                    Debug.Log("Animating first object: " + displayedPrefab.name);
-                    AnimateFirstObject(displayedPrefab);                
-                }                
             }
             DisableGameplayScripts(displayedPrefab);
             index++;
         }
+        AnimateGemAtIndex(0);
     }
     private void DisableGameplayScripts(GameObject obj)
     {
@@ -57,9 +51,6 @@ public class QueueDisplay : MonoBehaviour
 
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
-
-        Animation anim = obj.GetComponent<Animation>();
-        if (anim != null) anim.enabled = false;
     }
     public void DequeueAndUpdate()
     {
@@ -68,5 +59,10 @@ public class QueueDisplay : MonoBehaviour
             collisionManager.queue.Dequeue(); 
             UpdateQueueDisplay();
         }
+    }
+
+    public void AnimateGemAtIndex(int index)
+    {
+        AnimateObject(queueDisplayPanel.GetChild(index).gameObject);
     }
 }
