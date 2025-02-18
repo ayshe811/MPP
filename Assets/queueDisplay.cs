@@ -50,11 +50,11 @@ public class QueueDisplay : MonoBehaviour
             index++;
         }
     }
-    private IEnumerator SpawnAndAnimateObjectsCoroutine()
-    {
-        UpdateQueueDisplay(); // Calls your existing function
-        yield return null; // Prevents Unity from complaining
-    }
+    //public IEnumerator SpawnAndAnimateObjectsCoroutine()
+    //{
+    //    UpdateQueueDisplay();
+    //    yield return null;
+    //}
     private void DisableGameplayScripts(GameObject obj)
     {
         Collider2D collider = obj.GetComponent<Collider2D>();
@@ -66,9 +66,9 @@ public class QueueDisplay : MonoBehaviour
         Animation anim = obj.GetComponent<Animation>();
         if (anim != null) anim.enabled = false;
     }
-    private void Update()
+    private void Start()
     {
-        StartCoroutine(SpawnAndAnimateObjectsCoroutine());
+        //UpdateQueueDisplay();
     }
 
     public void DequeueAndUpdate()
@@ -76,7 +76,7 @@ public class QueueDisplay : MonoBehaviour
         if (collisionManager.queue.Count > 0)
         {
             collisionManager.queue.Dequeue(); 
-            StartCoroutine(SpawnAndAnimateObjectsCoroutine());
+            UpdateQueueDisplay();
         }
     }
 }

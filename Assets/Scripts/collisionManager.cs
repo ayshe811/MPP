@@ -11,6 +11,7 @@ public class collisionManager : MonoBehaviour
     public int currentIndex;
     bool hasShuffled;
     playerScript playScript;
+    public QueueDisplay queueScript;
     // private int currentIndex = 0;
 
     private void Start()
@@ -19,6 +20,7 @@ public class collisionManager : MonoBehaviour
         hasShuffled = false;
 
         StartCoroutine(shuffle());
+        queueScript.UpdateQueueDisplay();
     }
 
     private void Update()
@@ -27,8 +29,9 @@ public class collisionManager : MonoBehaviour
 
         if (currentIndex >= 3)
         {
-            currentIndex = 0;
             StartCoroutine(shuffle());
+            queueScript.UpdateQueueDisplay();
+            currentIndex = 0;
             playScript.correctCollision++;
         }
     }
@@ -45,10 +48,11 @@ public class collisionManager : MonoBehaviour
                 GameObject temp = objectsInSequence[i];
                 objectsInSequence[i] = objectsInSequence[randomIndex]; // randomises the count 
                 objectsInSequence[randomIndex] = temp; // returns it to temp
-                yield return temp; // temp is returned to the function
+                //yield return temp; // temp is returned to the function
             }
         }
-        while (IsSameOrder(objectsInSequence, previousOrder)) ; 
+        while (IsSameOrder(objectsInSequence, previousOrder)) ;
+        yield return null;
     }
     private bool IsSameOrder(List<GameObject> list1, List<GameObject> list2)
     {

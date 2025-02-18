@@ -1697,6 +1697,7 @@ MonoBehaviour:
   - {fileID: 4224958039493560046, guid: 94e6d98036574014cb0dd703ee68411a, type: 3}
   - {fileID: 421913154961755303, guid: bcb45c85ec37fc647b916e9f9b2e67e4, type: 3}
   currentIndex: 0
+  queueScript: {fileID: 377970335}
 --- !u!4 &1411003562
 Transform:
   m_ObjectHideFlags: 0
@@ -1950,10 +1951,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1738747892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 152.4, y: 222.15001}
-  m_SizeDelta: {x: 437.7569, y: 78.9099}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 158, y: -37.545}
+  m_SizeDelta: {x: 437.7569, y: 78.90991}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1569957035
 MonoBehaviour:
