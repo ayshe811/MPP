@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,9 +61,27 @@ public class QueueDisplay : MonoBehaviour
             UpdateQueueDisplay();
         }
     }
+    private GameObject previousGem = null;
+    private Vector3 originalSize = new Vector3(9, 9, 9);
 
     public void AnimateGemAtIndex(int index)
     {
-        if (index < queueDisplayPanel.childCount) AnimateObject(queueDisplayPanel.GetChild(index).gameObject);
+        if (index < queueDisplayPanel.childCount)
+        {
+            if (previousGem != null)
+            {
+                LeanTween.cancel(previousGem);
+                LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
+            }
+
+            GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
+            AnimateObject(currentGem);
+            previousGem = currentGem;
+        }
+    }
+    public void OnShuffleCompleted()
+    {
+        previousGem = null;
+        AnimateGemAtIndex(0);
     }
 }
