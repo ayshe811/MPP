@@ -63,6 +63,6 @@ public class QueueDisplay : MonoBehaviour
 
     public void AnimateGemAtIndex(int index)
     {
-        AnimateObject(queueDisplayPanel.GetChild(index).gameObject);
+        if (index < queueDisplayPanel.childCount) AnimateObject(queueDisplayPanel.GetChild(index).gameObject);
     }
 }

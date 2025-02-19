@@ -90,11 +90,7 @@ public class playerScript : MonoBehaviour
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
                 }
-                else
-                {
-                    Debug.LogWarning("Incorrect Collision!");
-                    collisionManager.currentIndex = 0;
-                }
+                else Debug.LogWarning("Incorrect Collision!");
             }
         }
     }
