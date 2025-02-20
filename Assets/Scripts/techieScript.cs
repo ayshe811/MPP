@@ -57,7 +57,7 @@ public class techieScript : MonoBehaviour
             poly2d.enabled = false;
             sr.enabled = false;
             Destroy(gameObject, 0.5f);
-            player.IncreaseSize();
+          //  player.IncreaseSize();
         }
 
         //private void OnTriggerEnter2D(Collider2D collision)
