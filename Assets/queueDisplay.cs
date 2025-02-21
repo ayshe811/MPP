@@ -36,42 +36,37 @@ public class QueueDisplay : MonoBehaviour
         {
             GameObject displayedPrefab = Instantiate(obj, queueDisplayPanel);
             RectTransform rt = displayedPrefab.GetComponent<RectTransform>();
-            if (rt != null)
-            {
-                //rt.anchoredPosition = new Vector2(index * spacing, 0); 
-                rt.localScale = new Vector3(9, 9);
-            }
+            if (rt != null) rt.localScale = new Vector3(9, 9);
             DisableGameplayScripts(displayedPrefab);
             index++;
         }
         AnimateGemAtIndex(0);
     }
-    public float gemSpace = 210;
-    public void shift()
-    {
-        if (queueDisplayPanel.childCount <= 1) return;
+    //public void shift()
+    //{
+    //    if (queueDisplayPanel.childCount <= 1) return;
 
-        Transform firstGem = queueDisplayPanel.GetChild(0);
-        RectTransform firstGemRect = firstGem.GetComponent<RectTransform>();
-        float fadeDuration = 0.5f;
-        float moveDuration = 0.5f;
+    //    Transform firstGem = queueDisplayPanel.GetChild(0);
+    //    RectTransform firstGemRect = firstGem.GetComponent<RectTransform>();
+    //    float fadeDuration = 0.5f;
+    //    float moveDuration = 0.5f;
 
-        Vector2 firstGemPosition = firstGemRect.anchoredPosition;
+    //    Vector2 firstGemPosition = firstGemRect.anchoredPosition;
 
-        for (int i = 1; i < queueDisplayPanel.childCount; i++)
-        {
-            Transform gem = queueDisplayPanel.GetChild(i);
-            float currentY = gem.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
-            Vector2 newPos = (i == 1) ? firstGemPosition : queueDisplayPanel.GetChild(i - 1).GetComponent<RectTransform>().anchoredPosition;
-            LeanTween.move(gem.gameObject.GetComponent<RectTransform>(), newPos, moveDuration);
-        }
+    //    for (int i = 1; i < queueDisplayPanel.childCount; i++)
+    //    {
+    //        Transform gem = queueDisplayPanel.GetChild(i);
+    //        float currentY = gem.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+    //        Vector2 newPos = (i == 1) ? firstGemPosition : queueDisplayPanel.GetChild(i - 1).GetComponent<RectTransform>().anchoredPosition;
+    //        LeanTween.move(gem.gameObject.GetComponent<RectTransform>(), newPos, moveDuration);
+    //    }
 
-        firstGem.SetSiblingIndex(queueDisplayPanel.childCount - 1); // Move to the back
+    //    firstGem.SetSiblingIndex(queueDisplayPanel.childCount - 1); // Move to the back
 
-        firstGemRect.anchoredPosition = new Vector2((queueDisplayPanel.childCount - 1) * spacing, 0);// needs changing.
-        LeanTween.move(firstGemRect, firstGemRect.anchoredPosition, moveDuration);
-        AnimateObject(queueDisplayPanel.GetChild(0).gameObject);
-    }
+    //    firstGemRect.anchoredPosition = new Vector2((queueDisplayPanel.childCount - 1) * spacing, 0);// needs changing.
+    //    LeanTween.move(firstGemRect, firstGemRect.anchoredPosition, moveDuration);
+    //    AnimateObject(queueDisplayPanel.GetChild(0).gameObject);
+    //}
     private void DisableGameplayScripts(GameObject obj)
     {
         Collider2D collider = obj.GetComponent<Collider2D>();
