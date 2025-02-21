@@ -29,7 +29,7 @@ public class QueueDisplay : MonoBehaviour
 
     public void UpdateQueueDisplay()
     {
-        foreach (Transform child in queueDisplayPanel) Destroy(child.gameObject);
+        for (int i = queueDisplayPanel.childCount - 1; i >= 0; i--) DestroyImmediate(queueDisplayPanel.GetChild(i).gameObject);
         int index = 0;
         foreach (GameObject obj in collisionManager.objectsInSequence)
         {
@@ -73,7 +73,6 @@ public class QueueDisplay : MonoBehaviour
                 LeanTween.cancel(previousGem); /*LeanTween.cancel(queueDisplayPanel.GetChild(0).gameObject);*/
                 LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
             }
-          //  else AnimateObject(queueDisplayPanel.GetChild(0).gameObject); Debug.Log("no previous gem!");
 
             GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
             AnimateObject(currentGem);
@@ -83,6 +82,5 @@ public class QueueDisplay : MonoBehaviour
     public void OnShuffleCompleted()
     {
         previousGem = null;
-      //  AnimateGemAtIndex(0);
     }
 }
