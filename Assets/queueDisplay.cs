@@ -12,6 +12,10 @@ public class QueueDisplay : MonoBehaviour
     public float spacing = 100;
     public Color outlineColor;
 
+    private void Start()
+    {
+        OnShuffleCompleted();
+    }
     public void AnimateObject(GameObject obj)
     {
         RectTransform rt = obj.GetComponent<RectTransform>();
@@ -36,24 +40,18 @@ public class QueueDisplay : MonoBehaviour
         {
             GameObject displayedPrefab = Instantiate(obj, queueDisplayPanel);
             RectTransform rt = displayedPrefab.GetComponent<RectTransform>();
-            if (rt != null)
-            {
-                //rt.anchoredPosition = new Vector2(index * spacing, 0); 
-                rt.localScale = new Vector3(9, 9);
-            }
+            if (rt != null) rt.localScale = new Vector3(9, 9);
             DisableGameplayScripts(displayedPrefab);
             index++;
         }
         AnimateGemAtIndex(0);
     }
-    public float gemSpace = 210;
     public void shift()
     {
         if (queueDisplayPanel.childCount <= 1) return;
 
-        Transform firstGem = queueDisplayPanel.GetChild(0);
-        RectTransform firstGemRect = firstGem.GetComponent<RectTransform>();
-        float fadeDuration = 0.5f;
+        Transform firstGem = queueDisplayPanel.GetChild(0), lastGem = queueDisplayPanel.GetChild(2);
+        RectTransform firstGemRect = firstGem.GetComponent<RectTransform>(), lastGemRect = lastGem.GetComponent<RectTransform>();
         float moveDuration = 0.5f;
 
         Vector2 firstGemPosition = firstGemRect.anchoredPosition;
@@ -66,11 +64,8 @@ public class QueueDisplay : MonoBehaviour
             LeanTween.move(gem.gameObject.GetComponent<RectTransform>(), newPos, moveDuration);
         }
 
-        firstGem.SetSiblingIndex(queueDisplayPanel.childCount - 1); // Move to the back
-
-        firstGemRect.anchoredPosition = new Vector2((queueDisplayPanel.childCount - 1) * spacing, 0);// needs changing.
-        LeanTween.move(firstGemRect, firstGemRect.anchoredPosition, moveDuration);
-        AnimateObject(queueDisplayPanel.GetChild(0).gameObject);
+        firstGem.SetSiblingIndex(queueDisplayPanel.childCount - 1);
+        LeanTween.move(firstGemRect, lastGemRect.anchoredPosition, moveDuration);
     }
     private void DisableGameplayScripts(GameObject obj)
     {
@@ -97,12 +92,14 @@ public class QueueDisplay : MonoBehaviour
         {
             if (previousGem != null)
             {
-                LeanTween.cancel(previousGem); /*LeanTween.cancel(queueDisplayPanel.GetChild(0).gameObject);*/
+                LeanTween.cancel(previousGem);
                 LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
             }
             GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
+            LeanTween.cancel(currentGem);
             AnimateObject(currentGem);
             previousGem = currentGem;
+            Debug.Log("previous gem " + previousGem);
         }
     }
     public void OnShuffleCompleted()

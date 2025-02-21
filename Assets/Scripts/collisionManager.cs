@@ -31,7 +31,7 @@ public class collisionManager : MonoBehaviour
         {
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
-         //   queueScript.OnShuffleCompleted();
+            queueScript.OnShuffleCompleted();
             currentIndex = 0;
             playScript.correctCollision++;
         }
