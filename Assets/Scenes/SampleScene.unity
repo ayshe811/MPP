@@ -692,6 +692,7 @@ MonoBehaviour:
   playerScript: {fileID: 1973025098}
   spacing: 50
   outlineColor: {r: 0.9811321, g: 0.89950395, b: 0.06016379, a: 0}
+  gemSpace: 120
 --- !u!4 &377970336
 Transform:
   m_ObjectHideFlags: 0
