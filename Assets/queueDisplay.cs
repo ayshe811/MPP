@@ -29,7 +29,6 @@ public class QueueDisplay : MonoBehaviour
                  .setEase(LeanTweenType.easeInOutSine)
                  .setLoopPingPong();
         }
-        else Debug.LogError("Missing RectTransform on " + obj.name);
     }
 
     public void UpdateQueueDisplay()
