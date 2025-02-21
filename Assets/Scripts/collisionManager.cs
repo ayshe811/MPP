@@ -31,7 +31,7 @@ public class collisionManager : MonoBehaviour
         {
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
-            queueScript.OnShuffleCompleted();
+         //   queueScript.OnShuffleCompleted();
             currentIndex = 0;
             playScript.correctCollision++;
         }
@@ -67,7 +67,7 @@ public class collisionManager : MonoBehaviour
     {
         queue.Dequeue();
         currentIndex++;
-        queueScript.AnimateGemAtIndex(currentIndex);
+      //  queueScript.AnimateGemAtIndex(currentIndex);
         queueScript.shift();
     }
 }
