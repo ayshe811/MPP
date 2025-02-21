@@ -68,6 +68,6 @@ public class collisionManager : MonoBehaviour
         queue.Dequeue();
         currentIndex++;
         queueScript.AnimateGemAtIndex(currentIndex);
-       // queueScript.shift();
+        queueScript.shift();
     }
 }
