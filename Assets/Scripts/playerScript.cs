@@ -77,7 +77,7 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hasStarted && collision.gameObject.CompareTag("Gem"))
+        if (/*!hasStarted &&*/ collision.gameObject.CompareTag("Gem"))
         {
             if (collisionManager.queue.Count > 0)
             {
@@ -87,18 +87,21 @@ public class playerScript : MonoBehaviour
                 {
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
-                    if (spawner.currentTechLevel < 2)
+                    if (!hasStarted)
                     {
-                        spawner.currentTechLevel++;
-                        StartCoroutine(spawner.beforeGame());
+                        if (spawner.currentTechLevel < 2)
+                        {
+                            spawner.currentTechLevel++;
+                            StartCoroutine(spawner.beforeGame());
+                        }
+                        else if (spawner.currentTechLevel == 2)
+                        {
+                            hasStarted = true;
+                            StartCoroutine(spawner.techSpawn());
+                        }
                     }
-                    else if (spawner.currentTechLevel == 2)
-                    {
-                        hasStarted = true;
-                        StartCoroutine(spawner.techSpawn());
-                    }
-                    else Debug.LogWarning("Incorrect Collision!");
                 }
+                else Debug.LogWarning("Incorrect Collision!");
             }
         }
     }
