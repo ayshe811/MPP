@@ -6,36 +6,40 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
-    [SerializeField] float secondSpawm = 1f;
+    [SerializeField] float secondSpawm;
     [SerializeField] float minTras, maxTras;
 
-    public gameManager gameManager;
-    public int currentTechLevel = 1;
+    public gameManager gameManagerr; collisionManager collisionManager;
+    public int currentTechLevel;
     private float lastTimeTechLevelIncrease = 0;
 
     playerScript playScript;
-    bool breakoff;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(techSpawn());
+        StartCoroutine(beforeGame());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
-    }
-    private void Update()
-    {
-        if (currentTechLevel > 3) currentTechLevel = 3;
-    }
+        collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();    
 
-    IEnumerator techSpawn()
+    }
+    public IEnumerator techSpawn()
     {
         while (true)
         {
             var wanted = Random.Range(minTras, maxTras);
             var position = new Vector3(wanted, transform.position.y);
-            GameObject gameObject = Instantiate(techPrefab[Random.Range(0, currentTechLevel)],
+            GameObject gameObject = Instantiate(techPrefab[Random.Range(0, collisionManager.objectsInSequence.Count)],
                 position, Quaternion.identity);
             yield return new WaitForSeconds(secondSpawm);
             Destroy(gameObject, 5f);
         }
+    }
+    public IEnumerator beforeGame()
+    {
+        var wanted = Random.Range(minTras, maxTras);
+        var position = new Vector3(wanted, transform.position.y);
+        GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
+            position, Quaternion.identity);
+        yield return null;
     }
 }

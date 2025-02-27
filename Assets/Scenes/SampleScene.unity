@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -268, y: -11.288}
+  m_AnchoredPosition: {x: -268, y: -11.288025}
   m_SizeDelta: {x: 31.025, y: 23.2548}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &209803544
@@ -752,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states: 0
+  realGame: 0
   gameTimer: 0
   tabTimer: 0
   tab: {fileID: 1395404148}
@@ -1425,7 +1426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -0.000030517578}
+  m_AnchoredPosition: {x: 320, y: 0}
   m_SizeDelta: {x: 91.609314, y: 45.8302}
   m_Pivot: {x: 0, y: 1}
 --- !u!95 &1395404150
@@ -1946,8 +1947,9 @@ MonoBehaviour:
   secondSpawm: 0.5
   minTras: -5
   maxTras: 5
-  gameManager: {fileID: 396614502}
-  hasRun: 0
+  gameManagerr: {fileID: 0}
+  currentTechLevel: 0
+  currentPreLevel: 0
 --- !u!1 &1973025093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,6 +2133,7 @@ MonoBehaviour:
   metCollisionTarget: 0
   playState: 1
   tabShowed: 0
+  hasStarted: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

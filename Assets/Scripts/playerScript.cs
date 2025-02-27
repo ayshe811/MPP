@@ -9,7 +9,7 @@ public class playerScript : MonoBehaviour
     Rigidbody2D rb;
     float xInput, yInput, scale, timer;
     public float playerSpeed, sizeX, sizeY, sizeDecRate, speedIncRate;
-    int weightPoints,level;
+    int weightPoints, level;
     public bool isHit;
     public GameObject canvas;
     gameManager gameManager;
@@ -23,10 +23,10 @@ public class playerScript : MonoBehaviour
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
     int sizePoints, score;
-    public bool tabShowed;
+    public bool tabShowed, hasStarted;
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
@@ -35,6 +35,7 @@ public class playerScript : MonoBehaviour
         color = GetComponent<SpriteRenderer>().color;
         playState = playerStates.distracted;
         if (playState == playerStates.distracted) playerSpeed = 9;
+        hasStarted = false;
 
         sizeX = 1; sizeY = 1;
     }
@@ -48,7 +49,7 @@ public class playerScript : MonoBehaviour
         if (playState == playerStates.mindfulness)
         {
             isHit = false;
-         //   canvas.SetActive(true);
+            //   canvas.SetActive(true);
             gameManager.tabTimer = 0;
             tabShowed = true;
             timer += Time.deltaTime;
@@ -58,7 +59,7 @@ public class playerScript : MonoBehaviour
                 timer = 0;
             }
         }
-    //    else { canvas.SetActive(false); /*color.a = 1;*/ }
+        //    else { canvas.SetActive(false); /*color.a = 1;*/ }
         if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
 
         // is everything good?
@@ -81,7 +82,7 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Gem"))
+        if (!hasStarted && collision.gameObject.CompareTag("Gem"))
         {
             if (collisionManager.queue.Count > 0)
             {
@@ -91,23 +92,30 @@ public class playerScript : MonoBehaviour
                 {
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
-                    spawner.currentTechLevel++;
+                    if (spawner.currentTechLevel < 2)
+                    {
+                        spawner.currentTechLevel++;
+                        StartCoroutine(spawner.beforeGame());
+                    }
+                    else if (spawner.currentTechLevel == 2)
+                    {
+                        hasStarted = true;
+                        StartCoroutine(spawner.techSpawn());
+                    }
+                    else Debug.LogWarning("Incorrect Collision!");
                 }
-                else Debug.LogWarning("Incorrect Collision!");
             }
         }
     }
-
-
     public void IncreaseSize() // maybe? maybe not? (i don't fully understand whats happening here)
     {
         sizePoints++;
-    
-            sizePoints = 0;
-            transform.localScale += new Vector3(0.01f, 0.01f);
-            sizeX += 0.01f;
-            sizeY += 0.01f;
-            playerSpeed -= 0.1f;        
+
+        sizePoints = 0;
+        transform.localScale += new Vector3(0.01f, 0.01f);
+        sizeX += 0.01f;
+        sizeY += 0.01f;
+        playerSpeed -= 0.1f;
     }
     void FixedUpdate() // player movement
     {
