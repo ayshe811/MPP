@@ -14,6 +14,7 @@ public class playerScript : MonoBehaviour
     public GameObject canvas;
     gameManager gameManager;
     collisionManager collisionManager;
+    spawnerScript spawner;
     Color color;
     public TMP_Text scoreText;
     public int correctCollision = 0;
@@ -30,6 +31,7 @@ public class playerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
+        spawner = GameObject.Find("spawner1").GetComponent<spawnerScript>();
         color = GetComponent<SpriteRenderer>().color;
         playState = playerStates.distracted;
         if (playState == playerStates.distracted) playerSpeed = 9;
@@ -89,6 +91,7 @@ public class playerScript : MonoBehaviour
                 {
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
+                    spawner.currentTechLevel++;
                 }
                 else Debug.LogWarning("Incorrect Collision!");
             }

@@ -9,6 +9,8 @@ public class gameManager : MonoBehaviour
     public enum gameState { menu, playable, over }
     public gameState states;
 
+    public bool realGame;
+
     public float gameTimer, tabTimer;
     public GameObject tab;
     playerScript playScript;
@@ -16,6 +18,7 @@ public class gameManager : MonoBehaviour
     void Start()
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
+        realGame = false;
     }
 
     // Update is called once per frame

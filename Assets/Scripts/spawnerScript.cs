@@ -10,34 +10,19 @@ public class spawnerScript : MonoBehaviour
     [SerializeField] float minTras, maxTras;
 
     public gameManager gameManager;
-
-    public bool hasRun;
-
-    private int currentTechLevel = 1;
+    public int currentTechLevel = 1;
     private float lastTimeTechLevelIncrease = 0;
 
     playerScript playScript;
+    bool breakoff;
     // Start is called before the first frame update
     void Start()
     {
-       // StartCoroutine(techSpawn());
+        StartCoroutine(techSpawn());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
     }
     private void Update()
     {
-        if (playScript.playState == playerScript.playerStates.distracted && !hasRun)
-        {
-            StartCoroutine(techSpawn());
-            hasRun = true;
-        }
-
-
-        if (gameManager.gameTimer >= lastTimeTechLevelIncrease + 7)
-        {
-            currentTechLevel ++;
-            lastTimeTechLevelIncrease = gameManager.gameTimer;
-        }
-
         if (currentTechLevel > 3) currentTechLevel = 3;
     }
 

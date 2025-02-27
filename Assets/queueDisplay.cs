@@ -53,7 +53,7 @@ public class QueueDisplay : MonoBehaviour
 
         Vector2 firstGemPosition = firstGemRect.anchoredPosition;
 
-        for (int i = 1; i < queueDisplayPanel.childCount; i++)
+        for (int i = 1; i < queueDisplayPanel.childCount; i++) // objects > 1
         {
             Transform gem = queueDisplayPanel.GetChild(i);
             float currentY = gem.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
