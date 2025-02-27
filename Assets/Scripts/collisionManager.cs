@@ -12,7 +12,6 @@ public class collisionManager : MonoBehaviour
     bool hasShuffled;
     playerScript playScript;
     public QueueDisplay queueScript;
-    // private int currentIndex = 0;
 
     private void Start()
     {
@@ -37,30 +36,15 @@ public class collisionManager : MonoBehaviour
 
     IEnumerator shuffle()
     {
-      //  List<GameObject> previousOrder = new List<GameObject>(objectsInSequence);
-
-     //   do // do/while loop exencutes a block of code once before checking its condition; will then continue to execute as long as the condition is met.
-      //  {
-            for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
-            {
-                int randomIndex = Random.Range(i, objectsInSequence.Count);
-                GameObject temp = objectsInSequence[i];
-                objectsInSequence[i] = objectsInSequence[randomIndex]; // randomises the count 
-                objectsInSequence[randomIndex] = temp; // returns it to temp
-            }
-       // }
-      //  while (IsSameOrder(objectsInSequence, previousOrder)) ;
+        for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
+        {
+            int randomIndex = Random.Range(i, objectsInSequence.Count);
+            GameObject temp = objectsInSequence[i];
+            objectsInSequence[i] = objectsInSequence[randomIndex]; // randomises the count 
+            objectsInSequence[randomIndex] = temp; // returns it to temp
+        }
         yield return null;
     }
-    private bool IsSameOrder(List<GameObject> list1, List<GameObject> list2)
-    {
-        for (int i = 0; i < list1.Count; i++)
-        {
-            if (list1[i] != list2[i]) return false;
-        }
-        return true;
-    }
-
     public void OnCorrectCollision()
     {
         queue.Dequeue();

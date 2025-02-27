@@ -19,8 +19,7 @@ public class spawnerScript : MonoBehaviour
     {
         StartCoroutine(beforeGame());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
-        collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();    
-
+        collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();  
     }
     public IEnumerator techSpawn()
     {

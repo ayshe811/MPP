@@ -247,11 +247,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2426048310663254143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82ea7275cf2f63144991a65b6308cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: 
+  cursor: {fileID: 0}
+  highlight: {r: 0, g: 0, b: 0, a: 0}
+  src: {fileID: 0}
+  sr: {fileID: 0}
+  poly2d: {fileID: 0}
 --- !u!82 &-8142485025240378532
 AudioSource:
   m_ObjectHideFlags: 0

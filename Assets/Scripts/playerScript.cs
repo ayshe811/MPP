@@ -49,7 +49,6 @@ public class playerScript : MonoBehaviour
         if (playState == playerStates.mindfulness)
         {
             isHit = false;
-            //   canvas.SetActive(true);
             gameManager.tabTimer = 0;
             tabShowed = true;
             timer += Time.deltaTime;
@@ -59,10 +58,7 @@ public class playerScript : MonoBehaviour
                 timer = 0;
             }
         }
-        //    else { canvas.SetActive(false); /*color.a = 1;*/ }
         if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
-
-        // is everything good?
     }
 
     public void DecreaseSize()
@@ -75,7 +71,6 @@ public class playerScript : MonoBehaviour
         {
             transform.localScale = Vector3.one;
             sizeX = 1; sizeY = 1;
-
             playerSpeed = 9;
         }
     }

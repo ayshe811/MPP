@@ -30,7 +30,6 @@ public class QueueDisplay : MonoBehaviour
                  .setLoopPingPong();
         }
     }
-
     public void UpdateQueueDisplay()
     {
         for (int i = queueDisplayPanel.childCount - 1; i >= 0; i--) DestroyImmediate(queueDisplayPanel.GetChild(i).gameObject);

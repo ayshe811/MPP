@@ -239,7 +239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7702010628326356837}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82ea7275cf2f63144991a65b6308cecf, type: 3}
   m_Name: 
@@ -250,7 +250,6 @@ MonoBehaviour:
   src: {fileID: -1917376107411419148}
   sr: {fileID: 7307213886575191111}
   poly2d: {fileID: -3668112610451188741}
-  rb: {fileID: -5714286289846684540}
 --- !u!82 &-1917376107411419148
 AudioSource:
   m_ObjectHideFlags: 0
