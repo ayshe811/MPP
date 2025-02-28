@@ -51,5 +51,6 @@ public class collisionManager : MonoBehaviour
         currentIndex++;
       //  queueScript.AnimateGemAtIndex(currentIndex);
         queueScript.shift();
+      //  queueScript.FadeGemsByPosition();
     }
 }

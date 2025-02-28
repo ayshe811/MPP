@@ -14,7 +14,14 @@ public class QueueDisplay : MonoBehaviour
 
     private void Start()
     {
-      //  OnShuffleCompleted();
+        //  OnShuffleCompleted();
+        //Transform firstGem = queueDisplayPanel.GetChild(0), lastGem = queueDisplayPanel.GetChild(2);
+        //RectTransform firstGemRect = firstGem.GetComponent<RectTransform>(), lastGemRect = lastGem.GetComponent<RectTransform>();
+        //CanvasGroup canvasGroup = firstGem.GetComponent<CanvasGroup>(), canvasGroup2 = lastGem.GetComponent<CanvasGroup>();
+        //if (canvasGroup == null) firstGem.gameObject.AddComponent<CanvasGroup>();
+        //if (canvasGroup2 == null) lastGem.gameObject.AddComponent<CanvasGroup>();
+
+       // FadeGemsByPosition();
     }
     public void AnimateObject(GameObject obj)
     {
@@ -51,16 +58,32 @@ public class QueueDisplay : MonoBehaviour
         float moveDuration = 0.5f;
 
         Vector2 firstGemPosition = firstGemRect.anchoredPosition;
-
         for (int i = 1; i < queueDisplayPanel.childCount; i++) // objects > 1
         {
             Transform gem = queueDisplayPanel.GetChild(i);
-            float currentY = gem.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
             Vector2 newPos = (i == 1) ? firstGemPosition : queueDisplayPanel.GetChild(i - 1).GetComponent<RectTransform>().anchoredPosition;
+
             LeanTween.move(gem.gameObject.GetComponent<RectTransform>(), newPos, moveDuration);
         }
         LeanTween.move(firstGemRect, lastGemRect.anchoredPosition, moveDuration);
     }
+    public void FadeGemsByPosition()
+    {
+        int totalGems = queueDisplayPanel.childCount;
+
+        for (int i = 0; i < totalGems; i++)
+        {
+            Transform gem = queueDisplayPanel.GetChild(i);
+            GameObject gemObject = gem.gameObject;
+
+            CanvasGroup canvasGroup = gemObject.GetComponent<CanvasGroup>();
+            if (canvasGroup == null) canvasGroup = gemObject.AddComponent<CanvasGroup>();
+            float normalizedIndex = (float)i / (totalGems - 1); // Leftmost = 0, Rightmost = 1
+            float alphaValue = Mathf.Lerp(1f, 0.3f, normalizedIndex);
+            LeanTween.alphaCanvas(canvasGroup, alphaValue, 0.5f).setEase(LeanTweenType.easeOutQuad);
+        }
+    }
+
     private void DisableGameplayScripts(GameObject obj)
     {
         Collider2D collider = obj.GetComponent<Collider2D>();
