@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class gameManager : MonoBehaviour
 {
-    public enum gameState { menu, playable, over }
+    public enum gameState { menu, playable, win, lose }
     public gameState states;
-
-    public bool realGame;
-
     public float gameTimer, tabTimer;
-    public GameObject tab;
     playerScript playScript;
+    public TMP_Text timerText;
     // Start is called before the first frame update
     void Start()
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
-        realGame = false;
+        Application.targetFrameRate = 60;
+        gameTimer = 300;
+
+        states = gameState.playable;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameTimer += Time.deltaTime; // game timer
+        gameTimer -= Time.deltaTime;
+        timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
 
-        //tabTimer += Time.deltaTime;
-        //if (tabTimer > 15 && !playScript.tabShowed) tab.SetActive(true);
-        //else if (playScript.tabShowed)
-        //{
-        //    tabTimer = 0;
-        //    tab.SetActive(false);
-        //}
-
+        if (gameTimer <= 0)
+        {
+            states = gameState.lose;
+            gameTimer = 0;
+        }
+        else if (gameTimer > 0 && playScript.score == 50) states = gameState.win;
     }
 }

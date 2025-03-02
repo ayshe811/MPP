@@ -22,7 +22,7 @@ public class playerScript : MonoBehaviour
 
     public enum playerStates { mindfulness, distracted }
     public playerStates playState;
-    int sizePoints, score;
+    public int score, sizePoints;
     public bool tabShowed, hasStarted;
     // Start is called before the first frame update
     void Start()
@@ -77,11 +77,12 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (/*!hasStarted &&*/ collision.gameObject.CompareTag("Gem"))
+        if (collision.gameObject.CompareTag("Gem"))
         {
             if (collisionManager.queue.Count > 0)
             {
                 score++;
+                gameManager.gameTimer += 10;
                 if (collision.gameObject.GetComponent<techieScript>().color ==
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
                 {
@@ -101,7 +102,13 @@ public class playerScript : MonoBehaviour
                         }
                     }
                 }
-                else Debug.LogWarning("Incorrect Collision!");
+                else
+                {
+                    score += 2;
+                    gameManager.gameTimer -= 30;
+                    Debug.LogWarning("Incorrect Collision!");
+
+                }
             }
         }
     }
