@@ -121,8 +121,4 @@ public class QueueDisplay : MonoBehaviour
             Debug.Log("previous gem " + previousGem);
         }
     }
-    public void OnShuffleCompleted()
-    {
-        //previousGem = null;
-    }
 }
