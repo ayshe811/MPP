@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class gameManager : MonoBehaviour
@@ -34,5 +35,8 @@ public class gameManager : MonoBehaviour
             gameTimer = 0;
         }
         else if (gameTimer > 0 && playScript.score == 50) states = gameState.win;
+
+        if (states == gameState.win) SceneManager.LoadScene("Win Scene");
+        if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");
     }
 }

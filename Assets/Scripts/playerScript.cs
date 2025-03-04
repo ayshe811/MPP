@@ -82,10 +82,10 @@ public class playerScript : MonoBehaviour
             if (collisionManager.queue.Count > 0)
             {
                 score++;
-                gameManager.gameTimer += 10;
                 if (collision.gameObject.GetComponent<techieScript>().color ==
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
                 {
+                    gameManager.gameTimer += 5;
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
                     if (!hasStarted)
@@ -107,7 +107,6 @@ public class playerScript : MonoBehaviour
                     score += 2;
                     gameManager.gameTimer -= 30;
                     Debug.LogWarning("Incorrect Collision!");
-
                 }
             }
         }

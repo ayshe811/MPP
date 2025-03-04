@@ -47,7 +47,7 @@ public class QueueDisplay : MonoBehaviour
             if (rt != null) rt.localScale = new Vector3(9, 9);
             DisableGameplayScripts(displayedPrefab);
         }
-       // AnimateGemAtIndex(0);
+        AnimateGemAtIndex(0);
     }
     public void shift()
     {
@@ -92,35 +92,37 @@ public class QueueDisplay : MonoBehaviour
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
     }
-    public void DequeueAndUpdate()
-    {
-        if (collisionManager.queue.Count > 0)
-        {
-            collisionManager.queue.Dequeue(); 
-            UpdateQueueDisplay();
-        }
-    }
+    //public void DequeueAndUpdate()
+    //{
+    //    if (collisionManager.queue.Count > 0)
+    //    {
+    //        collisionManager.queue.Dequeue(); 
+    //        UpdateQueueDisplay();
+    //    }
+    //}
     private GameObject previousGem = null;
     private Vector3 originalSize = new Vector3(9, 9, 9);
 
-    //public void AnimateGemAtIndex(int index)
-    //{
-    //    if (index < queueDisplayPanel.childCount)
-    //    {
-    //        if (previousGem != null)
-    //        {
-    //            LeanTween.cancel(previousGem);
-    //            LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
-    //        }
-    //        GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
-    //        LeanTween.cancel(currentGem);
-    //        AnimateObject(currentGem);
-    //        previousGem = currentGem;
-    //        Debug.Log("previous gem " + previousGem);
-    //    }
-    //}
-    //public void OnShuffleCompleted()
-    //{
-    //    previousGem = null;
-    //}
+    public void AnimateGemAtIndex(int index)
+    {
+        if (previousGem != null)
+        {
+            LeanTween.cancel(previousGem);
+            LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
+        }
+
+        if (index < queueDisplayPanel.childCount)
+        {
+
+            GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
+            LeanTween.cancel(currentGem);
+            AnimateObject(currentGem);
+            previousGem = currentGem;
+            Debug.Log("previous gem " + previousGem);
+        }
+    }
+    public void OnShuffleCompleted()
+    {
+        //previousGem = null;
+    }
 }
