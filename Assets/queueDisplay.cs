@@ -92,14 +92,7 @@ public class QueueDisplay : MonoBehaviour
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
     }
-    //public void DequeueAndUpdate()
-    //{
-    //    if (collisionManager.queue.Count > 0)
-    //    {
-    //        collisionManager.queue.Dequeue(); 
-    //        UpdateQueueDisplay();
-    //    }
-    //}
+
     private GameObject previousGem = null;
     private Vector3 originalSize = new Vector3(9, 9, 9);
 
