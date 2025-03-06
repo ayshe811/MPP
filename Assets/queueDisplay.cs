@@ -58,10 +58,11 @@ public class QueueDisplay : MonoBehaviour
         float moveDuration = 0.5f;
 
         Vector2 firstGemPosition = firstGemRect.anchoredPosition;
-        for (int i = 1; i < queueDisplayPanel.childCount; i++) // objects > 1
+        for (int i = 1; i < queueDisplayPanel.childCount; i++) // skips the 1st index (0)
         {
             Transform gem = queueDisplayPanel.GetChild(i);
             Vector2 newPos = (i == 1) ? firstGemPosition : queueDisplayPanel.GetChild(i - 1).GetComponent<RectTransform>().anchoredPosition;
+            // (i == 1) is the condition; if the condition is met (?) newPos = firstGemPosition; if the condition is false (:) newPos = position of the child before index. 
 
             LeanTween.move(gem.gameObject.GetComponent<RectTransform>(), newPos, moveDuration);
         }
