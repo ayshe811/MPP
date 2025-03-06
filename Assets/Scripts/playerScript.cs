@@ -19,9 +19,6 @@ public class playerScript : MonoBehaviour
     public TMP_Text scoreText;
     public int correctCollision = 0;
     [SerializeField] bool metCollisionTarget = false;
-
-    public enum playerStates { mindfulness, distracted }
-    public playerStates playState;
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
     // Start is called before the first frame update
@@ -33,8 +30,6 @@ public class playerScript : MonoBehaviour
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         spawner = GameObject.Find("spawner1").GetComponent<spawnerScript>();
         color = GetComponent<SpriteRenderer>().color;
-        playState = playerStates.distracted;
-        if (playState == playerStates.distracted) playerSpeed = 9;
         hasStarted = false;
 
         sizeX = 1; sizeY = 1;
@@ -44,21 +39,6 @@ public class playerScript : MonoBehaviour
     private void Update()
     {
         scoreText.text = "" + score;
-        if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.distracted) playState = playerStates.mindfulness;
-        else if (Input.GetKeyDown(KeyCode.Tab) && playState == playerStates.mindfulness) playState = playerStates.distracted;
-        if (playState == playerStates.mindfulness)
-        {
-            isHit = false;
-            gameManager.tabTimer = 0;
-            tabShowed = true;
-            timer += Time.deltaTime;
-            if (timer >= 3)
-            {
-                playState = playerStates.distracted;
-                timer = 0;
-            }
-        }
-        if (!isHit && playState == playerStates.mindfulness) DecreaseSize();
     }
 
     public void DecreaseSize()
@@ -104,7 +84,6 @@ public class playerScript : MonoBehaviour
                 }
                 else
                 {
-                    score += 2;
                     gameManager.gameTimer -= 30;
                     Debug.LogWarning("Incorrect Collision!");
                 }

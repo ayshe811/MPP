@@ -2384,7 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1325022befc398b4f95dd13295326b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 7
+  playerSpeed: 9
   sizeX: 0
   sizeY: 0
   sizeDecRate: 0.05
@@ -2394,7 +2394,6 @@ MonoBehaviour:
   scoreText: {fileID: 209803544}
   correctCollision: 0
   metCollisionTarget: 0
-  playState: 1
   score: 0
   sizePoints: 0
   tabShowed: 0
