@@ -26,7 +26,8 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameTimer -= Time.deltaTime;
+        if (gameTimer > 300) gameTimer = 300;
+        if (playScript.score >= 3) gameTimer -= Time.deltaTime;
         timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
 
         if (gameTimer <= 0)
