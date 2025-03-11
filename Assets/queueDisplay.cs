@@ -12,6 +12,8 @@ public class QueueDisplay : MonoBehaviour
     public float spacing = 100;
     public Color outlineColor;
 
+
+
     private void Start()
     {
         //  OnShuffleCompleted();
