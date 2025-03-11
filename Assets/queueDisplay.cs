@@ -12,19 +12,6 @@ public class QueueDisplay : MonoBehaviour
     public float spacing = 100;
     public Color outlineColor;
 
-
-
-    private void Start()
-    {
-        //  OnShuffleCompleted();
-        //Transform firstGem = queueDisplayPanel.GetChild(0), lastGem = queueDisplayPanel.GetChild(2);
-        //RectTransform firstGemRect = firstGem.GetComponent<RectTransform>(), lastGemRect = lastGem.GetComponent<RectTransform>();
-        //CanvasGroup canvasGroup = firstGem.GetComponent<CanvasGroup>(), canvasGroup2 = lastGem.GetComponent<CanvasGroup>();
-        //if (canvasGroup == null) firstGem.gameObject.AddComponent<CanvasGroup>();
-        //if (canvasGroup2 == null) lastGem.gameObject.AddComponent<CanvasGroup>();
-
-       // FadeGemsByPosition();
-    }
     public void AnimateObject(GameObject obj)
     {
         RectTransform rt = obj.GetComponent<RectTransform>();
