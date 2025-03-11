@@ -33,6 +33,8 @@ public class playerScript : MonoBehaviour
         hasStarted = false;
 
         sizeX = 1; sizeY = 1;
+
+        score = 1;
     }
 
     // Update is called once per frame
