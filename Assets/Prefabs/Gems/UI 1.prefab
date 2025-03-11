@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4723587291551285990}
   - component: {fileID: -7184822633563009186}
   - component: {fileID: 7687013449495040820}
+  - component: {fileID: 999250262108210735}
   m_Layer: 0
   m_Name: UI 1
   m_TagString: Untagged
@@ -37,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80.779175, y: 220.19695}
-  m_SizeDelta: {x: 5.12, y: 5.12}
+  m_AnchoredPosition: {x: 79.81421, y: 220.3708}
+  m_SizeDelta: {x: 3.1901, y: 4.7723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6236813674367072085
 SpriteRenderer:
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 59ac9c682840f1e4caf45abbca29233b, type: 3}
+  m_Sprite: {fileID: 3625043607559282579, guid: e4be537fd8fb7874aa371d92b311d84b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,14 +114,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.14117648, g: 0.02745098, b: 0.02745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59ac9c682840f1e4caf45abbca29233b, type: 3}
+  m_Sprite: {fileID: 3625043607559282579, guid: e4be537fd8fb7874aa371d92b311d84b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -160,3 +161,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb42611f0445ea4abb686ac34a878a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &999250262108210735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28604441867161172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.7660377, g: 0.045464464, b: 0, a: 1}
+  m_EffectDistance: {x: 0.1, y: 0.03}
+  m_UseGraphicAlpha: 1
