@@ -35,7 +35,7 @@ public class gameManager : MonoBehaviour
             states = gameState.lose;
             gameTimer = 0;
         }
-        else if (gameTimer > 0 && playScript.score == 25) states = gameState.win;
+        else if (gameTimer > 0 && playScript.score == 50) states = gameState.win;
 
         if (states == gameState.win) SceneManager.LoadScene("Win Scene");
         if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");

@@ -2216,6 +2216,9 @@ MonoBehaviour:
   - {fileID: 421913154961755303, guid: bcb45c85ec37fc647b916e9f9b2e67e4, type: 3}
   - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
   - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
+  - {fileID: 2721657309439950275, guid: 044153f8718c1c74a98aa90bf5b3dcb6, type: 3}
+  - {fileID: 8069987585253751376, guid: 690bf14e672b3b843aee1b0a505a7543, type: 3}
+  - {fileID: 8184761927527738162, guid: 65245badfa65aba4e9a20e51169992f4, type: 3}
   secondSpawm: 0.5
   minTras: -5
   maxTras: 5

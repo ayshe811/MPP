@@ -14,6 +14,7 @@ public class collisionManager : MonoBehaviour
     playerScript playScript;
     public QueueDisplay queueScript;
     int nextIndex;
+  //  public spawnerScript spawnerScript;
 
     private void Start()
     {
@@ -39,9 +40,10 @@ public class collisionManager : MonoBehaviour
     }
    public void AddToSequence()
     {
+        if (nextIndex >= availableCrystals.Count) return;
+
         GameObject newCrystal = availableCrystals[nextIndex];
         objectsInSequence.Add(newCrystal);
-
         nextIndex++;
     }
 
