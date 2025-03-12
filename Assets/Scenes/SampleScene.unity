@@ -691,6 +691,7 @@ MonoBehaviour:
   collisionManager: {fileID: 1411003561}
   playerScript: {fileID: 1973025098}
   spacing: 50
+  scale: 20
   outlineColor: {r: 0.9811321, g: 0.89950395, b: 0.06016379, a: 0}
 --- !u!4 &377970336
 Transform:
@@ -1912,8 +1913,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 173.3}
-  m_SizeDelta: {x: 618.831, y: 110.4012}
+  m_AnchoredPosition: {x: 0, y: 151.2746}
+  m_SizeDelta: {x: 1037.9385, y: 286.0566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1569957035
 MonoBehaviour:

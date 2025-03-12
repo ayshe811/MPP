@@ -9,7 +9,7 @@ public class QueueDisplay : MonoBehaviour
     public Transform queueDisplayPanel;
     public collisionManager collisionManager; 
     public playerScript playerScript;
-    public float spacing = 100;
+    public float spacing = 100, scale;
     public Color outlineColor;
 
     public void AnimateObject(GameObject obj)
@@ -33,7 +33,7 @@ public class QueueDisplay : MonoBehaviour
         {
             GameObject displayedPrefab = Instantiate(obj, queueDisplayPanel);
             RectTransform rt = displayedPrefab.GetComponent<RectTransform>();
-            if (rt != null) rt.localScale = new Vector3(9, 9);
+            if (rt != null) rt.localScale = new Vector3(scale, scale);
             DisableGameplayScripts(displayedPrefab);
         }
         AnimateGemAtIndex(0);
@@ -84,7 +84,7 @@ public class QueueDisplay : MonoBehaviour
     }
 
     private GameObject previousGem = null;
-    private Vector3 originalSize = new Vector3(9, 9, 9);
+    private Vector3 originalSize = new Vector3(20, 20, 20);
 
     public void AnimateGemAtIndex(int index)
     {
