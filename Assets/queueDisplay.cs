@@ -11,11 +11,14 @@ public class QueueDisplay : MonoBehaviour
     public playerScript playerScript;
     public float spacing = 100, scale;
     public Color outlineColor;
+    public Material nextMaterial;
 
     public void AnimateObject(GameObject obj)
     {
         RectTransform rt = obj.GetComponent<RectTransform>();
+        Image img = obj.GetComponent<Image>();
 
+        img.material = nextMaterial;
         float sizeUp = 1.7f;
         float beatSpeed = 0.5f;
 
@@ -102,6 +105,8 @@ public class QueueDisplay : MonoBehaviour
             AnimateObject(currentGem);
             previousGem = currentGem;
             Debug.Log("previous gem " + previousGem);
+
+           
         }
     }
 }

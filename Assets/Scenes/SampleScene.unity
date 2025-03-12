@@ -693,6 +693,7 @@ MonoBehaviour:
   spacing: 50
   scale: 20
   outlineColor: {r: 0.9811321, g: 0.89950395, b: 0.06016379, a: 0}
+  nextMaterial: {fileID: 2100000, guid: 8de91330a48c540279c3bc6e3aff2b4d, type: 2}
 --- !u!4 &377970336
 Transform:
   m_ObjectHideFlags: 0
