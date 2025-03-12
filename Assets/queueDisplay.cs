@@ -93,6 +93,9 @@ public class QueueDisplay : MonoBehaviour
     {
         if (previousGem != null)
         {
+
+            Image img = previousGem.GetComponent<Image>();
+            img.material = null;
             LeanTween.cancel(previousGem);
             LeanTween.scale(previousGem, originalSize, 0.3f).setEase(LeanTweenType.easeOutQuad);
         }
