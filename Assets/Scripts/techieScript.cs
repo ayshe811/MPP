@@ -40,7 +40,7 @@ public class techieScript : MonoBehaviour
             if (color == "Red") Instantiate(parScript.particlePrefab[0], transform.position, Quaternion.identity);
             if (color == "Yellow") Instantiate(parScript.particlePrefab[1], transform.position, Quaternion.identity);
             if (color == "Pink") Instantiate(parScript.particlePrefab[2], transform.position, Quaternion.identity);
-            if (color == "Purple") Instantiate(parScript.particlePrefab[3], transform.position, Quaternion.identity);
+            if (color == "Blue") Instantiate(parScript.particlePrefab[3], transform.position, Quaternion.identity);
             if (color == "Green") Instantiate(parScript.particlePrefab[4], transform.position, Quaternion.identity);
 
             src.PlayOneShot(src.clip);

@@ -16,13 +16,13 @@ GameObject:
   - component: {fileID: 5955783842061401797}
   - component: {fileID: 8625832822027360933}
   - component: {fileID: -1147999683934901501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 6
-  m_TagString: Untagged
+  m_TagString: Gem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5280340005294952125
 Transform:
   m_ObjectHideFlags: 0
@@ -195,17 +195,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2721657309439950275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82ea7275cf2f63144991a65b6308cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 
+  color: Lime
   cursor: {fileID: 0}
   highlight: {r: 0, g: 0, b: 0, a: 0}
-  src: {fileID: 0}
-  sr: {fileID: 0}
-  poly2d: {fileID: 0}
+  src: {fileID: 5955783842061401797}
+  sr: {fileID: 3102510351570262397}
+  poly2d: {fileID: 8185601525498151396}
 --- !u!82 &5955783842061401797
 AudioSource:
   m_ObjectHideFlags: 0

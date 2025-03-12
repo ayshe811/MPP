@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class collisionManager : MonoBehaviour
 {
     public List<GameObject> objectsInSequence;
+    public List<GameObject> availableCrystals;
     public Queue<GameObject> queue;
     public int currentIndex;
     bool hasShuffled;
     playerScript playScript;
     public QueueDisplay queueScript;
+    int nextIndex;
 
     private void Start()
     {
@@ -24,13 +26,23 @@ public class collisionManager : MonoBehaviour
     {
         queue = new Queue<GameObject>(objectsInSequence);
 
-        if (currentIndex >= 3)
+        if (currentIndex >= objectsInSequence.Count)
         {
+            AddToSequence();
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
             currentIndex = 0;
             playScript.correctCollision++;
+
+            //objectsInSequence.Add(objectsInSequence[3]);
         }
+    }
+   public void AddToSequence()
+    {
+        GameObject newCrystal = availableCrystals[nextIndex];
+        objectsInSequence.Add(newCrystal);
+
+        nextIndex++;
     }
 
     IEnumerator shuffle()

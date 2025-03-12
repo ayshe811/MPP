@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2511134374100142894}
   - component: {fileID: 8386464647659278114}
   m_Layer: 0
-  m_Name: UI 3
+  m_Name: UI 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ea7275cf2f63144991a65b6308cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: Pink
+  color: Blue
   cursor: {fileID: 0}
   highlight: {r: 0, g: 0, b: 0, a: 0}
   src: {fileID: 0}
@@ -173,6 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.9622642, g: 0, b: 0.79306895, a: 1}
+  m_EffectColor: {r: 0.28613025, g: 0.04307081, b: 0.8836478, a: 1}
   m_EffectDistance: {x: 0.1, y: 0.03}
   m_UseGraphicAlpha: 1

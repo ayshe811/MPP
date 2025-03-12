@@ -1656,6 +1656,12 @@ MonoBehaviour:
   - {fileID: 28604441867161172, guid: afb28fba8b98fb24da9862395bfdd212, type: 3}
   - {fileID: 805098021246540060, guid: 8ff62321bfc2afd45a9c627d7b389f9e, type: 3}
   - {fileID: 1214366036526517905, guid: e145f2d1fa3a0d34db26831b1c4fb2d2, type: 3}
+  availableCrystals:
+  - {fileID: 1214366036526517905, guid: 94b119bd147e8724fb352479f0ad5c9d, type: 3}
+  - {fileID: 1214366036526517905, guid: 08287e6ef3580cc4aabfa7ea86b2f997, type: 3}
+  - {fileID: 1214366036526517905, guid: 306bdadc2b1cd614c9323ffee7a726eb, type: 3}
+  - {fileID: 1214366036526517905, guid: 11eb1b3c341e6324794d9bbdf0d370cb, type: 3}
+  - {fileID: 1214366036526517905, guid: 4616dce01ee43144cae2e3d5552175f4, type: 3}
   currentIndex: 0
   queueScript: {fileID: 377970335}
 --- !u!4 &1411003562

@@ -12,7 +12,12 @@ public class QueueDisplay : MonoBehaviour
     public float spacing = 100, scale;
     public Color outlineColor;
     public Material nextMaterial;
+    int index;
 
+    private void Update()
+    {
+        index = collisionManager.objectsInSequence.Count;        
+    }
     public void AnimateObject(GameObject obj)
     {
         RectTransform rt = obj.GetComponent<RectTransform>();
@@ -45,7 +50,7 @@ public class QueueDisplay : MonoBehaviour
     {
         if (queueDisplayPanel.childCount <= 1) return;
 
-        Transform firstGem = queueDisplayPanel.GetChild(0), lastGem = queueDisplayPanel.GetChild(2);
+        Transform firstGem = queueDisplayPanel.GetChild(0), lastGem = queueDisplayPanel.GetChild((index - 1));
         RectTransform firstGemRect = firstGem.GetComponent<RectTransform>(), lastGemRect = lastGem.GetComponent<RectTransform>();
         float moveDuration = 0.5f;
 
@@ -93,7 +98,6 @@ public class QueueDisplay : MonoBehaviour
     {
         if (previousGem != null)
         {
-
             Image img = previousGem.GetComponent<Image>();
             img.material = null;
             LeanTween.cancel(previousGem);
@@ -102,14 +106,11 @@ public class QueueDisplay : MonoBehaviour
 
         if (index < queueDisplayPanel.childCount)
         {
-
             GameObject currentGem = queueDisplayPanel.GetChild(index).gameObject;
             LeanTween.cancel(currentGem);
             AnimateObject(currentGem);
             previousGem = currentGem;
-            Debug.Log("previous gem " + previousGem);
-
-           
+            Debug.Log("previous gem " + previousGem);           
         }
     }
 }
