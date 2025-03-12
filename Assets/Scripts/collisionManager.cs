@@ -39,13 +39,13 @@ public class collisionManager : MonoBehaviour
         }
     }
    public void AddToSequence()
-    {
-        if (nextIndex >= availableCrystals.Count) return;
+   {
+       if (nextIndex >= availableCrystals.Count) return;
 
-        GameObject newCrystal = availableCrystals[nextIndex];
-        objectsInSequence.Add(newCrystal);
-        nextIndex++;
-    }
+       GameObject newCrystal = availableCrystals[nextIndex];
+       objectsInSequence.Add(newCrystal);
+       nextIndex++;
+   }
 
     IEnumerator shuffle()
     {
