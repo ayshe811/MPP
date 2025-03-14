@@ -757,6 +757,8 @@ MonoBehaviour:
   gameTimer: 0
   tabTimer: 0
   timerText: {fileID: 1402052779}
+  level: 0
+  targetScore: 0
 --- !u!1 &512086513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1664,7 @@ MonoBehaviour:
   - {fileID: 1214366036526517905, guid: 306bdadc2b1cd614c9323ffee7a726eb, type: 3}
   - {fileID: 1214366036526517905, guid: 11eb1b3c341e6324794d9bbdf0d370cb, type: 3}
   - {fileID: 1214366036526517905, guid: 4616dce01ee43144cae2e3d5552175f4, type: 3}
+  gameManager: {fileID: 0}
   currentIndex: 0
   queueScript: {fileID: 377970335}
 --- !u!4 &1411003562
@@ -2395,11 +2398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1325022befc398b4f95dd13295326b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 9
-  sizeX: 0
-  sizeY: 0
-  sizeDecRate: 0.05
-  speedIncRate: 0.1
+  xInput: 0
+  yInput: 0
+  scale: 0
+  timer: 0
   isHit: 0
   canvas: {fileID: 172012608}
   scoreText: {fileID: 209803544}

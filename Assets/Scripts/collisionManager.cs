@@ -9,6 +9,7 @@ public class collisionManager : MonoBehaviour
     public List<GameObject> objectsInSequence;
     public List<GameObject> availableCrystals;
     public Queue<GameObject> queue;
+    public gameManager gameManager;
     public int currentIndex;
     bool hasShuffled;
     playerScript playScript;
