@@ -7,8 +7,8 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    float xInput, yInput, scale, timer;
-    public float playerSpeed, sizeX, sizeY, sizeDecRate, speedIncRate;
+   [SerializeField] float xInput, yInput, scale, timer;
+    float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints, level;
     public bool isHit;
     public GameObject canvas;

@@ -2220,10 +2220,10 @@ MonoBehaviour:
   - {fileID: 8069987585253751376, guid: 690bf14e672b3b843aee1b0a505a7543, type: 3}
   - {fileID: 8184761927527738162, guid: 65245badfa65aba4e9a20e51169992f4, type: 3}
   secondSpawm: 0.5
-  minTras: -5
-  maxTras: 5
-  gameManagerr: {fileID: 0}
+  rangeMax: 5
+  gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
+  player: {fileID: 1973025093}
 --- !u!1 &1973025093
 GameObject:
   m_ObjectHideFlags: 0
