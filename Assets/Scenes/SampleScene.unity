@@ -756,9 +756,10 @@ MonoBehaviour:
   states: 0
   gameTimer: 0
   tabTimer: 0
+  collisionManager: {fileID: 1411003561}
   timerText: {fileID: 1402052779}
   level: 0
-  targetScore: 0
+  levelIndex: 0
 --- !u!1 &512086513
 GameObject:
   m_ObjectHideFlags: 0
