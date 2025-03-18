@@ -39,11 +39,12 @@ public class gameManager : MonoBehaviour
             states = gameState.lose;
             gameTimer = 0;
         }
-        else if (gameTimer > 0 && playScript.score >= targetLevel())
-        {
-            playScript.score = 0;
-            levelIndex++;
-        }
+        //else if (gameTimer > 0 && playScript.score >= targetLevel())
+        //{
+        //    playScript.score = 0;
+        //    levelIndex++;
+        //}
+        else if (gameTimer > 0 && playScript.score == 25) states = gameState.win;
 
         if (states == gameState.win) SceneManager.LoadScene("Win Scene");
         if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");
@@ -60,7 +61,6 @@ public class gameManager : MonoBehaviour
             case 4: return 7;
             case 5: return 8;
             default: return 8;
-
         }
     }
 }
