@@ -42,6 +42,9 @@ public class techieScript : MonoBehaviour
             if (color == "Pink") Instantiate(parScript.particlePrefab[2], transform.position, Quaternion.identity);
             if (color == "Blue") Instantiate(parScript.particlePrefab[3], transform.position, Quaternion.identity);
             if (color == "Green") Instantiate(parScript.particlePrefab[4], transform.position, Quaternion.identity);
+            if (color == "Lime") Instantiate(parScript.particlePrefab[5], transform.position, Quaternion.identity);
+            if (color == "Purple") Instantiate(parScript.particlePrefab[6], transform.position, Quaternion.identity);
+            if (color == "Orange") Instantiate(parScript.particlePrefab[7], transform.position, Quaternion.identity);
 
             src.PlayOneShot(src.clip);
             poly2d.enabled = false;
