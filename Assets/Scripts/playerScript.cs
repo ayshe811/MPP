@@ -9,7 +9,7 @@ public class playerScript : MonoBehaviour
     Rigidbody2D rb;
    [SerializeField] float xInput, yInput, scale, timer;
     float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
-    int weightPoints, level;
+    int weightPoints, level, combo;
     public bool isHit;
     public GameObject canvas;
     gameManager gameManager;
@@ -17,7 +17,6 @@ public class playerScript : MonoBehaviour
     spawnerScript spawner;
     public spawnerScript spawner2, spawner3;
     Color color;
-    public TMP_Text scoreText;
     public int correctCollision = 0;
     [SerializeField] bool metCollisionTarget = false;
     public int score, sizePoints;
@@ -34,14 +33,8 @@ public class playerScript : MonoBehaviour
         hasStarted = false;
 
         sizeX = 1; sizeY = 1;
+        combo = 0;
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        scoreText.text = "" + score;
-    }
-
     public void DecreaseSize()
     {
         transform.localScale -= new Vector3(0.005f, 0.005f);
@@ -66,6 +59,7 @@ public class playerScript : MonoBehaviour
                 if (collision.gameObject.GetComponent<techieScript>().color ==
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
                 {
+                    combo++;
                     gameManager.gameTimer += 5;
                     Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
@@ -82,12 +76,13 @@ public class playerScript : MonoBehaviour
                             StartCoroutine(spawner.techSpawn());
                             //StartCoroutine(spawner2.techSpawn());
                             //StartCoroutine(spawner3.techSpawn());
-                            gameManager.states = gameManager.gameState.playable;
+                            //gameManager.states = gameManager.gameState.playable;
                         }
                     }
                 }
                 else
                 {
+                    combo = 0;
                     gameManager.gameTimer -= 30;
                     Debug.LogWarning("Incorrect Collision!");
                 }

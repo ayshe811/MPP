@@ -25,19 +25,19 @@ public class gameManager : MonoBehaviour
         gameTimer = 300;
         level = 1;
 
-        states = gameState.onboadring;
-        dummy2.SetActive(false);
-        dummy3.SetActive(false);
+        states = gameState.playable;
+        //dummy2.SetActive(false);
+        //dummy3.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (states == gameState.playable)
-        {
-            dummy2.SetActive(true);
-            dummy3.SetActive(true);
-        }
+        //if (states == gameState.playable)
+        //{
+        //    dummy2.SetActive(true);
+        //    dummy3.SetActive(true);
+        //}
         if (gameTimer > 300) gameTimer = 300;
         if (playScript.score >= 3) gameTimer -= Time.deltaTime;
         timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
@@ -52,8 +52,6 @@ public class gameManager : MonoBehaviour
         //    playScript.score = 0;
         //    levelIndex++;
         //}
-        else if (gameTimer > 0 && playScript.score == 25) states = gameState.win;
-
         if (states == gameState.win) SceneManager.LoadScene("Win Scene");
         if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");
     }

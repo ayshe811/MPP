@@ -27,7 +27,7 @@ public class spawnerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (dummyNumber == "dummy1") transform.position = new Vector3(player.transform.position.x, (player.transform.position.y + 10));
+        if (dummyNumber == "dummy1") transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
         if (dummyNumber == "dummy2") transform.position = new Vector3(player.transform.position.x + offset, (player.transform.position.y + 10)); 
         if (dummyNumber == "dummy3") transform.position = new Vector3(player.transform.position.x - offset, (player.transform.position.y + 10)); 
     }
