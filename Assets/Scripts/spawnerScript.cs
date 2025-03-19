@@ -16,8 +16,7 @@ public class spawnerScript : MonoBehaviour
     public GameObject player; 
 
     playerScript playScript;
-    public enum dummyStates { dummy1, dummy2, dummy3 };
-    public dummyStates states;
+    public string dummyNumber;
      float offset = 6.4f;
     // Start is called before the first frame update
     void Start()
@@ -28,10 +27,9 @@ public class spawnerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (states == dummyStates.dummy1) transform.position = new Vector3(player.transform.position.x, (player.transform.position.y + 10));
-        if (states == dummyStates.dummy2) transform.position = new Vector3(player.transform.position.x + offset, (player.transform.position.y + 10)); 
-        if (states == dummyStates.dummy3) transform.position = new Vector3(player.transform.position.x - offset, (player.transform.position.y + 10)); 
-
+        if (dummyNumber == "dummy1") transform.position = new Vector3(player.transform.position.x, (player.transform.position.y + 10));
+        if (dummyNumber == "dummy2") transform.position = new Vector3(player.transform.position.x + offset, (player.transform.position.y + 10)); 
+        if (dummyNumber == "dummy3") transform.position = new Vector3(player.transform.position.x - offset, (player.transform.position.y + 10)); 
     }
     public IEnumerator techSpawn()
     {

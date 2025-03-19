@@ -19,7 +19,7 @@ public class techieScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         parScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
-        spaScript = GameObject.Find("spawner1").GetComponent<spawnerScript>();
+        spaScript = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         rb = GetComponent<Rigidbody2D>();
     }

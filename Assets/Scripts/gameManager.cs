@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
-    public enum gameState { menu, playable, win, lose }
+    public enum gameState { menu,onboadring, playable, win, lose }
     public gameState states;
     public float gameTimer, tabTimer;
     playerScript playScript;
@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     public TMP_Text timerText;
     public int level;
    [SerializeField] int levelIndex;
+    public GameObject dummy2, dummy3;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +25,19 @@ public class gameManager : MonoBehaviour
         gameTimer = 300;
         level = 1;
 
-        states = gameState.playable;
+        states = gameState.onboadring;
+        dummy2.SetActive(false);
+        dummy3.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (states == gameState.playable)
+        {
+            dummy2.SetActive(true);
+            dummy3.SetActive(true);
+        }
         if (gameTimer > 300) gameTimer = 300;
         if (playScript.score >= 3) gameTimer -= Time.deltaTime;
         timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);

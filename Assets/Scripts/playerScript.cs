@@ -15,6 +15,7 @@ public class playerScript : MonoBehaviour
     gameManager gameManager;
     collisionManager collisionManager;
     spawnerScript spawner;
+    public spawnerScript spawner2, spawner3;
     Color color;
     public TMP_Text scoreText;
     public int correctCollision = 0;
@@ -28,7 +29,7 @@ public class playerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
-        spawner = GameObject.Find("spawner1").GetComponent<spawnerScript>();
+        spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         color = GetComponent<SpriteRenderer>().color;
         hasStarted = false;
 
@@ -79,6 +80,9 @@ public class playerScript : MonoBehaviour
                         {
                             hasStarted = true;
                             StartCoroutine(spawner.techSpawn());
+                            //StartCoroutine(spawner2.techSpawn());
+                            //StartCoroutine(spawner3.techSpawn());
+                            gameManager.states = gameManager.gameState.playable;
                         }
                     }
                 }
