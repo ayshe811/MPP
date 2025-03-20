@@ -8,14 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
-    public enum gameState { menu,onboadring, playable, win, lose }
+    public enum gameState { menu, onboadring, playable, win, lose }
     public gameState states;
     public float gameTimer, tabTimer;
     playerScript playScript;
     public collisionManager collisionManager;
     public TMP_Text timerText;
     public int level;
-   [SerializeField] int levelIndex;
+    [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     // Start is called before the first frame update
     void Start()
@@ -54,19 +54,19 @@ public class gameManager : MonoBehaviour
         //}
         if (states == gameState.win) SceneManager.LoadScene("Win Scene");
         if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");
-    }
 
-    int targetLevel()
-    {
-        switch (levelIndex)
+        int targetLevel()
         {
-            case 0: return 3;
-            case 1: return 4;
-            case 2: return 5;
-            case 3: return 6;
-            case 4: return 7;
-            case 5: return 8;
-            default: return 8;
+            switch (levelIndex)
+            {
+                case 0: return 3;
+                case 1: return 4;
+                case 2: return 5;
+                case 3: return 6;
+                case 4: return 7;
+                case 5: return 8;
+                default: return 8;
+            }
         }
     }
 }
