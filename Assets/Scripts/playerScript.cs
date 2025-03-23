@@ -74,9 +74,6 @@ public class playerScript : MonoBehaviour
                         {
                             hasStarted = true;
                             StartCoroutine(spawner.techSpawn());
-                            //StartCoroutine(spawner2.techSpawn());
-                            //StartCoroutine(spawner3.techSpawn());
-                            //gameManager.states = gameManager.gameState.playable;
                         }
                     }
                 }
@@ -102,8 +99,9 @@ public class playerScript : MonoBehaviour
     void FixedUpdate() // player movement
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(xInput * playerSpeed, yInput * playerSpeed);
+        rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
+        Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
+        rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
     }
 }

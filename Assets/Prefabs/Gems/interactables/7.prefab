@@ -245,6 +245,8 @@ MonoBehaviour:
   src: {fileID: -1109430595256482127}
   sr: {fileID: 8456905046700011}
   poly2d: {fileID: -893303023773844346}
+  glowColour: {r: 0, g: 0, b: 0, a: 0}
+  material: {fileID: 0}
 --- !u!82 &-1109430595256482127
 AudioSource:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class techieScript : MonoBehaviour
     spawnerScript spaScript;
     playerScript playScript;
     Rigidbody2D rb;
+    [SerializeField] Color glowColour;
 
     void Start()
     {
@@ -28,6 +29,22 @@ public class techieScript : MonoBehaviour
         transform.Rotate(Vector3.back * .7f);
         if (!playScript.hasStarted) rb.gravityScale = .12f;
         else rb.gravityScale = .18f;
+
+     //   GlowEffect();
+    }
+
+    void GlowEffect()
+    {
+        float glowDuration = 1f, glowIntensity = 1f;
+        LeanTween.value(gameObject, 0f, glowIntensity, glowDuration)
+            .setEase(LeanTweenType.easeInOutSine)
+            .setLoopPingPong() // Makes it pulse back and forth
+            .setOnUpdate((float value) =>
+            {
+                Color newColor = glowColour;
+                newColor.a = value;
+                sr.color = newColor;
+            });
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
