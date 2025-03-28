@@ -6,6 +6,7 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
+    public GameObject otherPrefab;
     [SerializeField] float secondSpawm;
     [SerializeField] float rangeMax;
 
@@ -41,6 +42,17 @@ public class spawnerScript : MonoBehaviour
                 position, Quaternion.identity);
             yield return new WaitForSeconds(secondSpawm);
             Destroy(gameObject, 5f);
+        }
+    }
+    public IEnumerator otherSpawn()
+    {
+        while (true)
+        {
+            var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
+            var position = new Vector3(wanted, transform.position.y);
+            GameObject otherObject = Instantiate(otherPrefab, position, Quaternion.identity);
+            yield return new WaitForSeconds(2f);
+            Destroy(otherObject, 5);
         }
     }
     public IEnumerator beforeGame()

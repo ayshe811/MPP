@@ -11,7 +11,7 @@ public class playerScript : MonoBehaviour
     float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints, level, combo;
     public bool isHit;
-    public GameObject canvas;
+    public GameObject canvas, poison;
     gameManager gameManager;
     collisionManager collisionManager;
     spawnerScript spawner;
@@ -74,6 +74,7 @@ public class playerScript : MonoBehaviour
                         {
                             hasStarted = true;
                             StartCoroutine(spawner.techSpawn());
+                            StartCoroutine(spawner.otherSpawn());
                         }
                     }
                 }
@@ -84,6 +85,10 @@ public class playerScript : MonoBehaviour
                     Debug.LogWarning("Incorrect Collision!");
                 }
             }
+        }
+        if (collision.gameObject.CompareTag("Poison"))
+        {
+            // player freeze (MORE FEEDBACK TO INFORM THE PLAYER)!!
         }
     }
     public void IncreaseSize() // maybe? maybe not? (i don't fully understand whats happening here)
@@ -103,5 +108,8 @@ public class playerScript : MonoBehaviour
         rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
         Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
         rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
+
+        if (transform.position.x <= -2.7f) transform.position = new Vector3(-2.7f, transform.position.y);
+        if (transform.position.x >= 2.7f) transform.position = new Vector3(2.7f, transform.position.y);
     }
 }
