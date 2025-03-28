@@ -417,11 +417,11 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.48
+  m_DeadZoneWidth: 0.74
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.53
+  m_SoftZoneWidth: 0.74
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
@@ -2511,6 +2511,7 @@ MonoBehaviour:
   timer: 0
   isHit: 0
   canvas: {fileID: 172012608}
+  poison: {fileID: 3997586404736442908, guid: cb7ba93acf1f20941bc961cefc9f48d3, type: 3}
   spawner2: {fileID: 930051032}
   spawner3: {fileID: 763435830}
   correctCollision: 0
