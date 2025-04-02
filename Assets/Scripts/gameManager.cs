@@ -25,7 +25,7 @@ public class gameManager : MonoBehaviour
         gameTimer = 300;
         level = 1;
 
-        states = gameState.playable;
+        states = gameState.onboadring;
         //dummy2.SetActive(false);
         //dummy3.SetActive(false);
     }

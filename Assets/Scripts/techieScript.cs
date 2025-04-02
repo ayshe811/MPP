@@ -13,7 +13,9 @@ public class techieScript : MonoBehaviour
     particleManager parScript;
     spawnerScript spaScript;
     playerScript playScript;
+    gameManager gameManager;
     Rigidbody2D rb;
+    GameObject player;
     [SerializeField] Color glowColour;
 
     void Start()
@@ -22,6 +24,8 @@ public class techieScript : MonoBehaviour
         parScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
         spaScript = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         playScript = GameObject.Find("player").GetComponent<playerScript>();
+        gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
+        player = GameObject.Find("player");
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -30,7 +34,13 @@ public class techieScript : MonoBehaviour
         if (!playScript.hasStarted) rb.gravityScale = .12f;
         else rb.gravityScale = .18f;
 
-     //   GlowEffect();
+        //   GlowEffect();
+
+        if (gameManager.states == gameManager.gameState.onboadring)
+        {
+            if (transform.position.y <= 2.5f) transform.position = new Vector3(transform.position.x, 2.5f);
+        }
+        else if (gameManager.states == gameManager.gameState.playable) transform.position = new Vector3(transform.position.x, transform.position.y);
     }
 
     void GlowEffect()

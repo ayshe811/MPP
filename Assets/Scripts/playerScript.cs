@@ -75,6 +75,7 @@ public class playerScript : MonoBehaviour
                             hasStarted = true;
                             StartCoroutine(spawner.techSpawn());
                             StartCoroutine(spawner.otherSpawn());
+                            gameManager.states = gameManager.gameState.playable;
                         }
                     }
                 }
@@ -104,10 +105,15 @@ public class playerScript : MonoBehaviour
     void FixedUpdate() // player movement
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
-        Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
-        rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
+        if (gameManager.states == gameManager.gameState.onboadring) rb.velocity = new Vector2(xInput * playerSpeed, yInput * playerSpeed);
+        else if (gameManager.states == gameManager.gameState.playable)
+        {
+            rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
+            Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
+            rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
+        }
 
         if (transform.position.x <= -2.7f) transform.position = new Vector3(-2.7f, transform.position.y);
         if (transform.position.x >= 2.7f) transform.position = new Vector3(2.7f, transform.position.y);
