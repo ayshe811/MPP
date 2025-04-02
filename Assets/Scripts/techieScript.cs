@@ -17,6 +17,7 @@ public class techieScript : MonoBehaviour
     Rigidbody2D rb;
     GameObject player;
     [SerializeField] Color glowColour;
+    collisionManager collisionManager;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class techieScript : MonoBehaviour
         spaScript = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
+        collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         player = GameObject.Find("player");
         rb = GetComponent<Rigidbody2D>();
     }
@@ -73,11 +75,20 @@ public class techieScript : MonoBehaviour
             if (color == "Purple") Instantiate(parScript.particlePrefab[6], transform.position, Quaternion.identity);
             if (color == "Orange") Instantiate(parScript.particlePrefab[7], transform.position, Quaternion.identity);
 
-            src.PlayOneShot(src.clip);
+            //src.PlayOneShot(src.clip);
             poly2d.enabled = false;
             sr.enabled = false;
             Destroy(gameObject, 0.5f);
-          //  player.IncreaseSize();
+            //  player.IncreaseSize();
+
+            if (GetComponent<techieScript>().color ==
+                    collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
+            {
+                src.PlayOneShot(src.clip);
+                poly2d.enabled = false;
+                sr.enabled = false;
+                Destroy(gameObject, 0.5f);
+            }
         }
     }
 }
