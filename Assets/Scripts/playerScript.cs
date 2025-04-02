@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
-    public ScreenShake shakeCamera;
+    public ScreenShake screenShake;
     Rigidbody2D rb;
    [SerializeField] float xInput, yInput, scale, timer;
     float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
@@ -84,7 +84,7 @@ public class playerScript : MonoBehaviour
                 {
                     combo = 0;
                     gameManager.gameTimer -= 30;
-                    shakeCamera.TriggerShake();
+                    screenShake.TriggerShake();
                     Debug.LogWarning("Incorrect Collision!");
                 }
             }
