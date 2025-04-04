@@ -16,6 +16,7 @@ public class playerScript : MonoBehaviour
     gameManager gameManager;
     collisionManager collisionManager;
     spawnerScript spawner;
+    public AudioSource src;
     public spawnerScript spawner2, spawner3;
     Color color;
     public int correctCollision = 0;
@@ -85,6 +86,7 @@ public class playerScript : MonoBehaviour
                     combo = 0;
                     gameManager.gameTimer -= 30;
                     screenShake.TriggerShake();
+                    src.PlayOneShot(src.clip);
                     Debug.LogWarning("Incorrect Collision!");
                 }
             }
