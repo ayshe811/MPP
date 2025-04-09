@@ -2692,6 +2692,7 @@ MonoBehaviour:
   sizePoints: 0
   tabShowed: 0
   hasStarted: 0
+  comboMeter: {fileID: 827072416}
 --- !u!58 &1973025099
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2736,7 +2737,7 @@ AudioSource:
   m_GameObject: {fileID: 1973025093}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f460eaa66b2116348bd450db41be2f24, type: 2}
   m_audioClip: {fileID: 8300000, guid: bc91122821437914a9b262496b262901, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

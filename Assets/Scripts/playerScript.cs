@@ -23,6 +23,7 @@ public class playerScript : MonoBehaviour
     [SerializeField] bool metCollisionTarget = false;
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
+    public TextMeshProUGUI comboMeter;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class playerScript : MonoBehaviour
         hasStarted = false;
 
         sizeX = 1; sizeY = 1;
-        combo = 0;
+        combo = 1;
     }
     public void DecreaseSize()
     {
@@ -49,6 +50,12 @@ public class playerScript : MonoBehaviour
             sizeX = 1; sizeY = 1;
             playerSpeed = 9;
         }
+    }
+
+    private void Update()
+    {
+        if (combo == 1) comboMeter.text = null;
+        else comboMeter.text = "x " + combo;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -67,23 +74,20 @@ public class playerScript : MonoBehaviour
                     collisionManager.OnCorrectCollision();
                     if (!hasStarted)
                     {
-                        if (spawner.currentTechLevel < 2)
-                        {
-                            spawner.currentTechLevel++;
-                            StartCoroutine(spawner.beforeGame());
-                        }
-                        else if (spawner.currentTechLevel == 2)
+                        if (spawner.currentTechLevel < 3) spawner.currentTechLevel++;
+                        if (spawner.currentTechLevel >= 3)
                         {
                             hasStarted = true;
+                            StopCoroutine(spawner.beforeGame());
                             StartCoroutine(spawner.techSpawn());
-                            StartCoroutine(spawner.otherSpawn());
+                        //    StartCoroutine(spawner.otherSpawn());
                             gameManager.states = gameManager.gameState.playable;
                         }
                     }
                 }
                 else
                 {
-                    combo = 0;
+                    combo = 1;
                     gameManager.gameTimer -= 30;
                     screenShake.TriggerShake();
                     src.PlayOneShot(src.clip);
@@ -109,15 +113,19 @@ public class playerScript : MonoBehaviour
     void FixedUpdate() // player movement
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+     //   yInput = Input.GetAxisRaw("Vertical");
 
-        if (gameManager.states == gameManager.gameState.onboadring) rb.velocity = new Vector2(xInput * playerSpeed, yInput * playerSpeed);
-        else if (gameManager.states == gameManager.gameState.playable)
-        {
-            rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
-            Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
-            rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
-        }
+        rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
+        Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
+        rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
+
+        //if (gameManager.states == gameManager.gameState.onboadring) rb.velocity = new Vector2(xInput * playerSpeed, yInput * playerSpeed);
+        //else if (gameManager.states == gameManager.gameState.playable)
+        //{
+        //    rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
+        //    Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
+        //    rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.fixedDeltaTime);
+        //}
 
         if (transform.position.x <= -2.7f) transform.position = new Vector3(-2.7f, transform.position.y);
         if (transform.position.x >= 2.7f) transform.position = new Vector3(2.7f, transform.position.y);

@@ -13,15 +13,6 @@ public class QueueDisplay : MonoBehaviour
     public Color outlineColor;
     public Material nextMaterial;
     int index;
-
-    //private void Awake()
-    //{
-    //    for (int i = 1; i <= queueDisplayPanel.childCount; i++)
-    //    {
-    //        RectTransform rt = queueDisplayPanel.GetChild(i).GetComponent<RectTransform>();
-    //        rt.localScale = new Vector3(originalSize.x / 2, originalSize.y / 2);
-    //    }
-    //}
     private void Update()
     {
         index = collisionManager.objectsInSequence.Count;        

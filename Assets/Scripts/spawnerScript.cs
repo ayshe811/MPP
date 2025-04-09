@@ -57,10 +57,14 @@ public class spawnerScript : MonoBehaviour
     }
     public IEnumerator beforeGame()
     {
-        var wanted = Random.Range(-rangeMax, rangeMax);
-        var position = new Vector3(wanted, transform.position.y);
-        GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
-            position, Quaternion.identity);
-        yield return null;
+        while (true)
+        {
+            var wanted = Random.Range(-rangeMax, rangeMax);
+            var position = new Vector3(wanted, transform.position.y);
+            GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
+                position, Quaternion.identity);
+            yield return new WaitForSeconds(5);
+            Destroy(gameObject, 5);
+        }
     }
 }

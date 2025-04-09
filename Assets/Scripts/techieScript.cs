@@ -38,11 +38,11 @@ public class techieScript : MonoBehaviour
 
         //   GlowEffect();
 
-        if (gameManager.states == gameManager.gameState.onboadring)
-        {
-            if (transform.position.y <= 2.5f) transform.position = new Vector3(transform.position.x, 2.5f);
-        }
-        else if (gameManager.states == gameManager.gameState.playable) transform.position = new Vector3(transform.position.x, transform.position.y);
+        //if (gameManager.states == gameManager.gameState.onboadring)
+        //{
+        //    if (transform.position.y <= 2.5f) transform.position = new Vector3(transform.position.x, 2.5f);
+        //}
+        //else if (gameManager.states == gameManager.gameState.playable) transform.position = new Vector3(transform.position.x, transform.position.y);
     }
 
     void GlowEffect()
