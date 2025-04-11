@@ -36,9 +36,35 @@ public class spawnerScript : MonoBehaviour
     {
         while (true)
         {
+            //GameObject nextInSequenceIndex = collisionManager.objectsInSequence.Count > 0 ? 
+            //    collisionManager.objectsInSequence[0] : 
+            //    techPrefab[Random.Range(0, techPrefab.Length)];
+            // ternary operator didn't work in this context
+
+            int nextInSequenceIndex = 0;
+            if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count) 
+            {
+                for (int i = 0; i < techPrefab.Length; i++)
+                {
+                    if (techPrefab[i].GetComponent<techieScript>().color == 
+                        collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
+                        // same condition applied when detecting correct collisions (see playerScript)
+                    {
+                        nextInSequenceIndex = i;
+                        break;
+                    }
+                }
+            }
+            else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
+
+            bool spawnNextInSequence = Random.value < 0.5f; // 50% chance
+            int selectedIndex = spawnNextInSequence ? 
+                nextInSequenceIndex : 
+                Random.Range(0, collisionManager.objectsInSequence.Count);
+
             var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
             var position = new Vector3(wanted, transform.position.y);
-            GameObject gameObject = Instantiate(techPrefab[Random.Range(0, collisionManager.objectsInSequence.Count)],
+            GameObject gameObject = Instantiate(techPrefab[selectedIndex],
                 position, Quaternion.identity);
             yield return new WaitForSeconds(secondSpawm);
             Destroy(gameObject, 5f);
