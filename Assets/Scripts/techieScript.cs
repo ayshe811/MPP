@@ -35,6 +35,7 @@ public class techieScript : MonoBehaviour
         transform.Rotate(Vector3.back * .7f);
         if (!playScript.hasStarted) rb.gravityScale = .12f;
         else rb.gravityScale = .18f;
+        src.volume = .1f;
 
         //   GlowEffect();
 

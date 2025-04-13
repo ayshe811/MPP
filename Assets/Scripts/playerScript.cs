@@ -56,6 +56,8 @@ public class playerScript : MonoBehaviour
     {
         if (combo == 1) comboMeter.text = null;
         else comboMeter.text = "x " + combo;
+
+        src.volume = 1;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

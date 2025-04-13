@@ -1108,6 +1108,7 @@ MonoBehaviour:
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
+  spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy3
 --- !u!4 &763435831
@@ -1136,6 +1137,7 @@ GameObject:
   - component: {fileID: 827072415}
   - component: {fileID: 827072417}
   - component: {fileID: 827072416}
+  - component: {fileID: 827072418}
   m_Layer: 5
   m_Name: COMBO
   m_TagString: Untagged
@@ -1259,6 +1261,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827072414}
   m_CullTransparentMesh: 1
+--- !u!95 &827072418
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827072414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 071697095ec7ab74c9cea2a4a0d93156, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &905745622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1458,7 @@ MonoBehaviour:
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
+  spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy2
 --- !u!4 &930051033
@@ -2546,6 +2570,7 @@ MonoBehaviour:
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
+  spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy1
 --- !u!1 &1973025093

@@ -13,6 +13,7 @@ public class spawnerScript : MonoBehaviour
     public gameManager gameManagerr; collisionManager collisionManager;
     public int currentTechLevel;
     private float lastTimeTechLevelIncrease = 0;
+    public bool spawnNextInSequence;
 
     public GameObject player; 
 
@@ -55,7 +56,7 @@ public class spawnerScript : MonoBehaviour
             }
             else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
 
-            bool spawnNextInSequence = Random.value < 0.3f; // 40% chance
+            spawnNextInSequence = Random.value < 0.3f; // 40% chance
             int selectedIndex = spawnNextInSequence ? 
                 nextInSequenceIndex : 
                 Random.Range(0, collisionManager.objectsInSequence.Count);
@@ -87,7 +88,7 @@ public class spawnerScript : MonoBehaviour
             var position = new Vector3(wanted, transform.position.y);
             GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
                 position, Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             Destroy(gameObject, 5);
         }
     }
