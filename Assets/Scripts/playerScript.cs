@@ -24,6 +24,9 @@ public class playerScript : MonoBehaviour
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
     public TextMeshProUGUI comboMeter;
+
+    SpriteRenderer sr;
+    public Color glowColour;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,8 @@ public class playerScript : MonoBehaviour
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
-        color = GetComponent<SpriteRenderer>().color;
+        glowColour = GetComponent<SpriteRenderer>().color;
+        sr = GetComponent<SpriteRenderer>();
         hasStarted = false;
 
         sizeX = 1; sizeY = 1;
@@ -112,10 +116,25 @@ public class playerScript : MonoBehaviour
         sizeY += 0.01f;
         playerSpeed -= 0.1f;
     }
+    void GlowEffect()
+    {
+        float glowDuration = 1f, glowIntensity = 1f;
+        LeanTween.value(gameObject, 0f, glowIntensity, glowDuration)
+            .setEase(LeanTweenType.easeInOutSine)
+            .setLoopPingPong() // Makes it pulse back and forth
+            .setOnUpdate((float value) =>
+            {
+                Color newColor = glowColour;
+                newColor.a = value;
+                sr.color = newColor;
+            });
+    }
     void FixedUpdate() // player movement
     {
         xInput = Input.GetAxisRaw("Horizontal");
-     //   yInput = Input.GetAxisRaw("Vertical");
+        //   yInput = Input.GetAxisRaw("Vertical");
+
+        //GlowEffect();
 
         rb.velocity = new Vector2(xInput * playerSpeed, rb.velocity.y);
         Vector2 targetVelocity = new Vector2(rb.velocity.x, 4);
