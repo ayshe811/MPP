@@ -88,7 +88,7 @@ public class spawnerScript : MonoBehaviour
             var position = new Vector3(wanted, transform.position.y);
             GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
                 position, Quaternion.identity);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             Destroy(gameObject, 5);
         }
     }
