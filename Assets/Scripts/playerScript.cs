@@ -24,6 +24,7 @@ public class playerScript : MonoBehaviour
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
     public TextMeshProUGUI comboMeter;
+    public audioScript audioScript;
 
     SpriteRenderer sr;
     public Color glowColour;
@@ -97,6 +98,7 @@ public class playerScript : MonoBehaviour
                     gameManager.gameTimer -= 30;
                     screenShake.TriggerShake();
                     src.PlayOneShot(src.clip);
+                    audioScript.src.Stop();
                     Debug.LogWarning("Incorrect Collision!");
                 }
             }

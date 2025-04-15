@@ -15,7 +15,8 @@ public class collisionManager : MonoBehaviour
     playerScript playScript;
     public QueueDisplay queueScript;
     int nextIndex;
-  //  public spawnerScript spawnerScript;
+    public audioScript audioScript;
+    //  public spawnerScript spawnerScript;
 
     private void Start()
     {
@@ -65,6 +66,8 @@ public class collisionManager : MonoBehaviour
         currentIndex++;
         queueScript.AnimateGemAtIndex(currentIndex);
         queueScript.shift();
-     //   queueScript.FadeGemsByPosition();
+        //   queueScript.FadeGemsByPosition();
+
+        if (!audioScript.src.isPlaying) audioScript.src.Play();
     }
 }
