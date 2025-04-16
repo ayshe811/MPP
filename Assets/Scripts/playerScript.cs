@@ -10,7 +10,7 @@ public class playerScript : MonoBehaviour
     Rigidbody2D rb;
    [SerializeField] float xInput, yInput, scale, timer;
     float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
-    int weightPoints, level, combo;
+    int weightPoints, level;
     public bool isHit;
     public GameObject canvas, poison;
     gameManager gameManager;
@@ -19,7 +19,7 @@ public class playerScript : MonoBehaviour
     public AudioSource src;
     public spawnerScript spawner2, spawner3;
     Color color;
-    public int correctCollision = 0;
+    public int correctCollision = 0, combo, previousScore;
     [SerializeField] bool metCollisionTarget = false;
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
@@ -39,6 +39,7 @@ public class playerScript : MonoBehaviour
         glowColour = GetComponent<SpriteRenderer>().color;
         sr = GetComponent<SpriteRenderer>();
         hasStarted = false;
+        previousScore = 0;
 
         sizeX = 1; sizeY = 1;
         combo = 1;
@@ -95,6 +96,7 @@ public class playerScript : MonoBehaviour
                 else
                 {
                     combo = 1;
+                    collisionManager.previousValue = 0;
                     gameManager.gameTimer -= 30;
                     screenShake.TriggerShake();
                     src.PlayOneShot(src.clip);

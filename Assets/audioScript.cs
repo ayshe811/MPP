@@ -14,6 +14,6 @@ public class audioScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        src.volume = .5f;
+
     }
 }

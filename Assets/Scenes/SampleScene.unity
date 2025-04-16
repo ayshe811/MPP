@@ -2385,6 +2385,7 @@ MonoBehaviour:
   currentIndex: 0
   queueScript: {fileID: 377970335}
   audioScript: {fileID: 1744039792}
+  previousValue: 0
 --- !u!4 &1411003562
 Transform:
   m_ObjectHideFlags: 0
@@ -2945,7 +2946,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77a70f8838327934cb9ae046594b7365, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -3351,6 +3352,8 @@ MonoBehaviour:
   spawner2: {fileID: 930051032}
   spawner3: {fileID: 763435830}
   correctCollision: 0
+  combo: 0
+  previousScore: 0
   metCollisionTarget: 0
   score: 0
   sizePoints: 0

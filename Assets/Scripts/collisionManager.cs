@@ -16,6 +16,7 @@ public class collisionManager : MonoBehaviour
     public QueueDisplay queueScript;
     int nextIndex;
     public audioScript audioScript;
+    public int previousValue;
     //  public spawnerScript spawnerScript;
 
     private void Start()
@@ -23,6 +24,7 @@ public class collisionManager : MonoBehaviour
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         hasShuffled = false;
         queueScript.UpdateQueueDisplay();
+        previousValue = 0;
     }
 
     private void Update()
@@ -68,6 +70,11 @@ public class collisionManager : MonoBehaviour
         queueScript.shift();
         //   queueScript.FadeGemsByPosition();
 
-        if (!audioScript.src.isPlaying) audioScript.src.Play();
+        if (!audioScript.src.isPlaying) { audioScript.src.Play(); audioScript.src.volume = .07f; }
+        else if (audioScript.src.isPlaying && playScript.combo == previousValue + 5)
+        {
+            previousValue += 5;
+            audioScript.src.volume += .05f;
+        }
     }
 }
