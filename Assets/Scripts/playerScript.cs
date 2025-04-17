@@ -42,7 +42,7 @@ public class playerScript : MonoBehaviour
         previousScore = 0;
 
         sizeX = 1; sizeY = 1;
-        combo = 11;
+        combo = 1;
     }
     public void DecreaseSize()
     {

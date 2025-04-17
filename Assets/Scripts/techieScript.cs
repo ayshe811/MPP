@@ -35,7 +35,7 @@ public class techieScript : MonoBehaviour
         transform.Rotate(Vector3.back * .7f);
         if (!playScript.hasStarted) rb.gravityScale = .085f;
         else rb.gravityScale = .09f;
-        src.volume = .1f;
+    //    src.volume = .6f;
 
         //   GlowEffect();
 
@@ -85,7 +85,7 @@ public class techieScript : MonoBehaviour
             if (GetComponent<techieScript>().color ==
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
             {
-                src.PlayOneShot(src.clip);
+                gameManager.src.PlayOneShot(src.clip);
                 poly2d.enabled = false;
                 sr.enabled = false;
                 Destroy(gameObject, 0.5f);

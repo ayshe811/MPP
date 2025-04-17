@@ -17,14 +17,17 @@ public class gameManager : MonoBehaviour
     public int level, playerLives;
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
+    public AudioSource src;
     // Start is called before the first frame update
     void Start()
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
+        src = GetComponent<AudioSource>();
         Application.targetFrameRate = 60;
         gameTimer = 300;
         level = 1;
         playerLives = 5;
+        src.volume = .6f;
 
         states = gameState.onboadring;
         //dummy2.SetActive(false);

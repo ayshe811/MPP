@@ -246,7 +246,6 @@ MonoBehaviour:
   sr: {fileID: 8456905046700011}
   poly2d: {fileID: -893303023773844346}
   glowColour: {r: 0, g: 0, b: 0, a: 0}
-  material: {fileID: 0}
 --- !u!82 &-1109430595256482127
 AudioSource:
   m_ObjectHideFlags: 0
@@ -257,7 +256,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: edcf8deeba69c0d459694f3103df2996, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8572d842aaebb7942a594bea734a9320, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
