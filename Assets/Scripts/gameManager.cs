@@ -14,7 +14,7 @@ public class gameManager : MonoBehaviour
     playerScript playScript;
     public collisionManager collisionManager;
     public TMP_Text timerText;
-    public int level;
+    public int level, playerLives;
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         gameTimer = 300;
         level = 1;
+        playerLives = 5;
 
         states = gameState.onboadring;
         //dummy2.SetActive(false);
@@ -43,11 +44,13 @@ public class gameManager : MonoBehaviour
         if (playScript.score >= 3) gameTimer -= Time.deltaTime;
         timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
 
-        if (gameTimer <= 0)
-        {
-            states = gameState.lose;
-            gameTimer = 0;
-        }
+        //if (gameTimer <= 0)
+        //{
+        //    states = gameState.lose;
+        //    gameTimer = 0;
+        //}
+
+        if (playerLives <= 0) states = gameState.lose;
         //else if (gameTimer > 0 && playScript.score >= targetLevel())
         //{
         //    playScript.score = 0;

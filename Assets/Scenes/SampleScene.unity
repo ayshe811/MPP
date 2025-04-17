@@ -741,6 +741,7 @@ MonoBehaviour:
   collisionManager: {fileID: 1411003561}
   timerText: {fileID: 1402052779}
   level: 0
+  playerLives: 0
   levelIndex: 0
   dummy2: {fileID: 930051031}
   dummy3: {fileID: 763435829}
@@ -1203,12 +1204,14 @@ MonoBehaviour:
   - {fileID: 8184761927527738162, guid: 65245badfa65aba4e9a20e51169992f4, type: 3}
   otherPrefab: {fileID: 0}
   secondSpawm: 0.5
+  previousSpawn: 0
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
   spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy3
+  spawnValue: 0
 --- !u!4 &763435831
 Transform:
   m_ObjectHideFlags: 0
@@ -1553,12 +1556,14 @@ MonoBehaviour:
   - {fileID: 8184761927527738162, guid: 65245badfa65aba4e9a20e51169992f4, type: 3}
   otherPrefab: {fileID: 0}
   secondSpawm: 0.5
+  previousSpawn: 0
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
   spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy2
+  spawnValue: 0
 --- !u!4 &930051033
 Transform:
   m_ObjectHideFlags: 0
@@ -3114,12 +3119,14 @@ MonoBehaviour:
   - {fileID: 8184761927527738162, guid: 65245badfa65aba4e9a20e51169992f4, type: 3}
   otherPrefab: {fileID: 3997586404736442908, guid: cb7ba93acf1f20941bc961cefc9f48d3, type: 3}
   secondSpawm: 0.5
+  previousSpawn: 0.05
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
   currentTechLevel: 0
   spawnNextInSequence: 0
   player: {fileID: 1973025093}
   dummyNumber: dummy1
+  spawnValue: 0
 --- !u!1 &1954920408
 GameObject:
   m_ObjectHideFlags: 0

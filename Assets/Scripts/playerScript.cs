@@ -42,7 +42,7 @@ public class playerScript : MonoBehaviour
         previousScore = 0;
 
         sizeX = 1; sizeY = 1;
-        combo = 1;
+        combo = 11;
     }
     public void DecreaseSize()
     {
@@ -76,9 +76,10 @@ public class playerScript : MonoBehaviour
                 if (collision.gameObject.GetComponent<techieScript>().color ==
                     collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
                 {
+                    Debug.Log("Correct Collision!");
+
                     combo++;
                     gameManager.gameTimer += 5;
-                    Debug.Log("Correct Collision!");
                     collisionManager.OnCorrectCollision();
                     if (!hasStarted)
                     {
@@ -95,13 +96,16 @@ public class playerScript : MonoBehaviour
                 }
                 else
                 {
+                    Debug.LogWarning("Incorrect Collision!");
+
                     combo = 1;
                     collisionManager.previousValue = 0;
-                    gameManager.gameTimer -= 30;
+                    spawner.secondSpawm = .5f;
+                    spawner.spawnValue = 0;
+                    gameManager.playerLives--; // five playerLives
                     screenShake.TriggerShake();
                     src.PlayOneShot(src.clip);
                     audioScript.src.Stop();
-                    Debug.LogWarning("Incorrect Collision!");
                 }
             }
         }

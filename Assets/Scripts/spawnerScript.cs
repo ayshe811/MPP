@@ -7,7 +7,7 @@ public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
     public GameObject otherPrefab;
-    [SerializeField] float secondSpawm;
+    public float secondSpawm, previousSpawn;
     [SerializeField] float rangeMax;
 
     public gameManager gameManagerr; collisionManager collisionManager;
@@ -19,17 +19,22 @@ public class spawnerScript : MonoBehaviour
 
     playerScript playScript;
     public string dummyNumber;
-     float offset = 6.4f;
+    float offset = 6.4f;
+    public int spawnValue;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(beforeGame());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
+
+        secondSpawm = .5f;
+        spawnValue = 0;
     }
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
+        if (playScript.combo == spawnValue + 10) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 10; }
     }
     public IEnumerator techSpawn()
     {
@@ -56,7 +61,7 @@ public class spawnerScript : MonoBehaviour
             }
             else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
 
-            spawnNextInSequence = Random.value < 0.3f; // 40% chance
+            spawnNextInSequence = Random.value < 0.3f; // 30% chance
             int selectedIndex = spawnNextInSequence ? 
                 nextInSequenceIndex : 
                 Random.Range(0, collisionManager.objectsInSequence.Count);
