@@ -8,7 +8,7 @@ public class playerScript : MonoBehaviour
 {
     public ScreenShake screenShake;
     Rigidbody2D rb;
-   [SerializeField] float xInput, yInput, scale, timer;
+   public float xInput, yInput, scale, timer;
     float playerSpeed = 9, sizeX, sizeY, sizeDecRate, speedIncRate;
     int weightPoints, level;
     public bool isHit;
