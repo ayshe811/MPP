@@ -45,7 +45,7 @@ public class gameManager : MonoBehaviour
         //}
         if (gameTimer > 300) gameTimer = 300;
         if (playScript.score >= 3) gameTimer -= Time.deltaTime;
-        timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
+      //  timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
 
         //if (gameTimer <= 0)
         //{
