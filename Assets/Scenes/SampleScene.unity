@@ -7411,7 +7411,6 @@ MonoBehaviour:
   availableCrystals:
   - {fileID: 1214366036526517905, guid: 94b119bd147e8724fb352479f0ad5c9d, type: 3}
   - {fileID: 1214366036526517905, guid: 08287e6ef3580cc4aabfa7ea86b2f997, type: 3}
-  - {fileID: 1214366036526517905, guid: 306bdadc2b1cd614c9323ffee7a726eb, type: 3}
   gameManager: {fileID: 0}
   currentIndex: 0
   queueScript: {fileID: 377970335}
@@ -8376,7 +8375,6 @@ MonoBehaviour:
   - {fileID: 421913154961755303, guid: bcb45c85ec37fc647b916e9f9b2e67e4, type: 3}
   - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
   - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
-  - {fileID: 2721657309439950275, guid: 044153f8718c1c74a98aa90bf5b3dcb6, type: 3}
   otherPrefab: {fileID: 3997586404736442908, guid: cb7ba93acf1f20941bc961cefc9f48d3, type: 3}
   secondSpawm: 0.5
   previousSpawn: 0.05
