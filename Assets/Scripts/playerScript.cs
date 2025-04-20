@@ -25,9 +25,14 @@ public class playerScript : MonoBehaviour
     public bool tabShowed, hasStarted;
     public TextMeshProUGUI comboMeter;
     public audioScript audioScript;
+    ParticleSystem parsystem;
+    ParticleSystem.ShapeModule shapeSystem;
+    ParticleSystem.EmissionModule emissionSystem;
+    ParticleSystem.MinMaxCurve rateParticle;
 
     SpriteRenderer sr;
     public Color glowColour;
+    particleScript particleScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +41,11 @@ public class playerScript : MonoBehaviour
         gameManager = GameObject.Find("gameManager").GetComponent<gameManager>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
+        particleScript = GameObject.Find("trailingObject").GetComponent<particleScript>();
         glowColour = GetComponent<SpriteRenderer>().color;
         sr = GetComponent<SpriteRenderer>();
+        parsystem = GetComponent<ParticleSystem>();
+        shapeSystem = parsystem.shape;
         hasStarted = false;
         previousScore = 0;
 
@@ -64,6 +72,7 @@ public class playerScript : MonoBehaviour
         else comboMeter.text = "x " + combo;
 
         src.volume = 1;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -99,6 +108,8 @@ public class playerScript : MonoBehaviour
                     Debug.LogWarning("Incorrect Collision!");
 
                     combo = 1;
+                    DecreaseEmissionRate();
+                    particleScript.DecreaseEmissions();
                     collisionManager.previousValue = 0;
                     spawner.secondSpawm = .5f;
                     spawner.spawnValue = 0;
@@ -123,6 +134,16 @@ public class playerScript : MonoBehaviour
         sizeX += 0.01f;
         sizeY += 0.01f;
         playerSpeed -= 0.1f;
+    }
+    private void DecreaseEmissionRate()
+    {
+        emissionSystem = parsystem.emission;
+        rateParticle = emissionSystem.rateOverTime;
+
+        float newMin = rateParticle.constantMin - 5;
+        float newMax = rateParticle.constantMax - 5;
+
+        emissionSystem.rateOverTime = new ParticleSystem.MinMaxCurve(newMin, newMax);
     }
     void GlowEffect()
     {
