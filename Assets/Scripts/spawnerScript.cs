@@ -86,7 +86,7 @@ public class spawnerScript : MonoBehaviour
                     }
                 }
             }
-            bool spawnNextIndex = Random.value < 0.35f; // 35% chance
+            bool spawnNextIndex = Random.value < 0.1f; // 10% chance
             int selectedIndex = spawnNextIndex ? nextInSequenceIndex : Random.Range(0, 2);
 
             var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));

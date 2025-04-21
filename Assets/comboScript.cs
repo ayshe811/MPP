@@ -46,7 +46,7 @@ public class comboScript : MonoBehaviour
         }
 
         if (_currentCombo >= 5 && !hasOther) { otherRoutine = StartCoroutine(spawnerScript.otherSpawn()); hasOther = true; }
-        if (_currentCombo < 5) 
+        if (_currentCombo < 5)  
         {
             if (otherRoutine != null)
             {
