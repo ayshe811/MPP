@@ -34,7 +34,8 @@ public class spawnerScript : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
-        if (playScript.combo == spawnValue + 5) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
+        if (playScript.combo == spawnValue + 5 && secondSpawm > .25f) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
+        else if (secondSpawm == .25f) secondSpawm = .25f;
     }
     public IEnumerator techSpawn()
     {

@@ -6498,6 +6498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df52c722fa0b9ca419fec420552ae0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parSystem: {fileID: 0}
 --- !u!1 &1008796628
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,7 +7983,7 @@ MonoBehaviour:
   - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
   - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
   otherPrefab: {fileID: 3997586404736442908, guid: cb7ba93acf1f20941bc961cefc9f48d3, type: 3}
-  secondSpawm: 0.5
+  secondSpawm: 0.25
   previousSpawn: 0.05
   rangeMax: 3
   gameManagerr: {fileID: 396614502}
