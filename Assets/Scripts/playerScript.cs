@@ -99,7 +99,6 @@ public class playerScript : MonoBehaviour
                             hasStarted = true;
                             StopCoroutine(spawner.beforeGame());
                             StartCoroutine(spawner.techSpawn());
-                        //    StartCoroutine(spawner.otherSpawn());
                             gameManager.states = gameManager.gameState.playable;
                         }
                     }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
-    public GameObject otherPrefab;
+    public GameObject[] otherPrefab;
     public float secondSpawm, previousSpawn;
     [SerializeField] float rangeMax;
 
@@ -41,11 +41,6 @@ public class spawnerScript : MonoBehaviour
     {
         while (true)
         {
-            //GameObject nextInSequenceIndex = collisionManager.objectsInSequence.Count > 0 ? 
-            //    collisionManager.objectsInSequence[0] : 
-            //    techPrefab[Random.Range(0, techPrefab.Length)];
-            // ternary operator didn't work in this context
-
             int nextInSequenceIndex = 0;
             if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count) 
             {
@@ -79,9 +74,24 @@ public class spawnerScript : MonoBehaviour
     {
         while (true)
         {
+            int nextInSequenceIndex = 0;
+            if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count)
+            {
+                for (int i = 0; i < otherPrefab.Length; i++)
+                {
+                    if (otherPrefab[i] == otherPrefab[2])
+                    {
+                        nextInSequenceIndex = i;
+                        break;
+                    }
+                }
+            }
+            bool spawnNextIndex = Random.value < 0.35f; // 35% chance
+            int selectedIndex = spawnNextIndex ? nextInSequenceIndex : Random.Range(0, 2);
+
             var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
             var position = new Vector3(wanted, transform.position.y);
-            GameObject otherObject = Instantiate(otherPrefab, position, Quaternion.identity);
+            GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
             Destroy(otherObject, 5);
         }

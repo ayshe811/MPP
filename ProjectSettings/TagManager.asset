@@ -12,6 +12,7 @@ TagManager:
   - Pink
   - Gem
   - Poison
+  - Health
   layers:
   - Default
   - TransparentFX
