@@ -10,7 +10,7 @@ public class spawnerScript : MonoBehaviour
     public float secondSpawm, previousSpawn;
     [SerializeField] float rangeMax;
 
-    public gameManager gameManagerr; collisionManager collisionManager;
+    public gameManager gameManagerr; collisionManager collisionManager; public comboScript comboScript;
     public int currentTechLevel;
     private float lastTimeTechLevelIncrease = 0;
     public bool spawnNextInSequence;
@@ -34,7 +34,7 @@ public class spawnerScript : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
-        if (playScript.combo == spawnValue + 5 && secondSpawm > .25f) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
+        if (comboScript._currentCombo == spawnValue + 5 && secondSpawm > .25f) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
         else if (secondSpawm == .25f) secondSpawm = .25f;
     }
     public IEnumerator techSpawn()

@@ -23,7 +23,6 @@ public class playerScript : MonoBehaviour
     [SerializeField] bool metCollisionTarget = false;
     public int score, sizePoints;
     public bool tabShowed, hasStarted;
-    public TextMeshProUGUI comboMeter;
     public audioScript audioScript;
     ParticleSystem parsystem;
     ParticleSystem.ShapeModule shapeSystem;
@@ -33,6 +32,7 @@ public class playerScript : MonoBehaviour
     SpriteRenderer sr;
     public Color glowColour;
     particleScript particleScript;
+    public comboScript comboScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +50,7 @@ public class playerScript : MonoBehaviour
         previousScore = 0;
 
         sizeX = 1; sizeY = 1;
-        combo = 1;
+        comboScript._currentCombo = 1;
     }
     public void DecreaseSize()
     {
@@ -68,8 +68,8 @@ public class playerScript : MonoBehaviour
 
     private void Update()
     {
-        if (combo == 1) comboMeter.text = null;
-        else comboMeter.text = "x " + combo;
+        //if (combo == 1) comboMeter.text = null;
+        //else comboMeter.text = "x " + combo;
 
         src.volume = 1;
 
@@ -87,7 +87,8 @@ public class playerScript : MonoBehaviour
                 {
                     Debug.Log("Correct Collision!");
 
-                    combo++;
+                    comboScript._currentCombo++;
+                    comboScript._alpha = comboScript.maxAlpha;
                     gameManager.gameTimer += 5;
                     collisionManager.OnCorrectCollision();
                     if (!hasStarted)
@@ -107,7 +108,7 @@ public class playerScript : MonoBehaviour
                 {
                     Debug.LogWarning("Incorrect Collision!");
 
-                    combo = 1;
+                    comboScript._currentCombo = 1;
                     DecreaseEmissionRate();
                     particleScript.DecreaseEmissions();
                     collisionManager.previousValue = 0;
