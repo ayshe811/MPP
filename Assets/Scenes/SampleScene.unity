@@ -1709,6 +1709,7 @@ MonoBehaviour:
   fadeDuration: 1.5
   maxAlpha: 1
   _currentCombo: 0
+  _highestCombo: 0
   _alpha: 0
 --- !u!1 &878213079
 GameObject:

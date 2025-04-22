@@ -9,10 +9,15 @@ public class QueueDisplay : MonoBehaviour
     public Transform queueDisplayPanel;
     public collisionManager collisionManager; 
     public playerScript playerScript;
+    spawnerScript spawner;
     public float spacing = 100, scale;
     public Color outlineColor;
     public Material nextMaterial;
     int index;
+    private void Start()
+    {
+        spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
+    }
     private void Update()
     {
         index = collisionManager.objectsInSequence.Count;        

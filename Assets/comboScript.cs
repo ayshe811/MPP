@@ -11,7 +11,7 @@ public class comboScript : MonoBehaviour
     public float maxAlpha = 1f;
     GameObject player;
 
-    public int _currentCombo;
+    public int _currentCombo, _highestCombo;
     public float _alpha = 0f;
     private Vector3 _baseOffset = new Vector3(0, .1f, 0);
     RectTransform rectTransform;
@@ -27,6 +27,7 @@ public class comboScript : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         player = GameObject.Find("player");
         spawnerScript = GameObject.Find("dummy1").GetComponent<spawnerScript>();
+        _highestCombo = 0;
     }
 
     // Update is called once per frame
@@ -55,5 +56,7 @@ public class comboScript : MonoBehaviour
             }
             hasOther = false; 
         }
+
+        if (_currentCombo > _highestCombo) _highestCombo = _currentCombo; // for an obscure reason i thought this would be longer than one line of code
     }
 }

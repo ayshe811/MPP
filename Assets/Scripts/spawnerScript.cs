@@ -35,7 +35,7 @@ public class spawnerScript : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
         if (comboScript._currentCombo == spawnValue + 5 && secondSpawm > .25f) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
-        else if (secondSpawm == .25f) secondSpawm = .25f;
+        else if (secondSpawm <= .25f) secondSpawm = .25f;
     }
     public IEnumerator techSpawn()
     {
@@ -103,6 +103,19 @@ public class spawnerScript : MonoBehaviour
             var wanted = Random.Range(-rangeMax, rangeMax);
             var position = new Vector3(wanted, transform.position.y);
             GameObject gameObject = Instantiate(techPrefab[currentTechLevel],
+                position, Quaternion.identity);
+            yield return new WaitForSeconds(5);
+            Destroy(gameObject, 5);
+        }
+    }
+
+    public IEnumerator redDistraction()
+    {
+        while (true)
+        {
+            var wanted = Random.Range(-rangeMax, rangeMax);
+            var position = new Vector3(wanted, transform.position.y);
+            GameObject gameObject = Instantiate(otherPrefab[0],
                 position, Quaternion.identity);
             yield return new WaitForSeconds(5);
             Destroy(gameObject, 5);

@@ -26,7 +26,7 @@ public class gameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         gameTimer = 300;
         level = 1;
-        playerLives = 5;
+        playerLives = 3;
         src.volume = .6f;
 
         states = gameState.onboadring;
