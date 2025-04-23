@@ -46,8 +46,8 @@ public class comboScript : MonoBehaviour
             comboText.color = new Color(comboText.color.r, comboText.color.g, comboText.color.b, _alpha);
         }
 
-        if (_currentCombo >= 5 && !hasOther) { otherRoutine = StartCoroutine(spawnerScript.otherSpawn()); hasOther = true; }
-        if (_currentCombo < 5)  
+        if (_currentCombo >= 10 && !hasOther) { otherRoutine = StartCoroutine(spawnerScript.otherSpawn()); hasOther = true; }
+        if (_currentCombo < 10)  
         {
             if (otherRoutine != null)
             {

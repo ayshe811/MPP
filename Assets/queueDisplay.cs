@@ -40,7 +40,7 @@ public class QueueDisplay : MonoBehaviour
     }
     public void UpdateQueueDisplay()
     {
-        for (int i = queueDisplayPanel.childCount - 1; i >= 0; i--) DestroyImmediate(queueDisplayPanel.GetChild(i).gameObject);
+        for (int i = queueDisplayPanel.childCount - 1; i >= 0; i--) Destroy(queueDisplayPanel.GetChild(i).gameObject);
         foreach (GameObject obj in collisionManager.objectsInSequence)
         {
             GameObject displayedPrefab = Instantiate(obj, queueDisplayPanel);
@@ -48,7 +48,12 @@ public class QueueDisplay : MonoBehaviour
             if (rt != null) rt.localScale = new Vector3(scale, scale);
             DisableGameplayScripts(displayedPrefab);
         }
-        AnimateGemAtIndex(0);
+        StartCoroutine(AnimateFirstOrbNextFrame());
+    }
+    private IEnumerator AnimateFirstOrbNextFrame()
+    {
+        yield return null; // Wait 1 frame
+        AnimateGemAtIndex(0); // Now animate
     }
     public void shift()
     {

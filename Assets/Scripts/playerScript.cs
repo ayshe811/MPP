@@ -33,6 +33,7 @@ public class playerScript : MonoBehaviour
     public Color glowColour;
     particleScript particleScript;
     public comboScript comboScript;
+    QueueDisplay queueScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class playerScript : MonoBehaviour
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
         spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         particleScript = GameObject.Find("trailingObject").GetComponent<particleScript>();
+        queueScript = GameObject.Find("GameObject").GetComponent<QueueDisplay>();
         glowColour = GetComponent<SpriteRenderer>().color;
         sr = GetComponent<SpriteRenderer>();
         parsystem = GetComponent<ParticleSystem>();
@@ -113,6 +115,14 @@ public class playerScript : MonoBehaviour
                     screenShake.TriggerShake();
                     src.PlayOneShot(src.clip);
                     audioScript.src.Stop();
+                    //StartCoroutine(collisionManager.shuffle());
+                    //collisionManager.currentIndex = 0;
+                    //queueScript.UpdateQueueDisplay();
+
+                    // collisionManager.OnIncorrectCollision();
+                    StartCoroutine(collisionManager.shuffle());
+                    collisionManager.currentIndex = 0;
+                    queueScript.UpdateQueueDisplay();
                 }
             }
         }
@@ -128,6 +138,13 @@ public class playerScript : MonoBehaviour
             screenShake.TriggerShake();
             src.PlayOneShot(src.clip);
             audioScript.src.Stop();
+            //if (collisionManager.currentIndex >= collisionManager.objectsInSequence.Count)
+            //{
+            //    StartCoroutine(collisionManager.shuffle());
+            //    collisionManager.currentIndex = 0;
+            //    queueScript.UpdateQueueDisplay();
+            //}
+
         }
     }
     public void IncreaseSize() // maybe? maybe not? (i don't fully understand whats happening here)

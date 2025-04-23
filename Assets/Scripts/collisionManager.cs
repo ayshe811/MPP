@@ -51,7 +51,7 @@ public class collisionManager : MonoBehaviour
        nextIndex++;
    }
 
-    IEnumerator shuffle()
+    public IEnumerator shuffle()
     {
         for (int i = 0; i < objectsInSequence.Count; i++) // fisher-yates shuffle algorithm
         {
@@ -76,5 +76,12 @@ public class collisionManager : MonoBehaviour
             previousValue += 5;
             audioScript.src.volume += .05f;
         }
+    }
+    public void OnIncorrectCollision()
+    {
+        StartCoroutine(shuffle());
+        queueScript.UpdateQueueDisplay();
+        currentIndex = 0;
+        queueScript.AnimateGemAtIndex(currentIndex);
     }
 }
