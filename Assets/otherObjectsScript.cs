@@ -10,15 +10,43 @@ public class otherObjectsScript : MonoBehaviour
     [SerializeField] PolygonCollider2D poly2D;
     [SerializeField] ParticleSystem parSystem;
     AudioSource src;
+    Rigidbody2D rb;
+    [SerializeField] float zigSpeed, directionChange = 1;
+    private Vector2 currentDirection;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
         particleScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
         src = GetComponent<AudioSource>();
+
+        rb = GetComponent<Rigidbody2D>();
+        newDirection();
     }
     private void Update()
     {
-      //  src.Play();
+        //  src.Play();
+        //float x = Mathf.PerlinNoise(Time.time * speed, 0) * 2 - 1; // -1 to 1 range
+        //float y = Mathf.PerlinNoise(0, Time.time * speed) * 2 - 1;
+        //transform.position += new Vector3(x, y, 0) * Time.deltaTime;
+
+        timer += Time.deltaTime;
+        if (timer >= directionChange)
+        {
+            newDirection();
+            timer = 0;
+        }
+    }
+    private void FixedUpdate()
+    {
+        rb.AddForce(currentDirection * zigSpeed);
+    }
+
+    void newDirection()
+    {
+        float angle = Random.Range(45f, 135f);
+        currentDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Rad2Deg)).normalized;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

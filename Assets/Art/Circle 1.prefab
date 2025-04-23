@@ -106,6 +106,9 @@ MonoBehaviour:
   sr: {fileID: 6984427817082965467}
   poly2D: {fileID: 4058918899483041279}
   parSystem: {fileID: 8675632325517666653}
+  speed: 0.5
+  zigSpeed: 2
+  directionChange: 1
 --- !u!50 &-1446807579775100065
 Rigidbody2D:
   serializedVersion: 4

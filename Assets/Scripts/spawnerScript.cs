@@ -95,7 +95,7 @@ public class spawnerScript : MonoBehaviour
                 bool spawnNextIndex = Random.value < 0.1f; // 10% chance
                 int selectedIndex = spawnNextIndex ? nextInSequenceIndex : Random.Range(0, 2);
 
-                var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
+                var wanted = Random.Range((transform.position.x - 2), (transform.position.x + 2));
                 var position = new Vector3(wanted, transform.position.y);
                 GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
                 yield return new WaitForSeconds(5);
