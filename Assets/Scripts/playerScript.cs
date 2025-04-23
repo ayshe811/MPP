@@ -138,12 +138,9 @@ public class playerScript : MonoBehaviour
             screenShake.TriggerShake();
             src.PlayOneShot(src.clip);
             audioScript.src.Stop();
-            //if (collisionManager.currentIndex >= collisionManager.objectsInSequence.Count)
-            //{
-            //    StartCoroutine(collisionManager.shuffle());
-            //    collisionManager.currentIndex = 0;
-            //    queueScript.UpdateQueueDisplay();
-            //}
+            StartCoroutine(collisionManager.shuffle());
+            collisionManager.currentIndex = 0;
+            queueScript.UpdateQueueDisplay();
 
         }
     }

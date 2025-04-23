@@ -19,7 +19,7 @@ public class gameManager : MonoBehaviour
     public GameObject dummy2, dummy3;
     public AudioSource src;
     [SerializeField] GameObject panel;
-    [SerializeField] TextMeshProUGUI pauseText;
+    [SerializeField] TextMeshProUGUI pauseText, livesText;
     bool isPaused;
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,8 @@ public class gameManager : MonoBehaviour
         if (states == gameState.fin) SceneManager.LoadScene("Lose Scene");
         if (states == gameState.pause) pauseText.text = "'ESC' Escape";
         if (states == gameState.playable) pauseText.text = "'ESC' Pause";
+
+        livesText.text = $"{playerLives}";
     }
     public void TogglePauseState()
     {
