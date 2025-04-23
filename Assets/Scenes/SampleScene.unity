@@ -1044,6 +1044,9 @@ MonoBehaviour:
   src: {fileID: 0}
   panel: {fileID: 2076492647}
   startPanel: {fileID: 598330213}
+  control: {fileID: 595031671}
+  lives: {fileID: 961349896}
+  topRight: {fileID: 1562176440}
   pauseText: {fileID: 1562176442}
   livesText: {fileID: 778725615}
 --- !u!82 &396614503
@@ -1642,7 +1645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &595031672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2332,7 +2335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &961349897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8351,7 +8354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1562176441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9113,8 +9116,8 @@ RectTransform:
   - {fileID: 1029017291}
   - {fileID: 1471715564}
   - {fileID: 595031672}
-  - {fileID: 1562176441}
   - {fileID: 961349897}
+  - {fileID: 1562176441}
   - {fileID: 598330214}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

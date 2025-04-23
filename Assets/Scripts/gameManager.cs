@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     public AudioSource src;
-    [SerializeField] GameObject panel, startPanel;
+    [SerializeField] GameObject panel, startPanel, control, lives, topRight;
     [SerializeField] TextMeshProUGUI pauseText, livesText;
     spawnerScript spawner;
     bool isPaused;
@@ -47,6 +47,7 @@ public class gameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && states == gameState.menu) 
         {
             states = gameState.playable; startPanel.SetActive(false);
+            control.SetActive(true); lives.SetActive(true); topRight.SetActive(true);
             if (!hasStarted)
             {
                 StartCoroutine(spawner.beforeGame());
