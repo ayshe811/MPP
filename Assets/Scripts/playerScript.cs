@@ -68,11 +68,7 @@ public class playerScript : MonoBehaviour
 
     private void Update()
     {
-        //if (combo == 1) comboMeter.text = null;
-        //else comboMeter.text = "x " + combo;
-
         src.volume = 1;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -122,7 +118,16 @@ public class playerScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Poison"))
         {
-            // player freeze (MORE FEEDBACK TO INFORM THE PLAYER)!!
+            comboScript._currentCombo = 1;
+            DecreaseEmissionRate();
+            particleScript.DecreaseEmissions();
+            collisionManager.previousValue = 0;
+            spawner.secondSpawm = .5f;
+            spawner.spawnValue = 0;
+            gameManager.playerLives--; // five playerLives
+            screenShake.TriggerShake();
+            src.PlayOneShot(src.clip);
+            audioScript.src.Stop();
         }
     }
     public void IncreaseSize() // maybe? maybe not? (i don't fully understand whats happening here)

@@ -36,17 +36,24 @@ public class otherObjectsScript : MonoBehaviour
             newDirection();
             timer = 0;
         }
+        rb.gravityScale = 0;
     }
     private void FixedUpdate()
     {
-        rb.AddForce(currentDirection * zigSpeed);
+      //   rb.AddForce(currentDirection * zigSpeed);
+        rb.velocity = currentDirection * zigSpeed;
+        Debug.Log($"Assigned Velocity: {rb.velocity}");
     }
 
     void newDirection()
     {
-        float angle = Random.Range(45f, 135f);
-        currentDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad),
-            Mathf.Sin(angle * Mathf.Rad2Deg)).normalized;
+        float angle = Random.Range(240, 300); // more donward
+        currentDirection = new Vector2(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad)).normalized;
+        zigSpeed = Random.Range(2, 5);
+
+        Debug.Log($"Angle: {angle}° ? Direction: {currentDirection}");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

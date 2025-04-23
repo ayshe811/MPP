@@ -106,8 +106,7 @@ MonoBehaviour:
   sr: {fileID: 6984427817082965467}
   poly2D: {fileID: -6210999743029166981}
   parSystem: {fileID: 7162041072217105573}
-  speed: 0.5
-  zigSpeed: 2
+  zigSpeed: 2.5
   directionChange: 1
 --- !u!50 &-1446807579775100065
 Rigidbody2D:
@@ -124,7 +123,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.18
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

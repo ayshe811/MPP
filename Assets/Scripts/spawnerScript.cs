@@ -98,7 +98,7 @@ public class spawnerScript : MonoBehaviour
                 var wanted = Random.Range((transform.position.x - 2), (transform.position.x + 2));
                 var position = new Vector3(wanted, transform.position.y);
                 GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(2);
                 Destroy(otherObject, 5);
             }
         }
