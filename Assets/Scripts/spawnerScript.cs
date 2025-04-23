@@ -24,7 +24,7 @@ public class spawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(beforeGame());
+      //  StartCoroutine(beforeGame());
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         collisionManager = GameObject.Find("Collision Manager").GetComponent<collisionManager>();
 
@@ -98,7 +98,7 @@ public class spawnerScript : MonoBehaviour
                 var wanted = Random.Range((transform.position.x - 2), (transform.position.x + 2));
                 var position = new Vector3(wanted, transform.position.y);
                 GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(4);
                 Destroy(otherObject, 5);
             }
         }

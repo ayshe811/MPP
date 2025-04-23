@@ -18,13 +18,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     public AudioSource src;
-    [SerializeField] GameObject panel;
+    [SerializeField] GameObject panel, startPanel;
     [SerializeField] TextMeshProUGUI pauseText, livesText;
+    spawnerScript spawner;
     bool isPaused;
-    // Start is called before the first frame update
+    // Start is called before the fi
+    // rst frame update
+    bool hasStarted;
     void Start()
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
+        spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
         src = GetComponent<AudioSource>();
         Application.targetFrameRate = 60;
         gameTimer = 300;
@@ -32,7 +36,7 @@ public class gameManager : MonoBehaviour
         playerLives = 3;
         src.volume = .6f;
 
-        states = gameState.playable;
+        states = gameState.menu;
         isPaused = false;
     }
 
@@ -40,6 +44,15 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseState();
+        if (Input.GetKeyDown(KeyCode.Space) && states == gameState.menu) 
+        {
+            states = gameState.playable; startPanel.SetActive(false);
+            if (!hasStarted)
+            {
+                StartCoroutine(spawner.beforeGame());
+                hasStarted = true;
+            }
+        }
 
         if (playerLives <= 0) states = gameState.fin;
         if (states == gameState.fin) SceneManager.LoadScene("Lose Scene");
