@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
-    public enum gameState { menu, onboadring, playable, win, lose }
+    public enum gameState { menu, onboadring, playable, pause, fin }
     public gameState states;
     public float gameTimer, tabTimer;
     playerScript playScript;
@@ -18,6 +18,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     public AudioSource src;
+    [SerializeField] GameObject panel;
+    [SerializeField] TextMeshProUGUI pauseText;
+    bool isPaused;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,51 +32,30 @@ public class gameManager : MonoBehaviour
         playerLives = 3;
         src.volume = .6f;
 
-        states = gameState.onboadring;
-        //dummy2.SetActive(false);
-        //dummy3.SetActive(false);
+        states = gameState.playable;
+        isPaused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene("SampleScene");
-        //if (states == gameState.playable)
-        //{
-        //    dummy2.SetActive(true);
-        //    dummy3.SetActive(true);
-        //}
-        if (gameTimer > 300) gameTimer = 300;
-        if (playScript.score >= 3) gameTimer -= Time.deltaTime;
-      //  timerText.text = string.Format("{0:D2}:{1:D2}", (int)gameTimer / 60, (int)gameTimer % 60);
+        if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseState();
 
-        //if (gameTimer <= 0)
-        //{
-        //    states = gameState.lose;
-        //    gameTimer = 0;
-        //}
+        if (playerLives <= 0) states = gameState.fin;
+        if (states == gameState.fin) SceneManager.LoadScene("Lose Scene");
+        if (states == gameState.pause) pauseText.text = "'ESC' Escape";
+        if (states == gameState.playable) pauseText.text = "'ESC' Pause";
+    }
+    public void TogglePauseState()
+    {
+        isPaused = !isPaused;
+        states = isPaused ? gameState.pause : gameState.playable;
 
-        if (playerLives <= 0) states = gameState.lose;
-        //else if (gameTimer > 0 && playScript.score >= targetLevel())
-        //{
-        //    playScript.score = 0;
-        //    levelIndex++;
-        //}
-        if (states == gameState.win) SceneManager.LoadScene("Win Scene");
-        if (states == gameState.lose) SceneManager.LoadScene("Lose Scene");
-
-        int targetLevel()
-        {
-            switch (levelIndex)
-            {
-                case 0: return 3;
-                case 1: return 4;
-                case 2: return 5;
-                case 3: return 6;
-                case 4: return 7;
-                case 5: return 8;
-                default: return 8;
-            }
-        }
+        Time.timeScale = isPaused ? 0 : 1;
+        panel.SetActive(isPaused);
+    }
+    public void QuitApplication()
+    {
+        Application.Quit();
     }
 }

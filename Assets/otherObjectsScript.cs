@@ -9,10 +9,16 @@ public class otherObjectsScript : MonoBehaviour
     [SerializeField] SpriteRenderer sr;
     [SerializeField] PolygonCollider2D poly2D;
     [SerializeField] ParticleSystem parSystem;
+    AudioSource src;
     // Start is called before the first frame update
     void Start()
     {
         particleScript = GameObject.Find("Particle Manager").GetComponent<particleManager>();
+        src = GetComponent<AudioSource>();
+    }
+    private void Update()
+    {
+      //  src.Play();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

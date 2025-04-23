@@ -39,62 +39,71 @@ public class spawnerScript : MonoBehaviour
     }
     public IEnumerator techSpawn()
     {
-        while (true)
+        if(gameManagerr.states == gameManager.gameState.playable)
         {
-            int nextInSequenceIndex = 0;
-            if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count) 
+            while (true)
             {
-                for (int i = 0; i < techPrefab.Length; i++)
+                int nextInSequenceIndex = 0;
+                if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count)
                 {
-                    if (techPrefab[i].GetComponent<techieScript>().color == 
-                        collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
-                        // same condition applied when detecting correct collisions (see playerScript)
+                    for (int i = 0; i < techPrefab.Length; i++)
                     {
-                        nextInSequenceIndex = i;
-                        break;
+                        if (techPrefab[i].GetComponent<techieScript>().color ==
+                            collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
+                        // same condition applied when detecting correct collisions (see playerScript)
+                        {
+                            nextInSequenceIndex = i;
+                            break;
+                        }
                     }
                 }
+                else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
+
+                spawnNextInSequence = Random.value < 0.3f; // 30% chance
+                int selectedIndex = spawnNextInSequence ?
+                    nextInSequenceIndex :
+                    Random.Range(0, collisionManager.objectsInSequence.Count);
+
+                var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
+                var position = new Vector3(wanted, transform.position.y);
+                GameObject gameObject = Instantiate(techPrefab[selectedIndex],
+                    position, Quaternion.identity);
+                yield return new WaitForSeconds(secondSpawm);
+                Destroy(gameObject, 5f);
             }
-            else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
-
-            spawnNextInSequence = Random.value < 0.3f; // 30% chance
-            int selectedIndex = spawnNextInSequence ? 
-                nextInSequenceIndex : 
-                Random.Range(0, collisionManager.objectsInSequence.Count);
-
-            var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
-            var position = new Vector3(wanted, transform.position.y);
-            GameObject gameObject = Instantiate(techPrefab[selectedIndex],
-                position, Quaternion.identity);
-            yield return new WaitForSeconds(secondSpawm);
-            Destroy(gameObject, 5f);
         }
+        else { }
     }
     public IEnumerator otherSpawn()
     {
-        while (true)
+        if(gameManagerr.states == gameManager.gameState.playable)
         {
-            int nextInSequenceIndex = 0;
-            if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count)
+            while (true)
             {
-                for (int i = 0; i < otherPrefab.Length; i++)
+                int nextInSequenceIndex = 0;
+                if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count)
                 {
-                    if (otherPrefab[i] == otherPrefab[2])
+                    for (int i = 0; i < otherPrefab.Length; i++)
                     {
-                        nextInSequenceIndex = i;
-                        break;
+                        if (otherPrefab[i] == otherPrefab[2])
+                        {
+                            nextInSequenceIndex = i;
+                            break;
+                        }
                     }
                 }
-            }
-            bool spawnNextIndex = Random.value < 0.1f; // 10% chance
-            int selectedIndex = spawnNextIndex ? nextInSequenceIndex : Random.Range(0, 2);
+                bool spawnNextIndex = Random.value < 0.1f; // 10% chance
+                int selectedIndex = spawnNextIndex ? nextInSequenceIndex : Random.Range(0, 2);
 
-            var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
-            var position = new Vector3(wanted, transform.position.y);
-            GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
-            yield return new WaitForSeconds(5);
-            Destroy(otherObject, 5);
+                var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
+                var position = new Vector3(wanted, transform.position.y);
+                GameObject otherObject = Instantiate(otherPrefab[selectedIndex], position, Quaternion.identity);
+                yield return new WaitForSeconds(5);
+                Destroy(otherObject, 5);
+            }
         }
+        else { }
+
     }
     public IEnumerator beforeGame()
     {
