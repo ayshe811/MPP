@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] int levelIndex;
     public GameObject dummy2, dummy3;
     public AudioSource src;
-    [SerializeField] GameObject panel, startPanel, control, lives, topRight;
+    [SerializeField] GameObject panel, startPanel, control, lives, topRight, endPanel;
     [SerializeField] TextMeshProUGUI pauseText, livesText;
     spawnerScript spawner;
     bool isPaused;
@@ -44,6 +44,7 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseState();
+        if (states == gameState.menu) Time.timeScale = 1;
         if (Input.GetKeyDown(KeyCode.Space) && states == gameState.menu) 
         {
             states = gameState.playable; startPanel.SetActive(false);
@@ -56,7 +57,13 @@ public class gameManager : MonoBehaviour
         }
 
         if (playerLives <= 0) states = gameState.fin;
-        if (states == gameState.fin) SceneManager.LoadScene("Lose Scene");
+       // if (states == gameState.fin) SceneManager.LoadScene("Lose Scene");
+       if (states == gameState.fin)
+        {
+            endPanel.SetActive(true);
+          //  Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("SampleScene");
+        }
         if (states == gameState.pause) pauseText.text = "'ESC' Escape";
         if (states == gameState.playable) pauseText.text = "'ESC' Pause";
 

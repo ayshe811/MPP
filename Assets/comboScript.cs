@@ -6,6 +6,7 @@ using TMPro;
 public class comboScript : MonoBehaviour
 {
     private TextMeshProUGUI comboText;
+    [SerializeField] TextMeshProUGUI highestText;
     [SerializeField] private float fadeDuration = 1.5f;
 
     public float maxAlpha = 1f;
@@ -58,5 +59,7 @@ public class comboScript : MonoBehaviour
         }
 
         if (_currentCombo > _highestCombo) _highestCombo = _currentCombo; // for an obscure reason i thought this would be longer than one line of code
+        highestText.text = $"HIGHEST COMBO: {_highestCombo}!";
+
     }
 }
