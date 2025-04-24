@@ -61,7 +61,7 @@ public class gameManager : MonoBehaviour
        if (states == gameState.fin)
         {
             endPanel.SetActive(true);
-          //  Time.timeScale = 0;
+            Time.timeScale = 0;
             if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("SampleScene");
         }
         if (states == gameState.pause) pauseText.text = "'ESC' Escape";
@@ -76,6 +76,11 @@ public class gameManager : MonoBehaviour
 
         Time.timeScale = isPaused ? 0 : 1;
         panel.SetActive(isPaused);
+    }
+    public void mainMenu()
+    {
+        states = gameState.menu;
+        SceneManager.LoadScene("SampleScene");
     }
     public void QuitApplication()
     {
