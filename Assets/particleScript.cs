@@ -13,6 +13,8 @@ public class particleScript : MonoBehaviour
         parSystem = GetComponent<ParticleSystem>();
         playScript = GameObject.Find("player").GetComponent<playerScript>();
         velocityOverLifetimeModule = parSystem.velocityOverLifetime;
+
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame

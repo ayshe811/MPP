@@ -30,6 +30,8 @@ public class spawnerScript : MonoBehaviour
 
         secondSpawm = .5f;
         spawnValue = 0;
+
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {

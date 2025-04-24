@@ -53,6 +53,8 @@ public class playerScript : MonoBehaviour
 
         sizeX = 1; sizeY = 1;
         comboScript._currentCombo = 1;
+
+        Application.targetFrameRate = 60;
     }
     public void DecreaseSize()
     {

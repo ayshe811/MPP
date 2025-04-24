@@ -17,6 +17,7 @@ public class QueueDisplay : MonoBehaviour
     private void Start()
     {
         spawner = GameObject.Find("dummy1").GetComponent<spawnerScript>();
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {

@@ -22,6 +22,7 @@ public class otherObjectsScript : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         newDirection();
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {
