@@ -41,7 +41,7 @@ public class spawnerScript : MonoBehaviour
     }
     public IEnumerator techSpawn()
     {
-        if(gameManagerr.states == gameManager.gameState.playable)
+        if (gameManagerr.states == gameManager.gameState.playable)
         {
             while (true)
             {
@@ -59,12 +59,13 @@ public class spawnerScript : MonoBehaviour
                         }
                     }
                 }
-                else nextInSequenceIndex = Random.Range(0, techPrefab.Length);
+                else nextInSequenceIndex = Random.Range(0, collisionManager.objectsInSequence.Count);
 
                 spawnNextInSequence = Random.value < 0.3f; // 30% chance
                 int selectedIndex = spawnNextInSequence ?
                     nextInSequenceIndex :
                     Random.Range(0, collisionManager.objectsInSequence.Count);
+       
 
                 var wanted = Random.Range((transform.position.x - rangeMax), (transform.position.x + rangeMax));
                 var position = new Vector3(wanted, transform.position.y);

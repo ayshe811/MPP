@@ -33,7 +33,7 @@ public class collisionManager : MonoBehaviour
 
         if (currentIndex >= objectsInSequence.Count)
         {
-            AddToSequence();
+         //   AddToSequence();
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
             currentIndex = 0;
