@@ -6,6 +6,7 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
+    public GameObject[] availablePrefabs; 
     public GameObject[] otherPrefab;
     public float secondSpawm, previousSpawn;
     [SerializeField] float rangeMax;
@@ -38,6 +39,8 @@ public class spawnerScript : MonoBehaviour
         transform.position = new Vector3(transform.position.x, (player.transform.position.y + 10));
         if (comboScript._currentCombo == spawnValue + 5 && secondSpawm > .25f) { secondSpawm = secondSpawm - previousSpawn; spawnValue += 5; }
         else if (secondSpawm <= .25f) secondSpawm = .25f;
+
+    //    if (currentTechLevel >= 3) StopCoroutine(gameManagerr.beforeRoutine);
     }
     public IEnumerator techSpawn()
     {
@@ -48,7 +51,7 @@ public class spawnerScript : MonoBehaviour
                 int nextInSequenceIndex = 0;
                 if (collisionManager.objectsInSequence.Count > 0 && collisionManager.currentIndex < collisionManager.objectsInSequence.Count)
                 {
-                    for (int i = 0; i < techPrefab.Length; i++)
+                    for (int i = 0; i < collisionManager.objectsInSequence.Count; i++)
                     {
                         if (techPrefab[i].GetComponent<techieScript>().color ==
                             collisionManager.objectsInSequence[collisionManager.currentIndex].GetComponent<techieScript>().color)
@@ -79,7 +82,7 @@ public class spawnerScript : MonoBehaviour
     }
     public IEnumerator otherSpawn()
     {
-        if(gameManagerr.states == gameManager.gameState.playable)
+        if (gameManagerr.states == gameManager.gameState.playable)
         {
             while (true)
             {

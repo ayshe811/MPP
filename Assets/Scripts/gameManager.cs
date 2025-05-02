@@ -22,6 +22,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI pauseText, livesText;
     spawnerScript spawner;
     bool isPaused;
+    public Coroutine beforeRoutine;
     // Start is called before the fi
     // rst frame update
     bool hasStarted;
