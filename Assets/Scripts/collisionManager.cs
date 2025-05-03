@@ -11,20 +11,24 @@ public class collisionManager : MonoBehaviour
     public Queue<GameObject> queue;
     public gameManager gameManager;
     public int currentIndex;
-    bool hasShuffled;
+    bool hasShuffled, hasCompleted;
     playerScript playScript;
     public QueueDisplay queueScript;
     int nextIndex;
     public audioScript audioScript;
     public int previousValue;
+    comboScript comboScript;
+   [SerializeField] int SequencesCompleted, previousNumber;
     //  public spawnerScript spawnerScript;
 
     private void Start()
     {
         playScript = GameObject.Find("player").GetComponent<playerScript>();
+        comboScript = GameObject.Find("COMBO").GetComponent<comboScript>();
         hasShuffled = false;
         queueScript.UpdateQueueDisplay();
         previousValue = 0;
+        SequencesCompleted = 0;
     }
 
     private void Update()
@@ -33,13 +37,12 @@ public class collisionManager : MonoBehaviour
 
         if (currentIndex >= objectsInSequence.Count)
         {
-         //   AddToSequence();
+            if (SequencesCompleted == previousNumber + 5) { AddToSequence(); previousNumber = +5; }
+            SequencesCompleted++;
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
             currentIndex = 0;
             playScript.correctCollision++;
-
-            //objectsInSequence.Add(objectsInSequence[3]);
         }
     }
    public void AddToSequence()

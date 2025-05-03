@@ -97,7 +97,7 @@ public class playerScript : MonoBehaviour
                         if (spawner.currentTechLevel >= 3)
                         {
                             hasStarted = true;
-                            //StopCoroutine(gameManager.beforeRoutine);
+                            StopCoroutine(gameManager.beforeRoutine);
                             StartCoroutine(spawner.techSpawn());
                             gameManager.states = gameManager.gameState.playable;
                         }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] techPrefab;
-    public GameObject[] availablePrefabs; 
     public GameObject[] otherPrefab;
     public float secondSpawm, previousSpawn;
     [SerializeField] float rangeMax;

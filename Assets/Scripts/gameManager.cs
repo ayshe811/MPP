@@ -52,7 +52,7 @@ public class gameManager : MonoBehaviour
             control.SetActive(true); lives.SetActive(true); topRight.SetActive(true);
             if (!hasStarted)
             {
-                StartCoroutine(spawner.beforeGame());
+                beforeRoutine = StartCoroutine(spawner.beforeGame());
                 hasStarted = true;
             }
         }
