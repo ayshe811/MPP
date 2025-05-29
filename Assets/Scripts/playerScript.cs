@@ -35,6 +35,7 @@ public class playerScript : MonoBehaviour
     public comboScript comboScript;
     QueueDisplay queueScript;
     [SerializeField] GameObject firework;
+    [SerializeField] fireworkScript fireworkScript;
 
     // Start is called before the first frame update
     void Start()
@@ -93,7 +94,8 @@ public class playerScript : MonoBehaviour
                     comboScript._alpha = comboScript.maxAlpha;
                     gameManager.gameTimer += 5;
                     collisionManager.OnCorrectCollision();
-                    Instantiate(firework, new Vector3(Random.Range(-3, 3), transform.position.y + 4), Quaternion.identity);
+                    //Instantiate(firework, new Vector3(Random.Range(-3, 3), transform.position.y + 4), Quaternion.identity);
+                    fireworkScript.TryTriggerFirework(comboScript._currentCombo);
                     if (!hasStarted)
                     {
                         if (spawner.currentTechLevel < 3) spawner.currentTechLevel++;
