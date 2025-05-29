@@ -2082,7 +2082,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606024846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e0adfa38f5c7864c8c270cb4a9b2c3b, type: 3}
   m_Name: 
@@ -2095,6 +2095,7 @@ MonoBehaviour:
   minSpawnDelay: 3
   maxSpawnDelay: 8
   comboScaleFactor: 0.1
+  baseSpawnChance: 0.1
 --- !u!4 &606024848
 Transform:
   m_ObjectHideFlags: 0
@@ -11384,6 +11385,7 @@ MonoBehaviour:
   glowColour: {r: 1, g: 0.14509805, b: 0.09411766, a: 0}
   comboScript: {fileID: 827072419}
   firework: {fileID: 6541042625161271937, guid: 2cc92dcfd95e2374eb938188f56b9321, type: 3}
+  fireworkScript: {fileID: 606024847}
 --- !u!82 &1973025100
 AudioSource:
   m_ObjectHideFlags: 0
