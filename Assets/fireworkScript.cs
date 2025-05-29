@@ -14,14 +14,6 @@ public class fireworkScript : MonoBehaviour
 
     public float baseSpawnChance = 0.1f; // 10% chance by default
     // Start is called before the first frame update
-    void Start()
-    {
-        //StartCoroutine(SpawnFireworks());
-    }
-    //public void UpdateCombo(int combo)
-    //{
-    //    comboScript._currentCombo = combo; // Called from your ComboTracker
-    //}
 
     public void TryTriggerFirework(int currentCombo)
     {
@@ -36,18 +28,4 @@ public class fireworkScript : MonoBehaviour
         //Vector2 spawnPos = GetRandomSpawnPosition(); // Your existing method
         Instantiate(firework, new Vector3(Random.Range(-3, 3), player.transform.position.y + 4), Quaternion.identity);
     }
-    //public IEnumerator SpawnFireworks()
-    //{
-    //    while (true)
-    //    {
-    //        float delay = Mathf.Lerp(maxSpawnDelay, minSpawnDelay, comboScript._currentCombo * comboScaleFactor);
-    //        yield return new WaitForSeconds(delay);
-
-    //        Vector3 spawnPos = new Vector3(
-    //            Random.Range(-spawnArea, spawnArea),
-    //            player.transform.position.y + 4
-    //        );
-    //        Instantiate(firework, spawnPos, Quaternion.identity);
-    //    }
-    //}
 }
