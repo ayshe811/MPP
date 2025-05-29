@@ -2058,6 +2058,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598330213}
   m_CullTransparentMesh: 1
+--- !u!1 &606024846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606024848}
+  - component: {fileID: 606024847}
+  m_Layer: 0
+  m_Name: Firework Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &606024847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606024846}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0adfa38f5c7864c8c270cb4a9b2c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1973025093}
+  firework: {fileID: 6541042625161271937, guid: 2cc92dcfd95e2374eb938188f56b9321, type: 3}
+  spawner: {fileID: 1834432395}
+  comboScript: {fileID: 827072419}
+  spawnArea: 3
+  minSpawnDelay: 3
+  maxSpawnDelay: 8
+  comboScaleFactor: 0.1
+--- !u!4 &606024848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606024846}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4991807, y: -2.5110404, z: 0.0022242116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632448401
 GameObject:
   m_ObjectHideFlags: 0
@@ -9223,11 +9275,15 @@ MonoBehaviour:
   availableCrystals:
   - {fileID: 1214366036526517905, guid: 94b119bd147e8724fb352479f0ad5c9d, type: 3}
   - {fileID: 1214366036526517905, guid: 08287e6ef3580cc4aabfa7ea86b2f997, type: 3}
+  firework: {fileID: 6541042625161271937, guid: 2cc92dcfd95e2374eb938188f56b9321, type: 3}
   gameManager: {fileID: 0}
   currentIndex: 0
   queueScript: {fileID: 377970335}
   audioScript: {fileID: 1744039792}
   previousValue: 0
+  SequencesCompleted: 0
+  previousNumber: 0
+  value: 0
 --- !u!4 &1411003562
 Transform:
   m_ObjectHideFlags: 0
@@ -10872,9 +10928,6 @@ MonoBehaviour:
   - {fileID: 421913154961755303, guid: bcb45c85ec37fc647b916e9f9b2e67e4, type: 3}
   - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
   - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
-  availablePrefabs:
-  - {fileID: 1917013894304228829, guid: aaa62b9faca9e1e4db3158aec3202787, type: 3}
-  - {fileID: 7702010628326356837, guid: 1d0909be29077c74eb58493178524b09, type: 3}
   otherPrefab:
   - {fileID: 3997586404736442908, guid: cb7ba93acf1f20941bc961cefc9f48d3, type: 3}
   - {fileID: 3997586404736442908, guid: 627cf78a698018f4b844b0c977da4940, type: 3}
@@ -11330,6 +11383,7 @@ MonoBehaviour:
   audioScript: {fileID: 1744039792}
   glowColour: {r: 1, g: 0.14509805, b: 0.09411766, a: 0}
   comboScript: {fileID: 827072419}
+  firework: {fileID: 6541042625161271937, guid: 2cc92dcfd95e2374eb938188f56b9321, type: 3}
 --- !u!82 &1973025100
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16523,3 +16577,4 @@ SceneRoots:
   - {fileID: 231386162}
   - {fileID: 1744039793}
   - {fileID: 878213080}
+  - {fileID: 606024848}

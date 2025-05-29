@@ -8,6 +8,7 @@ public class collisionManager : MonoBehaviour
 {
     public List<GameObject> objectsInSequence;
     public List<GameObject> availableCrystals;
+    [SerializeField] GameObject firework;
     public Queue<GameObject> queue;
     public gameManager gameManager;
     public int currentIndex;
@@ -19,6 +20,8 @@ public class collisionManager : MonoBehaviour
     public int previousValue;
     comboScript comboScript;
    [SerializeField] int SequencesCompleted, previousNumber;
+    bool fireworkSpawn;
+    [SerializeField] float value;
     //  public spawnerScript spawnerScript;
 
     private void Start()
@@ -29,6 +32,8 @@ public class collisionManager : MonoBehaviour
         queueScript.UpdateQueueDisplay();
         previousValue = 0;
         SequencesCompleted = 0;
+
+        value = .3f;
     }
 
     private void Update()
@@ -37,15 +42,21 @@ public class collisionManager : MonoBehaviour
 
         if (currentIndex >= objectsInSequence.Count)
         {
+            //Instantiate(firework, new Vector3(Random.Range(-3, 3), transform.position.y + 4), Quaternion.identity);
+
             if (SequencesCompleted == previousNumber + 5) { AddToSequence(); previousNumber = +5; }
             SequencesCompleted++;
             StartCoroutine(shuffle());
             queueScript.UpdateQueueDisplay();
             currentIndex = 0;
             playScript.correctCollision++;
+
+            //fireworkSpawn = Random.value < value; // 30% chance
+            //float hasSpawned = fireworkSpawn ? 
+
         }
     }
-   public void AddToSequence()
+    public void AddToSequence()
    {
        if (nextIndex >= availableCrystals.Count) return;
 

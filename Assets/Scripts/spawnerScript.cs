@@ -8,7 +8,7 @@ public class spawnerScript : MonoBehaviour
     [SerializeField] GameObject[] techPrefab;
     public GameObject[] otherPrefab;
     public float secondSpawm, previousSpawn;
-    [SerializeField] float rangeMax;
+    public float rangeMax;
 
     public gameManager gameManagerr; collisionManager collisionManager; public comboScript comboScript;
     public int currentTechLevel;
