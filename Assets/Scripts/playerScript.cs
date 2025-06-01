@@ -94,7 +94,7 @@ public class playerScript : MonoBehaviour
                     comboScript._alpha = comboScript.maxAlpha;
                     gameManager.gameTimer += 5;
                     collisionManager.OnCorrectCollision();
-                    fireworkScript.TryTriggerFirework(new Vector3(Random.Range(-2, 2), transform.position.y + 3), comboScript._currentCombo);
+                    if (comboScript._currentCombo >= 10) fireworkScript.TryTriggerFirework(new Vector3(Random.Range(-2, 2), transform.position.y + 3), comboScript._currentCombo);
                     if (!hasStarted)
                     {
                         if (spawner.currentTechLevel < 3) spawner.currentTechLevel++;

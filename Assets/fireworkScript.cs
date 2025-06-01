@@ -13,7 +13,11 @@ public class fireworkScript : MonoBehaviour
     public float comboScaleFactor = 0.1f; // Increase spawn rate with combos
 
     public float baseSpawnChance = 0.1f; // 10% chance by default
-    // Start is called before the first frame update
+    AudioSource boom;
+    private void Start()
+    {
+        boom = GetComponent<AudioSource>();
+    }
 
     public void TryTriggerFirework(Vector3 spawnPosition, int currentCombo)
     {
@@ -21,6 +25,10 @@ public class fireworkScript : MonoBehaviour
         float spawnChance = baseSpawnChance + (currentCombo * comboScaleFactor);
         spawnChance = Mathf.Clamp(spawnChance, 0f, 0.5f); // Cap at 50%
 
-        if (Random.value < spawnChance) Instantiate(firework, spawnPosition, Quaternion.identity);
+        if (Random.value < spawnChance)
+        {
+            Instantiate(firework, spawnPosition, Quaternion.identity);
+            boom.Play();
+        }
     }
 }
